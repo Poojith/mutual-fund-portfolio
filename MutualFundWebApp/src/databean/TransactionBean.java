@@ -13,6 +13,7 @@ public class TransactionBean {
 	private int shares;
 	private int transactionType;
 	private double amount;
+	private String status;
 	
 	public int    getTransactionId()                { return transactionId;           }
     public int getCustomerId()              { return customerId;         }
@@ -21,6 +22,7 @@ public class TransactionBean {
     public int getShares()          { return shares;     }
     public int getTransactionType()          { return transactionType;     }
     public double getAmount() 			{return amount;				}
+    public String getStatus() { return status; }
 
     public void   setTransactionId(int i)           { transactionId = i;              }
 	public void   setCustomerId(int i)      { customerId = i;            }
@@ -29,4 +31,5 @@ public class TransactionBean {
 	public void   setExecuteDate(String s) { executeDate = s;       }
 	public void   setShares(int i)  { shares = i;        }
 	public void   setTransactionType(int i)  { transactionType = i;        }
+	public void   setStatus(String status) { this.status = status; } 
 }
