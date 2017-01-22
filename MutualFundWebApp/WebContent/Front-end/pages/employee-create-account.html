@@ -76,10 +76,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="create-employee.html"><i class="fa fa-dashboard fa-fw"></i>Create employee account</a>
-                        </li>
-                        <li>
-                            <a href="create-customer.html"><i class="fa fa-dashboard fa-fw"></i> Create customer account</a>
+                            <a href="create-employee.html"><i class="fa fa-dashboard fa-fw"></i>Create Account</a>
                         </li>
                         <li>
                             <a href="reset-customer-password.html"><i class="fa fa-dashboard fa-fw"></i> Reset customer password</a>
@@ -106,52 +103,64 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper" style="min-height:649px;">
-            <!-- /.row -->
+		<div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Create Customer Account 
-                        </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                        <form action="login.do" method="POST">
-                            <table class="table table-bordered table-hover">
-                                <tbody>
-                                    <tr>
-                                        <td align="center">User Name: 
-                                        <input type="text" name="username" /></td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">First Name:
-                                        <input type="text" name="firstname" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Last Name: 
-                                        <input type="text" name="lastname" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Address Line 1: 
-                                        <input type="text" name="enteraddressline1" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Address Line 2: 
-                                        <input type="text" name="enteraddressline2" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">City: 
-                                        <input type="text" name="city" /></td>
-                                    </tr>
-                                    
-                                    <tr>
-                                            
-                                            <td align="center"> <div class="col-sm-10 control-label" >State:</div>
-                                            <br>
-
-                                                <div class="col-md-2" style="width:600px; padding-left:390px">
-                                                <select class="form-control" id="state" name="state">
+                    <h1 class="page-header">Create Account</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+              <div class="col-lg-6">
+                  <label>User Name</label>
+                  <input type="text" class="form-control" name="uname" />
+                  <p class="help-block"></p>
+              </div>
+            
+              <div class="col-lg-6">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" name="fname">
+                  <p class="help-block"></p>
+              </div>
+              </div>
+            
+            
+            <div class="row">
+              <div class="col-lg-6">
+                  <label>Last Name</label>
+                  <input type="text" class="form-control" name="lname">
+                  <p class="help-block"></p>
+              </div> 
+            
+              <div class="col-lg-6">
+                  <label>Address Line 1</label>
+                  <input type="text" class="form-control" name="address1">
+                  <p class="help-block"></p>
+              </div>
+              </div>
+            
+            
+            <div class="row">
+            
+              <div class="col-lg-6">
+                  <label>Address Line 2</label>
+                  <input type="text" class="form-control" name="address2">
+                  <p class="help-block"></p>
+              </div>
+ 
+            
+              <div class="col-lg-6">
+                  <label>City</label>
+                  <input type="text" class="form-control" name="city">
+                  <p class="help-block"></p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-lg-6">
+                  <label>State</label>
+                  <select class="form-control" id="state" name="state">
                                                     <option value="">N/A</option>
                                                     <option value="AK">Alaska</option>
                                                     <option value="AL">Alabama</option>
@@ -206,44 +215,50 @@
                                                     <option value="WV">West Virginia</option>
                                                     <option value="WY">Wyoming</option>
                                                 </select>
-                                                </td>
-                                                
+                  <p class="help-block"></p>
+              </div>
+            
+            
+            
+              <div class="col-lg-6">
+                  <label>Zip Code</label>
+                  <input type="text" class="form-control" name="zipcode">
+                  <p class="help-block"></p>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-lg-6">
+                  <label>Create Password</label>
+                  <input type="password" class="form-control" name="password">
+                  <p class="help-block"></p>
+              
+            </div>
+            
+            
+              <div class="col-lg-6">
+                  <label>Confirm Password</label>
+                  <input type="password" class="form-control" name="confirm">
+                  </div>
+              
+            </div>
+            <br>
+            
+             
+
+            <input type="submit" onclick="" value="Create Customer Account" class="btn btn-outline btn-primary"/>
+            <input type="submit" onclick="" value="Create Employee Account" class="btn btn-outline btn-primary"/>
+            <br>
 
 
-                                            </div>
-
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Zip Code: 
-                                        <input type="text" name="zipcode" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Password: 
-                                        <input type="text" name="password" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Confirm Password: 
-                                        <input type="text" name="confpassword" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center"><input type="submit" value="Create Customer"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
-               </div>
-            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
+        
+
     </div>
     <!-- /#wrapper -->
-
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 

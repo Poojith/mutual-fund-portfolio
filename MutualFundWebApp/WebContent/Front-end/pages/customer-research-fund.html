@@ -41,7 +41,7 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-             <div class="navbar-header">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -72,7 +72,7 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
+                        <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
@@ -130,25 +130,28 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Market Updates</h1>
+                    <h1 class="page-header">Research Fund</h1>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-
-            <!-- /.row -->
-            <div class="row">
-                <img src="../images/stockads.PNG">
-            </div>
-            <div class="row">
-                <img src="../images/stockads2.PNG">
             </div>
 
+              <div class="row">
+                <div class="col-lg-4">
+                    <label>Select Fund</label>
+                    <select class="form-control" id="fundoption" name="fundoption">
+                    <option value="FSCSX" name="FSCSX">Fidelity® Select Software & IT Svcs Port</option>
+                    <option value="ROGSX" name="ROGSX">Red Oak Technology Select Fund</option>
+                    <option value="VITAX" name="VITAX">Vanguard Information Technology Index Fd</option>
+                     <option value="MTCAX" name="MTCAX">MFS® Technology Fund</option>            
+                    
+                    </select>
+                    <p class="help-block"></p>
+                </div>
+              </div>
+              <img src="../images/fidelity.png">
+                        
+              
 
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
+            </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -167,6 +170,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="../dist/js/rf-image.js"></script>>
+
 
 </body>
 
