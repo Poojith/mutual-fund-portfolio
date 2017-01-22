@@ -18,7 +18,7 @@ import databean.EmployeeBean;
 import databean.CustomerBean;
 
 public class Model {
-    /*
+	
 	private CustomerDAO customerDAO;
     private EmployeeDAO employeeDAO;
     private FundDAO fundDAO;
@@ -34,43 +34,40 @@ public class Model {
             ConnectionPool pool = new ConnectionPool(jdbcDriver, jdbcURL);
 
             customerDAO = new CustomerDAO(pool, "customer");
+            employeeDAO = new EmployeeDAO(pool, "employee");
+            fundDAO = new FundDAO(pool, "fund");
+            fundPriceHistoryDAO = new FundPriceHistoryDAO(pool, "fundHistory");
+            positionDAO = new PositionDAO(pool, "position");
+            transactionDAO = new TransactionDAO(pool, "transaction");
             
-            favoriteDAO = new FavoriteDAO(pool, "animbalk_favorite");
-            int numusers = (int)userDAO.getCount();
-            if (numusers >= 3) {
-            	//do nothing
-            } else {
-            	for (int i=numusers; i<3; i++) {
-            		UserBean user = new UserBean();
-            		user.setEmail(new String(i + "email"));
-            		user.setFirstName(new String(i + "firstname"));
-            		user.setLastName(new String(i + "lastname"));
-            		user.setPassword(new String(i + "password"));
-            		userDAO.create(user);
-            		UserBean[] users = userDAO.match(MatchArg.equals("email", user.getEmail()));
-            		for (int j=0; j<4; j++) {
-	            		FavoriteBean favorite = new FavoriteBean();
-	            		favorite.setUserId(i + users[0].getUserId());
-	            		favorite.setUrl(new String("http://www." + j + "google.com"));
-	            		favorite.setComment(new String("Favorite Number: " + j));
-	            		favorite.setClicks(0);
-	            		favoriteDAO.create(favorite);
-            		}
-            	}
-            }
+            
         } catch (DAOException e) {
             throw new ServletException(e);
-        } catch (RollbackException f) {
+        } /*catch (RollbackException f) {
         	throw new ServletException(f);
-        }
+        }*/
     }
 
     public CustomerDAO getCustomerDAO() {
         return customerDAO;
     }
 
-    public UserDAO getUserDAO() {
-        return userDAO;
+    public EmployeeDAO getEmployeeDAO() {
+        return employeeDAO;
     }
-    */
+    
+    public FundDAO getFundDAO() {
+        return fundDAO;
+    }
+    public FundPriceHistoryDAO getFundPriceHistoryDAO() {
+        return fundPriceHistoryDAO;
+    }
+    public PositionDAO getPositionDAO() {
+        return positionDAO;
+    }
+    public TransactionDAO getTransactionDAO() {
+        return transactionDAO;
+    }
+    
+    
 }
