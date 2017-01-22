@@ -2,15 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>CFS</title>
-
+    <title>CFS - Employee home</title>
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -48,8 +45,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">CFS</a>
             </div>
+                    <img src="../images/CFS-cover.png">
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
@@ -58,7 +55,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Change password</a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
@@ -76,10 +73,10 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="create-employee.html"><i class="fa fa-dashboard fa-fw"></i>Create employee account</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create employee account</a>
                         </li>
                         <li>
-                            <a href="create-customer.html"><i class="fa fa-dashboard fa-fw"></i> Create customer account</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create customer account</a>
                         </li>
                         <li>
                             <a href="reset-customer-password.html"><i class="fa fa-dashboard fa-fw"></i> Reset customer password</a>
@@ -88,17 +85,18 @@
                             <a href="view-customer-account.html"><i class="fa fa-dashboard fa-fw"></i> View customer account</a>
                         </li>
                         <li>
-                            <a href="TransactionHistory.html"><i class="fa fa-dashboard fa-fw"></i> Customer transaction history</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Customer transaction history</a>
                         </li>
                         <li>
-                            <a href="DepositCheckPage.html"><i class="fa fa-dashboard fa-fw"></i> Deposit check</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Deposit check</a>
                         </li>
                         <li>
-                            <a href="CreateFundPage.html"><i class="fa fa-dashboard fa-fw"></i> Create fund</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create fund</a>
                         </li>
-                      <li>
-                          <a href="TransitionDayPage.html"><i class="fa fa-dashboard fa-fw"></i> Transition day</a>
-                      </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Transition day</a>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -106,56 +104,15 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper" style="min-height:649px;">
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Create Employee Account 
-                        </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                        <form action="login.do" method="POST">
-                            <table class="table table-bordered table-hover">
-                                <tbody>
-                                    <tr>
-                                        <td align="center">User Name: 
-                                        <input type="text" name="username" /></td>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">First Name:
-                                        <input type="text" name="firstname" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Last Name: 
-                                        <input type="text" name="lastname" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Password: 
-                                        <input type="text" name="password" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Confirm Password: 
-                                        <input type="text" name="confpassword" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center"><input type="submit" value="Create Employee"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
-               </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
+       
+      </div>
+  </div>
     <!-- /#wrapper -->
-
+    <nav class="navbar navbar-default " style="margin-bottom: 0">
+      <div class="navbar-footer">
+        <a class="navbar-brand" href="index.html"> <p class="help-block"> &copy; Carnegie Financial Services | 2017 | Team 10</p></a>
+      </div>
+    </nav>
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
