@@ -10,7 +10,7 @@ public class TransactionBean {
 	private int customerId;
 	private int fundId;
 	private String executeDate;
-	private int shares;
+	private double shares;
 	private double sharePrice;
 	
 	// 1-buyfund
@@ -36,7 +36,7 @@ public class TransactionBean {
 		return executeDate;
 	}
 
-	public int getShares() {
+	public double getShares() {
 		return shares;
 	}
 	
@@ -69,8 +69,8 @@ public class TransactionBean {
 		executeDate = s;
 	}
 
-	public void setShares(int i) {
-		shares = i;
+	public void setShares(double d) {
+		shares = d;
 	}
 
 	public void setTransactionType(int i) {
