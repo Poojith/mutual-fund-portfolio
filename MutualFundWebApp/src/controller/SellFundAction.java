@@ -47,7 +47,7 @@ public class SellFundAction extends Action {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	  //  	  FundBean[] sellfundlist = new FundBean();
-	    	  request.setAttribute("sellfundlist", sellfundlist);
+	//    	  request.setAttribute("sellfundlist", sellfundlist);
 	    	  SellfundForm form = formBeanFactory.create(request);
 	    	  if (!form.isPresent()) {
 					return "customer-sell-fund.jsp";
