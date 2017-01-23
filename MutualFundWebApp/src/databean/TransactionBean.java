@@ -11,6 +11,11 @@ public class TransactionBean {
 	private int fundId;
 	private String executeDate;
 	private int shares;
+	
+	// 1-buyfund
+	// 2-sellfund
+	// 3-depositcheck
+	// 4-requestcheck
 	private int transactionType;
 	private double amount;
 
@@ -33,7 +38,7 @@ public class TransactionBean {
 	public int getShares() {
 		return shares;
 	}
-
+	
 	public int getTransactionType() {
 		return transactionType;
 	}
@@ -66,6 +71,9 @@ public class TransactionBean {
 	public void setTransactionType(int i) {
 		transactionType = i;
 	}
-
+	
+	public void setAmount(double d) {
+		amount = d;
+	}
 	
 }
