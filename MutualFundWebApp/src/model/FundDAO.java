@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
@@ -7,6 +9,7 @@ import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 
+import databean.CustomerBean;
 import databean.FundBean;
 
 public class FundDAO extends GenericDAO<FundBean>{
@@ -42,6 +45,11 @@ public class FundDAO extends GenericDAO<FundBean>{
     		throw new RollbackException ("Multiple funds for this username");
     	}
     	return funds[0];
+    }
+	
+	public FundBean[] readAll () throws RollbackException{
+		FundBean[] funds = match();
+        return funds;
     }
 	
 //	public void deposit (String name, int amt, TransactionBean bean) throws RollbackException {
