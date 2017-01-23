@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import databean.CustomerBean;
+import databean.TransactionBean;
 import formbeans.BuyFundForm;
-import model.CustomerDAO;
 import model.FundDAO;
 import model.Model;
 import model.TransactionDAO;
@@ -20,8 +22,6 @@ public class BuyFundAction extends Action {
             .getInstance(BuyFundForm.class);
 	private FundDAO fundDAO;
 	private TransactionDAO transactionDAO;
-	private CustomerDAO customerDAO;
-	
 	public BuyFundAction(Model model) {
 		fundDAO = model.getFundDAO();
 		transactionDAO = model.getTransactionDAO();
@@ -35,11 +35,29 @@ public class BuyFundAction extends Action {
 		   List<String> errors = new ArrayList<String>();
 	        request.setAttribute("errors", errors);
 	      try {
-	    	  
-	    	  return "buyfund.jsp";
-	      }  catch (FormBeanException e) {
+	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  request.setAttribute("buyfundlist", fundDAO.readAll());
+	    	  BuyFundForm form = formBeanFactory.create(request);
+	    	  if (!form.isPresent()) {
+					return "customer-buy-fund.jsp";
+				}
+	            errors.addAll(form.getValidationErrors());
+	            if (errors.size() > 0) {
+	                return "customer-buy-fund.jsp";
+	            }
+	            TransactionBean transaction = new TransactionBean();
+	            transaction.setCustomerId(user.getCustomerId());
+	            transaction.setFundId(fundDAO.read(form.getFundName()).getFundId());
+	            transaction.setTransactionType(1);
+	            transaction.setAmount(form.getAmountDouble());
+	            transactionDAO.create(transaction);
+	    	  return "customer-buy-fund.jsp";
+	      } catch (RollbackException e) {
+	        	errors.add(e.getMessage());
+	        	return "error.jsp";
+	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "buyfund.jsp";
+	            return "customer-buy-fund.jsp";
 	}
 		
 
