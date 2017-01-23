@@ -39,7 +39,20 @@ public class CustomerDAO extends GenericDAO<CustomerBean> {
     	}
     }
     
-    public CustomerBean read (String username) throws RollbackException{
+    public void updateCustomer(CustomerBean customer) throws RollbackException {
+        if (customer == null) {
+            return;
+        }
+        try {
+            Transaction.begin();
+            update(customer);
+            Transaction.commit();
+        }  finally {
+        	 if (Transaction.isActive()) Transaction.rollback();
+        }
+    }
+    
+    public CustomerBean getCustomerByUserName (String username) throws RollbackException{
     	CustomerBean customers[] = match(MatchArg.equals("username", username));
     	if (customers ==null || customers.length == 0) {
     		throw new RollbackException ("No customer for this username");

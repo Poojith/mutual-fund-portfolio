@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
-import daos.MyDAOException;
 import formbeans.BuyFundForm;
+import model.CustomerDAO;
 import model.FundDAO;
 import model.Model;
 import model.TransactionDAO;
@@ -20,6 +20,7 @@ public class BuyFundAction extends Action {
             .getInstance(BuyFundForm.class);
 	private FundDAO fundDAO;
 	private TransactionDAO transactionDAO;
+	private CustomerDAO customerDAO;
 	
 	public BuyFundAction(Model model) {
 		fundDAO = model.getFundDAO();
@@ -35,15 +36,12 @@ public class BuyFundAction extends Action {
 	        request.setAttribute("errors", errors);
 	      try {
 	    	  
-	      } catch (Exception e) {
+	    	  return "buyfund.jsp";
+	      }  catch (FormBeanException e) {
 	            errors.add(e.getMessage());
 	            return "buyfund.jsp";
-	        } catch (FormBeanException e) {
-	            errors.add(e.getMessage());
-	            return "buyfund.jsp";
-	        
-		
-		return null;
 	}
+		
 
+}
 }
