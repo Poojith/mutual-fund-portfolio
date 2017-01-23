@@ -13,7 +13,6 @@ public class TransactionBean {
 	private int shares;
 	private int transactionType;
 	private double amount;
-	private String status;
 
 	public int getTransactionId() {
 		return transactionId;
@@ -43,10 +42,6 @@ public class TransactionBean {
 		return amount;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
 	public void setTransactionId(int i) {
 		transactionId = i;
 	}
@@ -72,7 +67,5 @@ public class TransactionBean {
 		transactionType = i;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 }
