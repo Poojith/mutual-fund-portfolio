@@ -21,5 +21,14 @@ public class FundPriceHistoryDAO extends GenericDAO<FundPriceHistoryBean>{
     	} 
     	return funds;
 	}
+	//An implementation for find the latest fund price.
+	public double fundLatestPrice (FundBean bean) throws RollbackException {
+		FundPriceHistoryBean[] funds = match(MatchArg.equals("fundId", bean.getFundId()));
+		if (funds == null || funds.length == 0) {
+			throw new RollbackException ("No fund history for this symbol");
+		}
+		int last = funds.length - 1;
+		return funds[last].getPrice();
+	}
 }
 
