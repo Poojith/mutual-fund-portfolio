@@ -9,6 +9,7 @@ public class PositionBean {
 	private int customerId;
 	private int fundId;
 	private int shares;
+	private double totalValue;
 
 	public int getCustomerId() {
 		return customerId;
@@ -16,6 +17,10 @@ public class PositionBean {
 
 	public int getFundId() {
 		return fundId;
+	}
+	
+	public double getTotalValue() {
+		return totalValue;
 	}
 
 	public int getShares() {
@@ -32,5 +37,9 @@ public class PositionBean {
 
 	public void setShares(int i) {
 		shares = i;
+	}
+	
+	public void setTotalValue (double d) {
+		totalValue = d;
 	}
 }

@@ -16,7 +16,7 @@ public class CustomerBean {
 	private String city;
 	private String state;
 	private String zip;
-	private long cash;
+	private double cash;
 
 	public int getCustomerId() {
 		return customerId;
@@ -58,7 +58,7 @@ public class CustomerBean {
 		return zip;
 	}
 
-	public long getCash() {
+	public double getCash() {
 		return cash;
 	}
 
@@ -111,9 +111,8 @@ public class CustomerBean {
 		zip = s;
 	}
 
-	@MaxSize(50)
-	public void setCash(long l) {
-		cash = l;
+	public void setCash(double d) {
+		cash = d;
 	}
 
 }

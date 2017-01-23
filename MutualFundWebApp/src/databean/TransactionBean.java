@@ -11,6 +11,7 @@ public class TransactionBean {
 	private int fundId;
 	private String executeDate;
 	private int shares;
+	private double sharePrice;
 	
 	// 1-buyfund
 	// 2-sellfund
@@ -46,6 +47,10 @@ public class TransactionBean {
 	public double getAmount() {
 		return amount;
 	}
+	
+	public double getSharePrice() {
+		return sharePrice;
+	}
 
 	public void setTransactionId(int i) {
 		transactionId = i;
@@ -74,6 +79,10 @@ public class TransactionBean {
 	
 	public void setAmount(double d) {
 		amount = d;
+	}
+	
+	public void setSharePrice(double d) {
+		sharePrice = d;
 	}
 	
 }
