@@ -7,9 +7,7 @@ import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 
-import databean.EmployeeBean;
 import databean.FundBean;
-import databean.TransactionBean;
 
 public class FundDAO extends GenericDAO<FundBean>{
 	public FundDAO(ConnectionPool cp, String tableName) throws DAOException {
@@ -36,14 +34,16 @@ public class FundDAO extends GenericDAO<FundBean>{
     	}
     }
 	
-	public void research (String symbol) throws RollbackException {
-		FundBean funds[] = match(MatchArg.equals("symbol", symbol));
+	public FundBean read (String symbol) throws RollbackException{
+    	FundBean funds[] = match(MatchArg.equals("symbol", symbol));
     	if (funds ==null || funds.length == 0) {
-    		throw new RollbackException ("No fund for this name");
-    	} 
-    	
-    	return employees[0];
-	}
+    		throw new RollbackException ("No fund for this symbol");
+    	} else if (funds.length > 1) {
+    		throw new RollbackException ("Multiple funds for this username");
+    	}
+    	return funds[0];
+    }
+	
 //	public void deposit (String name, int amt, TransactionBean bean) throws RollbackException {
 //		try {
 //			Transaction.begin();
