@@ -57,8 +57,6 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Change password</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
                         <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -73,28 +71,25 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create employee account</a>
+                            <a href="create-employee.html"><i class="fa fa-dashboard fa-fw"></i>Create Account</a>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create customer account</a>
+                            <a href="reset-customer-password.html"><i class="fa fa-dashboard fa-fw"></i> Reset Customer password</a>
                         </li>
                         <li>
-                            <a href="reset-customer-password.html"><i class="fa fa-dashboard fa-fw"></i> Reset customer password</a>
+                            <a href="view-customer-account.html"><i class="fa fa-dashboard fa-fw"></i> View Customer Account</a>
                         </li>
                         <li>
-                            <a href="view-customer-account.html"><i class="fa fa-dashboard fa-fw"></i> View customer account</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Customer Transaction History</a>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Customer transaction history</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Deposit Check</a>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Deposit check</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create Fund</a>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Create fund</a>
-                        </li>
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Transition day</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Transition Day</a>
                         </li>
 
                     </ul>

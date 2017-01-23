@@ -11,13 +11,13 @@
             <div class="row">
               <div class="col-lg-6">
                   <label>User Name</label>
-                  <input type="text" class="form-control" name="uname" />
+                  <input type="text" class="form-control" name="userName" />
                   <p class="help-block"></p>
               </div>
             
               <div class="col-lg-6">
                   <label>First Name</label>
-                  <input type="text" class="form-control" name="fname">
+                  <input type="text" class="form-control" name="firstName">
                   <p class="help-block"></p>
               </div>
               </div>
@@ -26,7 +26,7 @@
             <div class="row">
               <div class="col-lg-6">
                   <label>Last Name</label>
-                  <input type="text" class="form-control" name="lname">
+                  <input type="text" class="form-control" name="lastName">
                   <p class="help-block"></p>
               </div> 
             
@@ -57,7 +57,7 @@
             <div class="row">
               <div class="col-lg-6">
                   <label>State</label>
-                  <select class="form-control" id="state" name="state">
+                  <select class="form-control"  name="state">
                                                     <option value="">N/A</option>
                                                     <option value="AK">Alaska</option>
                                                     <option value="AL">Alabama</option>
@@ -135,7 +135,7 @@
             
               <div class="col-lg-6">
                   <label>Confirm Password</label>
-                  <input type="password" class="form-control" name="confirm">
+                  <input type="password" class="form-control" name="confirmPassword">
                   </div>
               
             </div>
@@ -143,8 +143,8 @@
             
              
 
-            <input type="submit" onclick="" value="Create Customer Account" class="btn btn-outline btn-primary"/>
-            <input type="submit" onclick="" value="Create Employee Account" class="btn btn-outline btn-primary"/>
+            <input type="submit" name="action" value="Create Customer Account" class="btn btn-outline btn-primary"/>
+            <input type="submit" name="action" value="Create Employee Account" class="btn btn-outline btn-primary"/>
             <br>
 
 

@@ -134,7 +134,7 @@
                <div class="row">
                 <div class="col-lg-4">
                     <label>Number of Shares to sell:</label>
-                    <input type="text" class="form-control" name="sharenum">
+                    <input type="text" class="form-control" name="numShares">
                     <p class="help-block"></p>
                 </div>
               </div>
