@@ -113,6 +113,7 @@ public class SellFundAction extends Action {
 		        	errors.add("Not enough shares");
 		        	return "error.jsp";
 		         }
+	          request.setAttribute("message", "Sell Fund was successful");
 	    	  return "success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());

@@ -76,6 +76,7 @@ public class RequestCheckAction extends Action {
 	        	errors.add("Not enough cash");
 	        	return "error.jsp";
 	         }
+	         request.setAttribute("message", "Request check was successful");
 	    	  return "success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
