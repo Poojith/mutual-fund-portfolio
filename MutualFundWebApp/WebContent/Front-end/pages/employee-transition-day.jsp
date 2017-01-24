@@ -35,7 +35,7 @@
 	
 
 
-	<input type="submit" value="Update Prices"
+	<input type="submit" name="action" value="Update prices"
 		class="btn btn-outline btn-primary" />
 
 </div>
