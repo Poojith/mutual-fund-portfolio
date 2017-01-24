@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="employee-template-top.jsp" />
 <div id="page-wrapper">
 	<div class="row">
@@ -5,50 +7,32 @@
 			<h1 class="page-header">Transition Day</h1>
 		</div>
 	</div>
-
-	<div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-
-
-
-	<div class="row">
-		<div class="col-lg-4">
-			<label>Update Fund Prices</label> <br> <label><i>Fund
-					1</i></label> <input type="text" class="form-control" name="fund1">
-			<p class="help-block"></p>
+	<form action="transition.do" method="POST">
+		<div class="row">
+	        <div class='col-sm-6'>
+	            <label>Date of Trading Day: </label> <br> 
+	            <input type="date" name="date" />
+	        </div>
+	    </div>
+		<br>
+		
+		<div class="row">
+			<div class="col-lg-4">
+				<label>Update Fund Prices</label> <br>
+			</div>
 		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-4">
-			<label><i>Fund 2</i></label> <input type="text" class="form-control"
-				name="fund2">
-			<p class="help-block"></p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-4">
-			<label><i>Fund 3</i></label> <input type="text" class="form-control"
-				name="fund3">
-			<p class="help-block"></p>
-		</div>
-	</div>
+		
+		<c:forEach var="fund" items="${funds}">
+			<div class="row">
+				<div class="col-lg-4">
+					<label><i>Fund 1</i></label> 
+					<input type="text" class="form-control" name="fund${fund.id}">
+					<p class="help-block"></p>
+				</div>
+			</div>
+		</c:forEach>
+	</form>
+	
 
 
 	<input type="submit" value="Update Prices"
