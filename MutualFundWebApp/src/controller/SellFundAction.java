@@ -46,7 +46,7 @@ public class SellFundAction extends Action {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
-	    	  // get position for display the table, get sellfundlist for dropdown list
+	    	  // get position total value for display the table, get sellfundlist for dropdown list
 	    	  for (int i=0; i<position.length; i++) {
 		    	  FundBean fundbean = new FundBean();
 	    		  fundbean.setFundId(position[i].getFundId());
@@ -70,13 +70,44 @@ public class SellFundAction extends Action {
 	            }
 	            int fundid = fundDAO.read(form.getFund()).getFundId();
 	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
-	            if (form.getSharesDouble() <= shares) {       	            
+
+	            if (form.getSharesDouble() <= shares) {      
+	            // update transaction
 	            TransactionBean transaction = new TransactionBean();
 	            transaction.setCustomerId(user.getCustomerId());
 	            transaction.setFundId(fundDAO.read(form.getFund()).getFundId());
 	            transaction.setTransactionType(2);
 	            transaction.setShares(form.getSharesDouble());
 	            transactionDAO.create(transaction);
+	   /*
+	            // update position
+	            double totalvalue = positionDAO.getPosition(user.getCustomerId(), fundid).getTotalValue();
+	            double sellprice = totalvalue / shares;
+	            PositionBean p = new PositionBean();
+	            p.setCustomerId(user.getCustomerId());
+	            p.setFundId(fundid);
+	            p.setShares(shares - form.getSharesDouble());
+	            p.setTotalValue(sellprice * p.getShares());
+	            if (p.getShares() == 0) {
+	            	// delete position if shares is zero
+	            	positionDAO.deletePosition(p);
+	            } else {
+	                positionDAO.update(p);
+	            }
+	            // update customer cash
+	        	 CustomerBean updateuser = new CustomerBean();
+	        	 updateuser.setCash(user.getCash() + totalvalue - p.getTotalValue());
+	        	 updateuser.setAddrLine1(user.getAddrLine1());
+	        	 updateuser.setAddrLine2(user.getAddrLine2());
+	        	 updateuser.setCity(user.getCity());
+	        	 updateuser.setCustomerId(user.getCustomerId());
+	        	 updateuser.setFirstName(user.getFirstName());
+	        	 updateuser.setLastName(user.getLastName());
+	        	 updateuser.setState(user.getState());
+	        	 updateuser.setUsername(user.getUsername());
+	        	 updateuser.setZip(user.getZip());
+	        	 customerDAO.update(updateuser);
+	        	 */
 	            }
 	            else {
 		        	errors.add("Not enough shares");

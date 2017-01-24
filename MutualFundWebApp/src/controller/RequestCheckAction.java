@@ -48,6 +48,7 @@ public class RequestCheckAction extends Action {
 	                return "customer-request-check.jsp";
 	            }
 	         if (form.getAmountDouble() <= user.getCash()) {
+	        	 // update transaction
 	        	 TransactionBean transaction = new TransactionBean();
 	        	 transaction.setAmount(form.getAmountDouble());
 	        	 transaction.setCustomerId(user.getCustomerId());
@@ -56,6 +57,8 @@ public class RequestCheckAction extends Action {
 	        	 DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 	        	 transaction.setExecuteDate(df.format(date));
 	        	 transactionDAO.create(transaction);
+	        	 
+	        	 //update customer cash
 	        	 CustomerBean updateuser = new CustomerBean();
 	        	 updateuser.setCash(user.getCash()-form.getAmountDouble());
 	        	 updateuser.setAddrLine1(user.getAddrLine1());
