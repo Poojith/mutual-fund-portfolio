@@ -28,13 +28,11 @@
 										<th>Total Value</th>
 									</tr>
 								</thead>
-								<tbody>
-								<c: set var="count" value="0" />
-								<c:forEach var ="fund" fund="${sellfundlist.fund}">
-								<c:set var="count" value="${ count+1 }" />
+								<tbody>					
+								<c:forEach var ="fund" items="${sellfundlist}">			
 									<tr>
-										<td>${sellfundlist.fund }</td>
-										<td>${sellfundlist.numShares }</td>
+										<td>${fund.fund}</td>
+										<td>${fund.numShares }</td>
 										<td>$321.33</td>
 										<!--adding total values to the bean -->
 									</tr>
