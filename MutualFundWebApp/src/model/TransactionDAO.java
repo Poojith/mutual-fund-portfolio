@@ -1,5 +1,9 @@
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
@@ -64,6 +68,13 @@ public class TransactionDAO extends GenericDAO<TransactionBean>{
     	TransactionBean[] beans = match(MatchArg.equals("fundId", fundId));
         return beans;
     }
+    
+    public String findLastTransactionDate(int customerId) throws RollbackException {
+    	TransactionBean[] beans = match(MatchArg.equals("customerId", customerId));
+    	Arrays.sort(beans);
+    	return beans[0].getExecuteDate();
+    }
+
     
     public void deleteTransactionsByCustomerId(int customerId) {
         
