@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
@@ -9,7 +7,6 @@ import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 
-import databean.CustomerBean;
 import databean.FundBean;
 
 public class FundDAO extends GenericDAO<FundBean>{
@@ -36,7 +33,7 @@ public class FundDAO extends GenericDAO<FundBean>{
     		}
     	}
     }
-	
+	//read by symbol
 	public FundBean read (String symbol) throws RollbackException{
     	FundBean funds[] = match(MatchArg.equals("symbol", symbol));
     	if (funds ==null || funds.length == 0) {
@@ -46,7 +43,16 @@ public class FundDAO extends GenericDAO<FundBean>{
     	}
     	return funds[0];
     }
-	
+	//read by fundId
+	public FundBean read (int fundId) throws RollbackException{
+    	FundBean funds[] = match(MatchArg.equals("fundId", fundId));
+    	if (funds ==null || funds.length == 0) {
+    		throw new RollbackException ("No fund for this symbol");
+    	} else if (funds.length > 1) {
+    		throw new RollbackException ("Multiple funds for this username");
+    	}
+    	return funds[0];
+    }
 	public FundBean[] readAll () throws RollbackException{
 		FundBean[] funds = match();
         return funds;
