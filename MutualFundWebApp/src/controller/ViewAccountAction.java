@@ -39,8 +39,7 @@ public class ViewAccountAction extends Action {
 	      try {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
-      //          TransactionBean[] transaction = transactionDAO.findTransactionsByCustomerId(user.getCustomerId());
-	    	  for (int i=0; i<position.length; i++) {
+              for (int i=0; i<position.length; i++) {
 		    	  FundBean fundbean = new FundBean();
 	    		  fundbean.setFundId(position[i].getFundId());
 	    		  fundbean.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
@@ -48,6 +47,7 @@ public class ViewAccountAction extends Action {
 	    		  position[i].setTotalValue(price * position[i].getShares()); 
 	    	  }
 	    	  request.setAttribute("position", position);
+	    	  request.setAttribute("lasttransactiondate", transactionDAO.findLastTransactionDate(user.getCustomerId()));
 	    	  return "customer-view-portfolio.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
