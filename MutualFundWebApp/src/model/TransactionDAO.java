@@ -74,7 +74,12 @@ public class TransactionDAO extends GenericDAO<TransactionBean>{
     	Arrays.sort(beans);
     	return beans[0].getExecuteDate();
     }
-
+    
+    public String findGlobalLastTransactionDate() throws RollbackException {
+    	TransactionBean[] beans = match();
+    	Arrays.sort(beans);
+    	return beans[0].getExecuteDate();
+    }
     
     public void deleteTransactionsByCustomerId(int customerId) {
         
