@@ -13,7 +13,6 @@ import databean.CustomerBean;
 import databean.FundBean;
 import databean.PositionBean;
 import databean.TransactionBean;
-import formbeans.BuyFundForm;
 import formbeans.SellfundForm;
 import model.FundDAO;
 import model.FundPriceHistoryDAO;
@@ -46,23 +45,44 @@ public class SellFundAction extends Action {
 	      try {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
-	  //  	  FundBean[] sellfundlist = new FundBean();
-	//    	  request.setAttribute("sellfundlist", sellfundlist);
+	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
+	    	  // get position for display the table, get sellfundlist for dropdown list
+	    	  for (int i=0; i<position.length; i++) {
+		    	  FundBean fundbean = new FundBean();
+	    		  fundbean.setFundId(position[i].getFundId());
+	    		  fundbean.setName(fundDAO.read(fundbean.getFundId()).getName());
+	    		  fundbean.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
+	    		  Double price = fundpricehistoryDAO.fundLatestPrice(fundbean);
+	    		  position[i].setTotalValue(price * position[i].getShares());
+	    		  sellfundlist.add(fundbean);  
+	    	  }
+	    	  request.setAttribute("position", position);
+	    	  sellfundlist.toArray(new FundBean[sellfundlist.size()]);
+	    	  request.setAttribute("sellfundlist", sellfundlist);
+	    	  
 	    	  SellfundForm form = formBeanFactory.create(request);
-	    	  if (!form.isPresent()) {
+	    	    	  if (!form.isPresent()) {
 					return "customer-sell-fund.jsp";
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
 	                return "customer-sell-fund.jsp";
 	            }
+	            int fundid = fundDAO.read(form.getFund()).getFundId();
+	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
+	            if (form.getSharesDouble() <= shares) {       	            
 	            TransactionBean transaction = new TransactionBean();
 	            transaction.setCustomerId(user.getCustomerId());
 	            transaction.setFundId(fundDAO.read(form.getFund()).getFundId());
 	            transaction.setTransactionType(2);
-	            transaction.setAmount(form.getSharesDouble());
+	            transaction.setShares(form.getSharesDouble());
 	            transactionDAO.create(transaction);
-	    	  return "customer-sell-fund.jsp";
+	            }
+	            else {
+		        	errors.add("Not enough shares");
+		        	return "error.jsp";
+		         }
+	    	  return "success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
 	        	return "error.jsp";

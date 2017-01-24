@@ -69,7 +69,10 @@ public class RequestCheckAction extends Action {
 	        	 updateuser.setZip(user.getZip());
 	        	 customerDAO.update(updateuser);
 	         }
-	            
+	         else {
+	        	errors.add("Not enough cash");
+	        	return "error.jsp";
+	         }
 	    	  return "success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
