@@ -48,6 +48,7 @@ public class DepositCheckAction extends Action {
 
 			double amount = form.getDepositAmountAsDouble();
 			customer.setCash(amount);
+			customerDAO.updateCustomer(customer);
 
 			/*
 			 * Need to queue this up as a pending transaction.
