@@ -54,7 +54,7 @@ public class RequestCheckAction extends Action {
 	        	 transaction.setCustomerId(user.getCustomerId());
 	        	 transaction.setTransactionType(4);
 	        	 Date date = new Date();
-	        	 DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+	        	 DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 	        	 transaction.setExecuteDate(df.format(date));
 	        	 transactionDAO.create(transaction);
 	        	 
