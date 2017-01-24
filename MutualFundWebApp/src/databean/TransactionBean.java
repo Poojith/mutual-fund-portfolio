@@ -1,6 +1,9 @@
 
 package databean;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.genericdao.MaxSize;
 import org.genericdao.PrimaryKey;
 
@@ -84,5 +87,24 @@ public class TransactionBean {
 	public void setSharePrice(double d) {
 		sharePrice = d;
 	}
+	
+	public int compareTo(TransactionBean transaction) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        dateFormat.setLenient(false);
+        if (this.getExecuteDate()== null && transaction.getExecuteDate()==null) {
+        	return 0;
+        }
+        if (this.getExecuteDate()==null) {
+        	return 1;
+        } else if (transaction.getExecuteDate()==null) {
+        	return -1;
+        }
+        try {
+            return -dateFormat.parse(this.getExecuteDate()).compareTo(dateFormat.parse(transaction.getExecuteDate()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 	
 }
