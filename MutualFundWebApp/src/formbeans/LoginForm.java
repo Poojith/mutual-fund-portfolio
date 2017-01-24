@@ -10,6 +10,7 @@ public class LoginForm {
 	private String password;
 	private String customerLoginButton;
 	private String employeeLoginButton;
+	private String userType;
 
 	public LoginForm(HttpServletRequest request) {
 		String name = request.getParameter("userName");
@@ -18,10 +19,14 @@ public class LoginForm {
 		}
 		password = request.getParameter("password");
 		String action = request.getParameter("action");
+		
 		if (action.equals("Customer login")) {
 			customerLoginButton = action;
+			userType = "Customer";
+			
 		} else if (action.equals("Employee login")) {
 			employeeLoginButton = action;
+			userType = "Employee";
 		}
 	}
 
@@ -39,6 +44,14 @@ public class LoginForm {
 
 	public String getEmployeeLoginButton() {
 		return employeeLoginButton;
+	}
+	
+	public boolean isPresent() {
+		return employeeLoginButton != null || customerLoginButton != null;
+	}
+	
+	public String getUserType() {
+		return userType;
 	}
 
 	public List<String> getValidationErrors() {
