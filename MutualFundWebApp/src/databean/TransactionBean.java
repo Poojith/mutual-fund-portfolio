@@ -16,6 +16,10 @@ public class TransactionBean {
 	private double shares;
 	private double sharePrice;
 	
+	//null when pending
+	//"completed" when completed
+	private String status;
+	
 	// 1-buyfund
 	// 2-sellfund
 	// 3-depositcheck
@@ -54,6 +58,10 @@ public class TransactionBean {
 	public double getSharePrice() {
 		return sharePrice;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
 
 	public void setTransactionId(int i) {
 		transactionId = i;
@@ -86,6 +94,10 @@ public class TransactionBean {
 	
 	public void setSharePrice(double d) {
 		sharePrice = d;
+	}
+	
+	public void setStatus(String s) {
+		status = s;
 	}
 	
 	public int compareTo(TransactionBean transaction) {
