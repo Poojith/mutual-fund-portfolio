@@ -43,6 +43,7 @@ public class SellFundAction extends Action {
 		   List<String> errors = new ArrayList<String>();
 	        request.setAttribute("errors", errors);
 	      try {
+	    	  
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
@@ -79,36 +80,7 @@ public class SellFundAction extends Action {
 	            transaction.setTransactionType(2);
 	            transaction.setShares(form.getSharesDouble());
 	            transactionDAO.create(transaction);
-	   /*
-	            // update position
-	            double totalvalue = positionDAO.getPosition(user.getCustomerId(), fundid).getTotalValue();
-	            double sellprice = totalvalue / shares;
-	            PositionBean p = new PositionBean();
-	            p.setCustomerId(user.getCustomerId());
-	            p.setFundId(fundid);
-	            p.setShares(shares - form.getSharesDouble());
-	            p.setTotalValue(sellprice * p.getShares());
-	            if (p.getShares() == 0) {
-	            	// delete position if shares is zero
-	            	positionDAO.deletePosition(p);
-	            } else {
-	                positionDAO.update(p);
-	            }
-	            // update customer cash
-	        	 CustomerBean updateuser = new CustomerBean();
-	        	 updateuser.setCash(user.getCash() + totalvalue - p.getTotalValue());
-	        	 updateuser.setAddrLine1(user.getAddrLine1());
-	        	 updateuser.setAddrLine2(user.getAddrLine2());
-	        	 updateuser.setCity(user.getCity());
-	        	 updateuser.setCustomerId(user.getCustomerId());
-	        	 updateuser.setFirstName(user.getFirstName());
-	        	 updateuser.setLastName(user.getLastName());
-	        	 updateuser.setState(user.getState());
-	        	 updateuser.setUsername(user.getUsername());
-	        	 updateuser.setZip(user.getZip());
-	        	 customerDAO.update(updateuser);
-	        	 */
-	            }
+	   	            }
 	            else {
 		        	errors.add("Not enough shares");
 		        	return "error.jsp";
