@@ -10,9 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>CFS</title>
-
 <!-- Bootstrap Core CSS -->
 <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -65,7 +63,7 @@
 									<div class="form-group">
 										<input class="form-control" placeholder="Username"
 											name="userName" size="20" type="text" autofocus
-											value="${form.userName}">
+											value="${user.userName}">
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="Password"

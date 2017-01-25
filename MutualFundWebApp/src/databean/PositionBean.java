@@ -10,7 +10,6 @@ public class PositionBean {
 	private int fundId;
 	private int shares;
 	private double totalValue;
-
 	public int getCustomerId() {
 		return customerId;
 	}

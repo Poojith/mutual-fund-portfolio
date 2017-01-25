@@ -3,10 +3,13 @@ package controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import model.Model;
+
+
 
 public class LogoutAction extends Action {
 
-	public LogoutAction(String jdbcDriverName, String jdbcURL) { }
+	public LogoutAction(Model model) { }
 
 	public String getName() { return "logout.do"; }
 

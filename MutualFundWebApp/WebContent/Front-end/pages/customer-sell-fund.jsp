@@ -28,14 +28,12 @@
 										<th>Total Value</th>
 									</tr>
 								</thead>
-								<tbody>
-								<c: set var="count" value="0" />
-								<c:forEach var ="fund" fund="${sellfundlist.fund}">
-								<c:set var="count" value="${ count+1 }" />
+								<tbody>					
+								<c:forEach var ="position" items="${position}">			
 									<tr>
-										<td>${sellfundlist.fund }</td>
-										<td>${sellfundlist.numShares }</td>
-										<td>$321.33</td>
+										<td>${position.fundId}</td>
+										<td>${position.shares}</td>
+										<td>${position.totalValue}</td>
 										<!--adding total values to the bean -->
 									</tr>
 									
@@ -80,7 +78,6 @@
 				<div class="col-lg-4">
 					<label>Cash Balance: ${user.cash}</label>
 					<p class="help-block"></p>
-
 				</div>
 			</div>
 			<div class="row">
@@ -104,7 +101,7 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<label>Number of Shares to sell</label> <input type="text" 	class="form-control" 
-					name="numShares" value="${form.numShares}">
+					name="numShares" value="${sellfundlist.numShares}">
 					<p class="help-block"></p>
 				</div>
 			</div>
