@@ -21,7 +21,7 @@ public class Controller extends HttpServlet {
 		super();
 	}
 
-	public void init() {
+	public void init() throws ServletException {
 
 		 Model model = new Model(getServletConfig());
 		 
