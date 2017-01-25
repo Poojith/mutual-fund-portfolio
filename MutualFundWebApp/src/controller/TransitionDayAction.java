@@ -20,7 +20,7 @@ import databean.FundPriceHistoryBean;
 import databean.PositionBean;
 import databean.TransactionBean;
 import formbeans.DepositCheckForm;
-import formbeans.TransitiondayForm;
+import formbeans.TransitionDayForm;
 import model.CustomerDAO;
 import model.EmployeeDAO;
 import model.FundDAO;
@@ -68,7 +68,7 @@ public class TransitionDayAction extends Action {
 		try {
 			FundBean[] fundArray = fundDAO.match();
 			
-			TransitiondayForm form = new TransitiondayForm(request);
+			TransitionDayForm form = new TransitionDayForm(request);
 			if (!form.isPresent()) {
 				session.setAttribute("fundArray", fundArray);
 				return "employee-transition-day.jsp";
