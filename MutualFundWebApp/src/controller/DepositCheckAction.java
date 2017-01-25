@@ -8,15 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
+import databean.TransactionBean;
 import formbeans.DepositCheckForm;
 import model.CustomerDAO;
 import model.Model;
+import model.TransactionDAO;
 
 public class DepositCheckAction extends Action {
 	private CustomerDAO customerDAO;
+	private TransactionDAO transactionDAO;
 
 	public DepositCheckAction(Model model) {
 		customerDAO = model.getCustomerDAO();
+		transactionDAO = model.getTransactionDAO();
 	}
 
 	@Override
@@ -47,15 +51,14 @@ public class DepositCheckAction extends Action {
 			}
 
 			double amount = form.getDepositAmountAsDouble();
-			customer.setCash(amount);
-			customerDAO.updateCustomer(customer);
+			TransactionBean transaction = new TransactionBean();
+			transaction.setCustomerId(customer.getCustomerId());
+			transaction.setAmount(amount);
+			transaction.setTransactionType(3);
+			transactionDAO.create(transaction);
 
-			/*
-			 * Need to queue this up as a pending transaction.
-			 */
-
-			request.setAttribute("message", "You have successfully deposited the check for " + customer.getFirstName()
-					+ " " + customer.getLastName() + ".");
+			request.setAttribute("message", "Your request of depositing the check for " + customer.getFirstName() + " "
+					+ customer.getLastName() + " is under processing.");
 			return "success.jsp";
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
