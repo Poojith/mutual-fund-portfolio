@@ -16,17 +16,18 @@ import databean.FundBean;
 public class TransitionDayForm {
 	private String transitionDate;
 	private String transitionDayButton;
-	private boolean checkPrice;
-	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+	private boolean checkPrice;
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 	public TransitionDayForm(HttpServletRequest request) {
 		String dateInput = request.getParameter("date");
-		transitionDayButton = request.getParameter("action");
 		if (dateInput != null) {
 			transitionDate = dateInput.trim();
 		}
+		transitionDayButton = request.getParameter("action");
+		
 		HttpSession session = request.getSession();
 		FundBean[] fundBeans = (FundBean[]) session.getAttribute("fundArray");
 
@@ -79,6 +80,9 @@ public class TransitionDayForm {
 	}
 
 	public boolean checkPriceValue(String price) {
+		if (price == null || price.length() == 0) {
+			return false;
+		}
 		try {
 			Double.parseDouble(price);
 		} catch (NumberFormatException e) {
