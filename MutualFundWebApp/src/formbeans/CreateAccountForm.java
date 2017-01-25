@@ -21,7 +21,8 @@ public class CreateAccountForm {
 	private String confirmPassword;
 	private String customerAccountButton;
 	private String employeeAccountButton;
-
+	private String userType;
+	
 	public CreateAccountForm(HttpServletRequest request) {
 		String userNameInput = request.getParameter("userName");
 		String firstNameInput = request.getParameter("firstName");
@@ -37,8 +38,10 @@ public class CreateAccountForm {
 		String action = request.getParameter("action");
 		if (action.equals("Create customer account")) {
 			customerAccountButton = action;
+			userType = "Customer";
 		} else if (action.equals("Create employee account")) {
 			employeeAccountButton = action;
+			userType = "Employee";
 		}
 
 		if (userNameInput != null) {
@@ -116,6 +119,14 @@ public class CreateAccountForm {
 
 	public String getEmployeeAccountButton() {
 		return employeeAccountButton;
+	}
+	
+	public String getUserType() {
+		return userType;
+	}
+	
+	public boolean isPresent() {
+		return customerAccountButton != null || employeeAccountButton != null;
 	}
 
 	public String sanitize(String input) {

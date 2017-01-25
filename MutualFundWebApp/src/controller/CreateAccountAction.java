@@ -36,7 +36,6 @@ public class CreateAccountAction extends Action {
 
 		try {
 			CreateAccountForm form = new CreateAccountForm(request);
-			//request.setAttribute("form", form);
 			if (!form.isPresent()) {
 				return "employee-create-account.jsp";
 			}
