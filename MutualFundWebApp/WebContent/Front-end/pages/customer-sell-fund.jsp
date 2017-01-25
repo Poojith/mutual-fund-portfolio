@@ -12,6 +12,7 @@
 			<h3 style="color: red">${error}</h3>
 		</c:forEach>
 	</div>
+	
 	<div class="panel panel-default">
 		<div class="panel-heading">Funds Information</div>
 		<!-- /.panel-heading -->
@@ -82,17 +83,14 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Select Fund</label> <select class="form-control"
-						id="fundoption" name="fundoption">
-						<option value="FSCSX" name="FSCSX">Fidelity® Select
-							Software & IT Svcs Port</option>
-						<option value="ROGSX" name="ROGSX">Red Oak Technology
-							Select Fund</option>
-						<option value="VITAX" name="VITAX">Vanguard Information
-							Technology Index Fd</option>
-						<option value="MTCAX" name="MTCAX">MFS® Technology Fund</option>
-
-					</select>
+					<label>Select Fund</label> 
+						<select class="form-control" name="fund">
+                    
+                    <c:forEach var="fund" items="${sellfunlist}">
+                    <option>${fundlist.name}</option>
+         			</c:forEach>
+                   
+                    </select>
 					<p class="help-block"></p>
 				</div>
 			</div>
@@ -101,7 +99,7 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<label>Number of Shares to sell</label> <input type="text" 	class="form-control" 
-					name="numShares" value="${sellfundlist.numShares}">
+					name="numShares">
 					<p class="help-block"></p>
 				</div>
 			</div>

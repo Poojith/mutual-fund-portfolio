@@ -25,7 +25,7 @@ public class FundBean {
 	public void setFundId(int i) {
 		fundId = i;
 	}
-
+	
 	@MaxSize(50)
 	public void setName(String s) {
 		name = s;

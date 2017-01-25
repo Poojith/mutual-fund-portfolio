@@ -7,7 +7,7 @@
             </div>
             
             <div class="panel-body">
-            <form action="resetpassword.do" method="GET">
+            <form action="resetpassword.do" method="POST">
               <div class="row">
                 <div class="col-lg-4">
                     <label>Search customer to reset customer password</label>

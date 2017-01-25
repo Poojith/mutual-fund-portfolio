@@ -9,7 +9,7 @@
 	<!-- /.row -->
 	<!-- /.row -->
 	<div class="panel-body">
-		<form action="resetpassword.do" method="GET">
+		<form action="resetpassword.do" method="POST">
 			<div class="row">
 
 				<!-- /.panel -->
@@ -45,7 +45,7 @@
 							<div class="col-lg-4">
 								<input type="submit" name="action" value="Search"
 									class="btn btn-outline btn-primary" />
-								<!--  <label> Customer Name: ${customer.userName}</label>-->
+								
 								<p class="help-block"></p>
 							</div>
 						</div>
@@ -66,51 +66,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td align="center">01/02/2017</td>
-										<td>Buy</td>
-										<td>Completed</td>
-										<td>Fund 1</td>
-										<td>10</td>
-										<td>$32.13</td>
-										<td>$321.30</td>
-									</tr>
-									<tr>
-										<td align="center">01/02/2017</td>
-										<td>Sell</td>
-										<td>Completed</td>
-										<td>Fund 2</td>
-										<td>50</td>
-										<td>$2.5</td>
-										<td>$125</td>
-									</tr>
-									<tr>
-										<td align="center">01/03/2017</td>
-										<td>Request Check</td>
-										<td>Completed</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>$724.17</td>
-									</tr>
-									<tr>
-										<td align="center">01/10/2017</td>
-										<td>Sell</td>
-										<td>Pending</td>
-										<td>Fund 3</td>
-										<td>100</td>
-										<td>$2.15</td>
-										<td>$215</td>
-									</tr>
-									<tr>
-										<td align="center">01/11/2017</td>
-										<td>Request Check</td>
-										<td>Pending</td>
-										<td>-</td>
-										<td>-</td>
-										<td>-</td>
-										<td>$200</td>
-									</tr>
+								<c:forEach var="transaction" items=${transactions}>
+								<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+									
+								</tr>
+								</c:forEach>
+									
 							</table>
 						</div>
 
