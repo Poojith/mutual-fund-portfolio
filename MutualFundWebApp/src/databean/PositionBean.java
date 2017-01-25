@@ -8,7 +8,7 @@ import org.genericdao.PrimaryKey;
 public class PositionBean {
 	private int customerId;
 	private int fundId;
-	private int shares;
+	private double shares;
 	private double totalValue;
 
 	public int getCustomerId() {
@@ -23,7 +23,7 @@ public class PositionBean {
 		return totalValue;
 	}
 
-	public int getShares() {
+	public double getShares() {
 		return shares;
 	}
 
@@ -35,8 +35,8 @@ public class PositionBean {
 		fundId = i;
 	}
 
-	public void setShares(int i) {
-		shares = i;
+	public void setShares(double d) {
+		shares = d;
 	}
 	
 	public void setTotalValue (double d) {
