@@ -7,11 +7,15 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            
+            
+            <div class="panel-body">
+            <form action="changepassword.do" method="POST">
             <!-- /.row -->
             <div class="row">
               <div class="col-lg-4">
                   <label>New password</label>
-                  <input type="password" name="newPassword" class="form-control">
+                  <input type="password" name="newPassword" class="form-control" value="${form.newPassword }" >
                   <p class="help-block"></p>
               </div>
             </div>
@@ -19,21 +23,19 @@
             <div class="row">
               <div class="col-lg-4">
                   <label>Confirm password</label>
-                  <input type="password" name="confirmPassword" class="form-control">
+                  <input type="password" name="confirmPassword" class="form-control" value="${form.confirmPassword}">
                   <p class="help-block"></p>
               </div>
             </div>
 
-            <input type="submit" value="Change Password" name="action" class="btn btn-outline btn-primary"/>
-
+            <input type="submit" value="Change password" name="action" class="btn btn-outline btn-primary"/>
+		
+		</form>
+		</div>
+		
 
         </div>
         <!-- /#page-wrapper -->
-
-
-
-
-
 
 <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
