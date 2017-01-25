@@ -43,7 +43,7 @@ public class TransitionDayForm {
 			}
 		}
 
-		boolean checkDateFormat = checkDateFormat(dateInput);
+		boolean checkDateFormat = checkDateFormat(transitionDate);
 		if (checkDateFormat) {
 			transitionDate = dateInput;
 		}
