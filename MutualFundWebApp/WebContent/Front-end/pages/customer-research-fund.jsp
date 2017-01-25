@@ -11,15 +11,16 @@
                 <div class="col-lg-4">
                     <label>Select Fund</label>
                     <select class="form-control" name="fund">
-                    <option value="FSCSX" name="FSCSX">Fidelity® Select Software & IT Svcs Port</option>
-                    <option value="ROGSX" name="ROGSX">Red Oak Technology Select Fund</option>
-                    <option value="VITAX" name="VITAX">Vanguard Information Technology Index Fd</option>
-                     <option value="MTCAX" name="MTCAX">MFS® Technology Fund</option>            
+                    
+                    <c:forEach var="fund" items="${fundlist}">
+                    <option>${fundlist.name}</option>
+         			</c:forEach>
+                   
                     </select>
                     <p class="help-block"></p>
                 </div>
               </div>
-              <img src="../images/fidelity.png">
+             
                         
               
 

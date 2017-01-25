@@ -5,15 +5,31 @@
                     <h1 class="page-header">Reset customer password</h1>
                 </div>
             </div>
+            
+            <div class="panel-body">
+            <form action="resetpassword.do" method="GET">
               <div class="row">
                 <div class="col-lg-4">
-                    <label>Customer</label>
-                    <select class="form-control" name="userName">
-                        <option>Customer 1</option>
-                        <option>Customer 2</option>
-                        <option>Customer 3</option>
-                    </select>
+                    <label>Search customer to reset customer password</label>
+                    <input type="text" class="form-control"
+					name="userName">
                   <p class="help-block"></p>
+                </div>
+
+              </div>
+              
+              <div class="row">
+              <div class="col-lg-4">
+                 <input type="submit" name="action" value="Search" class="btn btn-outline btn-primary"/>
+                  <!--  <label> Customer Name: ${customer.userName}</label>-->
+                   <p class="help-block"></p>
+                </div>
+                </div>
+              
+              <div class="row">
+                <div class="col-lg-4">
+                    <label>Customer Name: ${customer.userName}</label>  
+                    <p class="help-block"></p>
                 </div>
               </div>
 
@@ -34,7 +50,7 @@
               </div>
 
               <input type="submit" name="action" value="Reset password" class="btn btn-outline btn-primary"/>
-
+			</div>
             </div>
             <!-- /.row -->
     <!-- /#wrapper -->

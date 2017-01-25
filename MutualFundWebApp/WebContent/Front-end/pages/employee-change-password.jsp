@@ -15,7 +15,7 @@
             <div class="row">
               <div class="col-lg-4">
                   <label>New password</label>
-                  <input type="password" name="newPassword" class="form-control" value="${form.newPassword }" >
+                  <input type="password" name="newPassword" class="form-control" value="${form.newPassword}" >
                   <p class="help-block"></p>
               </div>
             </div>
