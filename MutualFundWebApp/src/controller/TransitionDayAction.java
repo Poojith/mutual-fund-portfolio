@@ -101,7 +101,7 @@ public class TransitionDayAction extends Action {
 			}
 			Transaction.commit();
 			Transaction.begin();
-			TransactionBean[] transactionBeans = transactionDAO.match(MatchArg.notEquals("executeDate", ""));
+			TransactionBean[] transactionBeans = transactionDAO.match(MatchArg.equals("status", ""));
 			for (int i=0; i<transactionBeans.length; i++) {
 				switch(transactionBeans[i].getTransactionType()) {
 					case 1: {
@@ -116,6 +116,7 @@ public class TransitionDayAction extends Action {
 					}
 				}
 				transactionBeans[i].setExecuteDate(date);
+				transactionBeans[i].setStatus("completed");
 				transactionDAO.update(transactionBeans[i]);
 			}
 			
