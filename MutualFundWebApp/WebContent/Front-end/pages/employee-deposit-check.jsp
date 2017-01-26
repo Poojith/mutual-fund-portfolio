@@ -30,7 +30,7 @@
 	<div class="row">
 		<div class="col-lg-4">
 			<label>Enter the amount to be deposited</label> <input type="text"
-				name="amtDeposit" class="form-control">
+				name="buyAmount" class="form-control">
 			<p class="help-block"></p>
 		</div>
 	</div>
