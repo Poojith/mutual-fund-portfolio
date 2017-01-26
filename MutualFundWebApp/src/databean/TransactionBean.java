@@ -8,6 +8,7 @@ import org.genericdao.MaxSize;
 import org.genericdao.PrimaryKey;
 
 @PrimaryKey("transactionId")
+
 public class TransactionBean implements Comparable<TransactionBean> {
 	private int transactionId;
 	private int customerId;

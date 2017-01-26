@@ -53,7 +53,7 @@
 					<!-- /.col-lg-8 (nested) -->
 				</div>
 				<!-- /.row -->
-			</form>
+	
 		</div>
 		<!-- /.panel-body -->
 	</div>
@@ -88,8 +88,8 @@
 					<label>Select Fund</label> 
 						<select class="form-control" name="fund">
                     
-                    <c:forEach var="fund" items="${sellfunlist}">
-                    <option>${fund.name}</option>
+                    <c:forEach var="fund" items="${sellfundlist}">
+                    <option value="${fund.symbol}">${fund.name}</option>
          			</c:forEach>
                    
                     </select>
@@ -106,8 +106,8 @@
 				</div>
 			</div>
 
-			<input type="submit" name="action" value="Sell fund"class="btn btn-outline btn-primary" />
-
+			<input type="submit" name="sellFund" value="Sell fund"class="btn btn-outline btn-primary" />
+		</form>
 			<!-- /.row -->
 		</div>
 		<!-- /.panel-body -->

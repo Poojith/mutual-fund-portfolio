@@ -10,10 +10,10 @@
 
             <!-- /.row -->
             <div class="row">
-                <img src="../images/stockads.PNG">
+                <img src="Front-end/images/stockads.PNG">
             </div>
             <div class="row">
-                <img src="../images/stockads2.PNG">
+                <img src="Front-end/images/stockads2.PNG">
             </div>
 
 

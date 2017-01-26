@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="customer-template-top.jsp" />
 
 <div id="page-wrapper">
@@ -29,9 +31,17 @@
 						</c:forEach>
 
 					</select>
+					
 					<p class="help-block"></p>
+					
+				</div>
+				<div class="col-lg-4">
+				<input type="submit" name="action" value="Select fund"class="btn btn-outline btn-primary" />
+				
 				</div>
 			</div>
+			<br>
+			
 			
 			
 			<div class="row">
@@ -40,17 +50,17 @@
 							<table class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
-										<th>Fund Name</th>
-										<th>Number of Shares</th>
-										<th>Total Value</th>
+										<th>Fund Id</th>
+										<th>Date of Price</th>
+										<th>Price</th>
 									</tr>
 								</thead>
 								<tbody>					
-								<c:forEach var ="p" items="${position}">			
+								<c:forEach var ="p" items="${fundpricehistory}">			
 									<tr>
 										<td>${p.fundId}</td>
-										<td>${p.shares}</td>
-										<td>${p.totalValue}</td>
+										<td>${p.priceDate}</td>
+										<td>${p.price}</td>
 										<!--adding total values to the bean -->
 									</tr>
 									

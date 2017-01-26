@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
+import databean.TransactionBean;
 import model.Model;
 import model.TransactionDAO;
 
@@ -27,7 +28,7 @@ public class TransactionHistoryAction extends Action {
 	        request.setAttribute("errors", errors);
 	      try {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
-	    	  request.setAttribute("transactionhistory", transactionDAO.findTransactionsByCustomerId(user.getCustomerId()));  	  
+	    	  request.setAttribute("transactionhistory", transactionDAO.findTransactionsByCustomerId(user.getCustomerId()));  	
 	    	  return "customer-transaction-history.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());

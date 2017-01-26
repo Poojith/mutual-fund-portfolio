@@ -26,10 +26,9 @@
 
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Select Fund</label> <select class="form-control" name="fundName" onchange="this.form.submit()">
+					<label>Select Fund</label> <select class="form-control" name="fundName">
 					<c:forEach var="fund" items="${buyfundlist}">
-                    <option>${fund.symbol}</option>
-                    <label>${fund.fundId}</label>
+                    <option value="${fund.symbol}">${fund.name}</option>
          			</c:forEach>
 						
 

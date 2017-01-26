@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="employee-template-top.jsp" />
 	<div id="page-wrapper">
             <div class="row">
@@ -11,9 +13,10 @@
                 <div class="col-lg-4">
                     <label>Customer</label>
                     <select class="form-control" name="userName">
-                        <option>Customer 1</option>
-                        <option>Customer 2</option>
-                        <option>Customer 3</option>
+                        <c:forEach var="c" items="${customer}">
+							<option>${c.name}</option>
+							
+						</c:forEach>
                     </select>
                   <p class="help-block"></p>
                 </div>
