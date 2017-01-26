@@ -16,7 +16,7 @@ public class ResetPasswordForm {
 		if (name != null) {
 			userName = name.trim();
 		}
-		newPassword = request.getParameter("password");
+		newPassword = request.getParameter("newPassword");
 		confirmPassword = request.getParameter("confirmPassword");
 		resetPasswordButton = request.getParameter("action");
 	}
