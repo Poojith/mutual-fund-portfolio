@@ -65,7 +65,7 @@ public class Controller extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String servletPath = request.getServletPath();
 		String action = getActionName(servletPath);
-		String userType = (String) session.getAttribute("type");
+		String userType = (String) session.getAttribute("userType");
 
 		if (action.equals("login.do")) {
 			return Action.perform(action, request);
@@ -82,7 +82,7 @@ public class Controller extends HttpServlet {
 				return Action.perform("login.do", request);
 			}
 		} else {
-			return null;
+			return "error.jsp";
 		}
 
 		return Action.perform(action, request);
@@ -98,6 +98,7 @@ public class Controller extends HttpServlet {
 
 		if (nextPage == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND, request.getServletPath());
+			return;
 		}
 
 		if (nextPage.endsWith(".do")) {

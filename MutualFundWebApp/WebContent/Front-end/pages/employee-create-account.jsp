@@ -10,7 +10,7 @@
 	</div>
 	<!-- /.row -->
 	<div class="panel-body">
-		<form action="create-customer-account.do" method="POST">
+		<form action="create-account.do" method="POST">
 			<div class="row">
 				<div class="col-lg-6">
 					<label>User Name</label> <input type="text" class="form-control"

@@ -71,7 +71,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="create-customer-account.do"><i class="fa fa-dashboard fa-fw"></i>Create Account</a>
+                            <a href="create-account.do"><i class="fa fa-dashboard fa-fw"></i>Create Account</a>
                         </li>
                         <li>
                             <a href="reset-customer-password.do"><i class="fa fa-dashboard fa-fw"></i> Reset Customer password</a>

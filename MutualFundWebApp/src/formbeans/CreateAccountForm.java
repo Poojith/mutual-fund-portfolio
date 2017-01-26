@@ -36,6 +36,10 @@ public class CreateAccountForm {
 		confirmPassword = request.getParameter("confirmPassword");
 
 		String action = request.getParameter("action");
+		
+		if (action == null) {
+			return;
+		}
 		if (action.equals("Create customer account")) {
 			customerAccountButton = action;
 			userType = "Customer";
