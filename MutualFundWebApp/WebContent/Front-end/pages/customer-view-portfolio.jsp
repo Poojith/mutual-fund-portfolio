@@ -81,7 +81,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer" align="center">${lastTransactionDate}</div>
+							<div class="panel-footer" align="center">${lasttransactiondate}</div>
 						</div>
 					</div>
 				</div>
