@@ -24,10 +24,10 @@
 			
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Select Fund</label> <select class="form-control" name="fund">
+					<label>Select Fund</label> <select class="form-control" name="fundId">
 
 						<c:forEach var="fund" items="${fundlist}">
-							<option>${fund.name}</option>
+							<option value="${fund.fundId}">${fund.symbol}</option>
 						</c:forEach>
 
 					</select>
@@ -36,7 +36,7 @@
 					
 				</div>
 				<div class="col-lg-4">
-				<input type="submit" name="action" value="Select fund"class="btn btn-outline btn-primary" />
+				<input type="submit" name="researchfund" value="Select fund"class="btn btn-outline btn-primary" />
 				
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 										<!--adding total values to the bean -->
 									</tr>
 									
-									</c:forEach>
+							    </c:forEach>
 								</tbody>
 							</table>
 						</div>
