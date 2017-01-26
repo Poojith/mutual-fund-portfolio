@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="employee-template-top.jsp" />
 	<div id="page-wrapper">
             <div class="row">
@@ -7,30 +9,21 @@
             </div>
             
             <div class="panel-body">
-            <form action="resetpassword.do" method="POST">
+                <div class="row">
+	  <c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
+	</div>
+	
+            <form action="reset-customer-password.do" method="POST">
               <div class="row">
                 <div class="col-lg-4">
-                    <label>Search customer to reset customer password</label>
+                    <label>Username of the customer</label>
                     <input type="text" class="form-control"
 					name="userName">
                   <p class="help-block"></p>
                 </div>
 
-              </div>
-              
-              <div class="row">
-              <div class="col-lg-4">
-                 <input type="submit" name="action" value="Search" class="btn btn-outline btn-primary"/>
-                  <!--  <label> Customer Name: ${customer.userName}</label>-->
-                   <p class="help-block"></p>
-                </div>
-                </div>
-              
-              <div class="row">
-                <div class="col-lg-4">
-                    <label>Customer Name: ${customer.userName}</label>  
-                    <p class="help-block"></p>
-                </div>
               </div>
 
               <div class="row">
@@ -50,6 +43,7 @@
               </div>
 
               <input type="submit" name="action" value="Reset password" class="btn btn-outline btn-primary"/>
+              </form>
 			</div>
             </div>
             <!-- /.row -->
