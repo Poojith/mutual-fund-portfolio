@@ -12,19 +12,19 @@
 <meta name="author" content="">
 <title>CFS</title>
 <!-- Bootstrap Core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="Front-end/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+<link href="Front-end/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="Front-end/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+<link href="Front-end/vendor/morrisjs/morris.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="../vendor/font-awesome/css/font-awesome.min.css"
+<link href="Front-end/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,7 +49,7 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<img src="../images/CFS-cover.png"> <!-- /.navbar-header --> <!-- jQuery -->
+		<img src="Front-end/images/CFS-cover.png"> <!-- /.navbar-header --> <!-- jQuery -->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
