@@ -30,13 +30,11 @@ public class EmployeeDAO extends GenericDAO<EmployeeBean>{
     }
 	
 	public EmployeeBean read (String username) throws RollbackException{
-    	EmployeeBean employees[] = match(MatchArg.equals("username", username));
-    	if (employees ==null || employees.length == 0) {
-    		throw new RollbackException ("No employee for this username");
-    	} else if (employees.length > 1) {
-    		throw new RollbackException ("Multiple employees for this username");
+    	EmployeeBean[] employees = match(MatchArg.equals("username", username));
+    	if(employees != null && employees.length > 0) {
+    		return employees[0];
     	}
-    	return employees[0];
+    	return null;
     }
 	
 	public EmployeeBean changePassword(String username, String password) throws RollbackException {
