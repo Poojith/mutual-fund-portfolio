@@ -9,52 +9,38 @@
 		</div>
 	</div>
 	<!-- /.row -->
+	
+	<div class="row">
+	  <c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
+	</div>
+	
+	<!-- /.row -->
+	<div class="panel-body">
+		<form action="employee-deposit-check.do" method="POST">
 
 	<div class="row">
-
-
 		<div class="col-lg-4">
-			<label>Search customer to deposit check </label> <input type="text"
+			<label>Username of the customer</label> <input type="text"
 				class="form-control" name="userName"> <br>
-
-
-		</div>
-
-	</div>
-
-	<div class="row">
-		<div class="col-lg-4">
-			<input type="submit" name="action" value="Search"
-				class="btn btn-outline btn-primary" />
-
-			<p class="help-block"></p>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-4">
-			<label>Customer Name: ${customer.userName}</label>
-			<p class="help-block"></p>
-		</div>
-	</div>
-
-
-
-	<div class="row">
-		<div class="col-lg-4">
-			<label>Enter Cash Amount to Deposit</label> <input type="password"
+			<label>Enter the amount to be deposited</label> <input type="text"
 				name="amtDeposit" class="form-control">
 			<p class="help-block"></p>
 		</div>
 	</div>
 
 
-	<a href="view-portfolio.html"> <input type="submit" value="Deposit"
+	<input type="submit" value="Deposit"
 		name="action" class="btn btn-outline btn-primary" />
-	</a>
-
+	</form>
 </div>
-
+</div>
 
 
 
