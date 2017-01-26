@@ -11,8 +11,8 @@ public class ResearchfundForm extends FormBean {
 		return fundId;
 	}
 
-	public void setFundId(int fundId) {
-		this.fundId = fundId;
+	public void setFundId(String fundId) {
+		this.fundId = Integer.parseInt(fundId);
 	}
 	public String getResearchfund() {
 		return researchfund;

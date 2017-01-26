@@ -35,6 +35,9 @@ public class ResearchFundAction extends Action {
 	      try {
 	    	  request.setAttribute("fundlist", fundDAO.readAll());
 	       	  ResearchfundForm form = formBeanFactory.create(request);
+	       	  
+	       	  System.out.println(form.getResearchfund());
+	       	  System.out.println(form.getFundId());
 	    	  if (!form.isPresent()) {
 					return "customer-research-fund.jsp";
 				}
@@ -45,7 +48,8 @@ public class ResearchFundAction extends Action {
 	            FundBean fundbean = new FundBean();
 	            fundbean.setFundId(form.getFundId());
 	            request.setAttribute("fundpricehistory", fundpricehistoryDAO.research(fundbean));
-	    	   	  return "customer-research-fund.jsp";
+	            System.out.println(fundpricehistoryDAO.research(fundbean));
+	    	   	return "customer-research-fund.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
 	        	return "error.jsp";
