@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 
 import databean.FundBean;
@@ -40,8 +41,8 @@ public class CreateFundAction extends Action {
 				return "employee-create-fund.jsp";
 			}
 
-			FundBean bean = fundDAO.read(form.getTicker());
-			if (bean != null) {
+			FundBean[] beans = fundDAO.match(MatchArg.equals("symbol", form.getTicker()));
+			if (beans.length > 0) {
 				errors.add("The ticker you entered already exists.");
 				return "employee-create-fund.jsp";
 			}
