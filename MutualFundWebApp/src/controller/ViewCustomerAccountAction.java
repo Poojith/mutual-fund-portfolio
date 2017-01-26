@@ -46,6 +46,8 @@ public class ViewCustomerAccountAction extends Action {
 		try {
 			ViewCustomerAccountForm form = new ViewCustomerAccountForm(request);
 			if (!form.isPresent()) {
+				CustomerBean[] customers = customerDAO.match();
+				request.setAttribute("customer", customers);
 				return "employee-view-customer-account.jsp";
 			}
 
