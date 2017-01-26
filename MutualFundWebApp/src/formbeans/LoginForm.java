@@ -20,6 +20,9 @@ public class LoginForm {
 		password = request.getParameter("password");
 		String action = request.getParameter("action");
 		
+		if (action == null) {
+			return;
+		}
 		if (action.equals("Customer login")) {
 			customerLoginButton = action;
 			userType = "Customer";

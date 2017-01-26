@@ -96,7 +96,7 @@ public class TransitionDayAction extends Action {
 				entry : fundpricemap.entrySet()) {
 				FundPriceHistoryBean fundHistoryBean = fundPriceHistoryDAO.read(entry.getKey());
 				fundHistoryBean.setPrice(entry.getValue());
-				fundHistoryBean.setExecuteDate(date);
+				fundHistoryBean.setPriceDate(date);
 				fundPriceHistoryDAO.update(fundHistoryBean);
 			}
 			Transaction.commit();

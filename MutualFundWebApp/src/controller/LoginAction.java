@@ -46,7 +46,7 @@ public class LoginAction extends Action {
 			if (errors.size() > 0) {
 				return "login.jsp";
 			}
-
+			
 			String userType = form.getUserType();
 			if (userType.equals("Employee")) {
 				EmployeeBean employee = employeeDAO.read(form.getUserName());

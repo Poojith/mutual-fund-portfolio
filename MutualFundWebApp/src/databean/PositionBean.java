@@ -4,7 +4,7 @@ package databean;
 //import org.genericdao.MaxSize;
 import org.genericdao.PrimaryKey;
 
-@PrimaryKey("customerId, fundId")
+@PrimaryKey("customerId,fundId")
 public class PositionBean {
 	private int customerId;
 	private int fundId;

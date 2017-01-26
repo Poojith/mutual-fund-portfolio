@@ -15,7 +15,7 @@
             controller.Controller
         </servlet-class>
         <init-param>
-          <param-name>    jdbcDriverName          </param-name> 
+          <param-name>    jdbcDriver         </param-name> 
 	      <param-value>   com.mysql.jdbc.Driver   </param-value>
         </init-param>
         <init-param>
