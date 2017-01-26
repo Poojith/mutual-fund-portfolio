@@ -11,6 +11,9 @@
 
 
 	<div class="panel-body">
+		<c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
 		<form action="viewaccount.do" method="GET">
 			<div class="row">
 				<div class="col-lg-12"></div>

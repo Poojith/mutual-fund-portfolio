@@ -12,9 +12,11 @@
 	<!-- /.row -->
 	<!-- /.row -->
 	<div class="panel-body">
-		<form action="transactionhistory.do" method="POST">
+		<form action="employee-view-transaction-history.do" method="POST">
 			<div class="row">
-
+				<c:forEach var="error" items="${errors}">
+					<h3 style="color: red">${error}</h3>
+				</c:forEach>
 				<!-- /.panel -->
 				<div class="panel panel-default">
 
@@ -69,15 +71,15 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach var="transaction" items=${transactions}>
+								<c:forEach var="histbean" items="${histbeans}">
 								<tr>
-									<th>${transaction.executeDate}</th>
-									<th>${transaction.transactionType}</th>
-									<th>${transaction.status}</th>
-									<th>${transaction.fundId}</th>
-									<th>${transaction.shares}</th>
-									<th>${transaction.sharePrice}</th>
-									<th>${transaction.amount}</th>
+									<th>${histbean.transactionDate}</th>
+									<th>${histbean.operation}</th>
+									<th>${histbean.status}</th>
+									<th>${histbean.fundName}</th>
+									<th>${histbean.numShares}</th>
+									<th>${histbean.sharePrice}</th>
+									<th>${histbean.amount}</th>
 								</tr>
 								</c:forEach>
 									

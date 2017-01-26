@@ -35,7 +35,7 @@ public class ViewCustomerTransactionForm {
 		if (userName == null || userName.length() == 0)
 			errors.add("User name is required.");
 
-		if (viewTransactionButton == null || !viewTransactionButton.equals("View transaction"))
+		if (viewTransactionButton == null || !viewTransactionButton.equals("Search"))
 			errors.add("Invalid button.");
 
 		return errors;

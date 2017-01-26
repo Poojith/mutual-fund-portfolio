@@ -9,6 +9,7 @@ import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
 import databean.FundBean;
+import databean.HistoryBean;
 import databean.TransactionBean;
 import formbeans.ViewCustomerTransactionForm;
 import model.CustomerDAO;
@@ -58,17 +59,33 @@ public class ViewCustTransactionHistAction extends Action {
 			}
 
 			TransactionBean[] transactionBeans = transactionDAO.findTransactionsByCustomerId(customer.getCustomerId());
-			List<FundBean> funds = new ArrayList<FundBean>();
-			List<Double> fundPrices = new ArrayList<Double>();
+			if (transactionBeans.length == 0) {
+				errors.add("There are no transactions for this user");
+				return "employee-view-transaction-history.jsp";
+			}
+			List<HistoryBean> histbeans = new ArrayList<HistoryBean>();
 			for (TransactionBean tb : transactionBeans) {
+				HistoryBean histbean = new HistoryBean();
 				FundBean fund = fundDAO.read(tb.getFundId());
-				funds.add(fund);
-				fundPrices.add(fundPriceHistoryDAO.fundLatestPrice(fund));
+				if (fund != null) {
+					histbean.setFundName(fund.getName());
+					histbean.setSharePrice(fundPriceHistoryDAO.fundLatestPrice(fund));
+				} else {
+					// do nothing. leave at null.
+				}
+				histbean.setAmount(tb.getAmount());
+				histbean.setNumShares(tb.getShares());
+				histbean.setOperation(tb.getTransactionType());
+				histbean.setTransactionDate(tb.getExecuteDate());
+				if (tb.getStatus() == "completed") {
+					histbean.setStatus(tb.getStatus());
+				} else {
+					histbean.setStatus("pending");
+				}
+				histbeans.add(histbean);
 			}
 
-			request.setAttribute("transactions", transactionBeans); // transaction details of the customer
-			request.setAttribute("funds", funds); // array of funds to get fund name
-			request.setAttribute("fundPrices", fundPrices); // array of fund prices to get share price
+			request.setAttribute("histbeans", histbeans); // all the details or each history
 			
 			// need to add status of transaction
 
@@ -76,10 +93,14 @@ public class ViewCustTransactionHistAction extends Action {
 
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
+			errors.add("RollbackException");
 			return "error.jsp";
-		} catch (Exception e) {
+		} 
+		/*catch (Exception e) {
 			errors.add(e.getMessage());
+			errors.add("Normal Exception");
 			return "error.jsp";
-		}
+		
+		}*/
 	}
 }

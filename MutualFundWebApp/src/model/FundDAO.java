@@ -37,9 +37,9 @@ public class FundDAO extends GenericDAO<FundBean>{
 	public FundBean read (String symbol) throws RollbackException{
     	FundBean funds[] = match(MatchArg.equals("symbol", symbol));
     	if (funds ==null || funds.length == 0) {
-    		throw new RollbackException ("No fund for this symbol");
+   
     	} else if (funds.length > 1) {
-    		throw new RollbackException ("Multiple funds for this username");
+    		throw new RollbackException ("Multiple funds for this symbol");
     	}
     	return funds[0];
     }
@@ -47,9 +47,9 @@ public class FundDAO extends GenericDAO<FundBean>{
 	public FundBean read (int fundId) throws RollbackException{
     	FundBean funds[] = match(MatchArg.equals("fundId", fundId));
     	if (funds ==null || funds.length == 0) {
-    		throw new RollbackException ("No fund for this symbol");
+    		return null;
     	} else if (funds.length > 1) {
-    		throw new RollbackException ("Multiple funds for this username");
+    		throw new RollbackException ("Multiple funds for this fundId");
     	}
     	return funds[0];
     }

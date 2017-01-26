@@ -81,7 +81,7 @@
                             <a href="view-customer-account.do"><i class="fa fa-dashboard fa-fw"></i> View Customer Account</a>
                         </li>
                         <li>
-                            <a href="transactionhistory.do"><i class="fa fa-dashboard fa-fw"></i> Customer Transaction History</a>
+                            <a href="employee-view-transaction-history.do"><i class="fa fa-dashboard fa-fw"></i> Customer Transaction History</a>
                         </li>
                         <li>
                             <a href="employee-deposit-check.do"><i class="fa fa-dashboard fa-fw"></i> Deposit Check</a>
