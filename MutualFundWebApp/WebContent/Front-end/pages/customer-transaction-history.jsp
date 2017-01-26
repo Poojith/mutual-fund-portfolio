@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="customer-template-top.jsp" />
 
 <div id="page-wrapper">
@@ -46,17 +48,17 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach var ="transaction" >
+							<c:forEach var ="transaction" items="${transactionhistory}" >
 								<tr>
-									<td align="center">01/02/2017</td>
-									<td>Buy</td>
-									<td>Completed</td>
-									<td>Fund 1</td>
-									<td>10</td>
-									<td>$32.13</td>
-									<td>$321.30</td>
+									<td align="center">${transaction.executeDate }</td>
+									<td>${transaction.transactionType }</td>
+									<td>${transaction.status }</td>
+									<td>${transaction.fundId }</td>
+									<td>${transaction.shares }</td>
+									<td>${transaction.sharePrice }</td>
+									<td>${transaction.amount }</td>
 								</tr>
-								</c:forEach>
+						   </c:forEach>
 								</tbody>
 						</table>
 					</div>
