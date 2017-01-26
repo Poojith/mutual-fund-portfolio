@@ -26,7 +26,7 @@ public class Model {
     private PositionDAO positionDAO;
     private TransactionDAO transactionDAO;
 
-    public Model(ServletConfig config) throws ServletException {
+    public Model(ServletConfig config) throws ServletException, RollbackException {
         try {
             String jdbcDriver = config.getInitParameter("jdbcDriver");
             String jdbcURL = config.getInitParameter("jdbcURL");
@@ -40,12 +40,25 @@ public class Model {
             positionDAO = new PositionDAO(pool, "position");
             transactionDAO = new TransactionDAO(pool, "transaction");
             
+            //pre-populatnig with employee
+            EmployeeBean employeebean = new EmployeeBean();
+            employeebean.setAddrLine1("address1");
+            employeebean.setAddrLine2("address2");
+            employeebean.setCity("city");
+            employeebean.setFirstName("firstname");
+            employeebean.setLastName("lastname");
+            employeebean.setPassword("password");
+            employeebean.setState("state");
+            employeebean.setUsername("username");
+            employeebean.setZip("zip");
+            employeeDAO.create(employeebean);
+            
             
         } catch (DAOException e) {
             throw new ServletException(e);
-        } /*catch (RollbackException f) {
+        } catch (RollbackException f) {
         	throw new ServletException(f);
-        }*/
+        }
     }
 
     public CustomerDAO getCustomerDAO() {
