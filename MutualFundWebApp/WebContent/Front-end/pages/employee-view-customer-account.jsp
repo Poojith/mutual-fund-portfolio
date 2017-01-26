@@ -14,7 +14,7 @@
                     <label>Customer</label>
                     <select class="form-control" name="userName">
                         <c:forEach var="c" items="${customer}">
-							<option>${c.name}</option>
+							<option>${c.username}</option>
 							
 						</c:forEach>
                     </select>
@@ -23,7 +23,7 @@
               </div>
 
 
-              <a href="view-portfolio.html"> 
+              <a href="view-customer-account.do"> 
               <input type="submit" value="View account" name="action" class="btn btn-outline btn-primary"/> </a>
 
         </div>
