@@ -46,7 +46,6 @@ public class ResearchFundAction extends Action {
 	            FundBean fundbean = new FundBean();
 	            fundbean.setFundId(form.getFundId());
 	            request.setAttribute("fundpricehistory", fundpricehistoryDAO.research(fundbean));
-	            System.out.println(fundpricehistoryDAO.research(fundbean));
 	    	   	return "customer-research-fund.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
