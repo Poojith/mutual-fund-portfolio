@@ -36,8 +36,6 @@ public class ResearchFundAction extends Action {
 	    	  request.setAttribute("fundlist", fundDAO.readAll());
 	       	  ResearchfundForm form = formBeanFactory.create(request);
 	       	  
-	       	  System.out.println(form.getResearchfund());
-	       	  System.out.println(form.getFundId());
 	    	  if (!form.isPresent()) {
 					return "customer-research-fund.jsp";
 				}
