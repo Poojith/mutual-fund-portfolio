@@ -64,7 +64,7 @@ public class LoginAction extends Action {
 				session.setAttribute("user", employee);
 				session.setAttribute("userType", "Employee");
 
-				return "employee-home.do";
+				return "employee-home.jsp";
 				
 			} else if (userType.equals("Customer")) {
 				CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
