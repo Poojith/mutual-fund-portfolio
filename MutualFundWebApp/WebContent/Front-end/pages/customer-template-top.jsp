@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%@ page import="databean.FundBean" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,19 +15,19 @@
 <title>CFS</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="Front-end/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+<link href="Front-end/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="Front-end/dist/css/sb-admin-2.css" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+<link href="Front-end/vendor/morrisjs/morris.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="../vendor/font-awesome/css/font-awesome.min.css"
+<link href="Front-end/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -52,7 +52,7 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<img src="../images/CFS-cover.png"> <!-- /.navbar-header -->
+		<img src="Front-end/images/CFS-cover.png"> <!-- /.navbar-header -->
 
 		<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown"><a class="dropdown-toggle"

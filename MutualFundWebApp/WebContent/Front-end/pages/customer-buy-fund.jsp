@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="customer-template-top.jsp" />
 <div id="page-wrapper">
 	<div class="row">
@@ -26,7 +28,8 @@
 				<div class="col-lg-4">
 					<label>Select Fund</label> <select class="form-control" name="fund">
 					<c:forEach var="fund" items="${buyfundlist}">
-                    <option>${buyfundlist.name}</option>
+                    <option>${fund.name}</option>
+                    <label>${fund.fundId}</label>
          			</c:forEach>
 						
 

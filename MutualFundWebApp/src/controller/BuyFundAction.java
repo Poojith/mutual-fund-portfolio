@@ -38,13 +38,17 @@ public class BuyFundAction extends Action {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  request.setAttribute("buyfundlist", fundDAO.readAll());
 	    	  BuyFundForm form = formBeanFactory.create(request);
+   	  
 	    	  if (!form.isPresent()) {
 					return "customer-buy-fund.jsp";
 				}
+
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "customer-buy-fund.jsp";
+	                return "error.jsp";
 	            }
+		    	  
+
 	            TransactionBean transaction = new TransactionBean();
 	            transaction.setCustomerId(user.getCustomerId());
 	            transaction.setFundId(fundDAO.read(form.getFundName()).getFundId());

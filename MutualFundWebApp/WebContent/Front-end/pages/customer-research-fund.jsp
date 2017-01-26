@@ -25,7 +25,7 @@
 					<label>Select Fund</label> <select class="form-control" name="fund">
 
 						<c:forEach var="fund" items="${fundlist}">
-							<option>${fundlist.name}</option>
+							<option>${fund.name}</option>
 						</c:forEach>
 
 					</select>
@@ -46,11 +46,11 @@
 									</tr>
 								</thead>
 								<tbody>					
-								<c:forEach var ="position" items="${position}">			
+								<c:forEach var ="p" items="${position}">			
 									<tr>
-										<td>${position.fundId}</td>
-										<td>${position.shares}</td>
-										<td>${position.totalValue}</td>
+										<td>${p.fundId}</td>
+										<td>${p.shares}</td>
+										<td>${p.totalValue}</td>
 										<!--adding total values to the bean -->
 									</tr>
 									

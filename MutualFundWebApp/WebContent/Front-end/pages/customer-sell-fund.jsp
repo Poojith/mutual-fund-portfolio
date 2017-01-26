@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="customer-template-top.jsp" />
 
 <div id="page-wrapper">
@@ -30,11 +32,11 @@
 									</tr>
 								</thead>
 								<tbody>					
-								<c:forEach var ="position" items="${position}">			
+								<c:forEach var ="p" items="${position}">			
 									<tr>
-										<td>${position.fundId}</td>
-										<td>${position.shares}</td>
-										<td>${position.totalValue}</td>
+										<td>${p.fundId}</td>
+										<td>${p.shares}</td>
+										<td>${p.totalValue}</td>
 										<!--adding total values to the bean -->
 									</tr>
 									
@@ -87,7 +89,7 @@
 						<select class="form-control" name="fund">
                     
                     <c:forEach var="fund" items="${sellfunlist}">
-                    <option>${fundlist.name}</option>
+                    <option>${fund.name}</option>
          			</c:forEach>
                    
                     </select>
