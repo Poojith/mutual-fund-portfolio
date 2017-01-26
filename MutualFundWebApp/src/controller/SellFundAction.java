@@ -58,8 +58,8 @@ public class SellFundAction extends Action {
 	    		  sellfundlist.add(fundbean);  
 	    	  }
 	    	  request.setAttribute("position", position);
-	    	  sellfundlist.toArray(new FundBean[sellfundlist.size()]);
-	    	  request.setAttribute("sellfundlist", sellfundlist);
+	    	  FundBean[] newfundlist = sellfundlist.toArray(new FundBean[sellfundlist.size()]);
+	    	  request.setAttribute("sellfundlist", newfundlist);
 	    	  
 	    	  SellfundForm form = formBeanFactory.create(request);
 	    	    	  if (!form.isPresent()) {
@@ -67,7 +67,7 @@ public class SellFundAction extends Action {
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "customer-sell-fund.jsp";
+	                return "error.jsp";
 	            }
 	            int fundid = fundDAO.read(form.getFund()).getFundId();
 	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
@@ -92,7 +92,7 @@ public class SellFundAction extends Action {
 	        	return "error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "customer-sell-fund.jsp";
+	            return "error.jsp";
 	}
 		
 
