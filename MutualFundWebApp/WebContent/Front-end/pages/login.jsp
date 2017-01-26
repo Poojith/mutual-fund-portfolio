@@ -55,9 +55,14 @@
 				<div class="col-md-4 col-md-offset-4">
 					<div class="login-panel panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Please Sign In</h3>
+							<h3 class="panel-title">Please sign in</h3>
 						</div>
 						<div class="panel-body">
+						<div class="row">
+	 				 <c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
+	</div>
 							<form action="login.do" method="POST">
 								<fieldset>
 									<div class="form-group">

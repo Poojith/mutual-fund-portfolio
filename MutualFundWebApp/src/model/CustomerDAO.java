@@ -54,12 +54,10 @@ public class CustomerDAO extends GenericDAO<CustomerBean> {
     
     public CustomerBean getCustomerByUserName (String username) throws RollbackException{
     	CustomerBean customers[] = match(MatchArg.equals("username", username));
-    	if (customers ==null || customers.length == 0) {
-    		throw new RollbackException ("No customer for this username");
-    	} else if (customers.length > 1) {
-    		throw new RollbackException ("Multiple customers for this username");
+    	if(customers != null && customers.length > 0) {
+    		return customers[0];
     	}
-    	return customers[0];
+    	return null;
     }
     
     public CustomerBean setNewPassword(String username, String password) throws RollbackException {
