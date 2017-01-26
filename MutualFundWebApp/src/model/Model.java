@@ -41,17 +41,19 @@ public class Model {
             transactionDAO = new TransactionDAO(pool, "transaction");
             
             //pre-populatnig with employee
-            EmployeeBean employeebean = new EmployeeBean();
-            employeebean.setAddrLine1("address1");
-            employeebean.setAddrLine2("address2");
-            employeebean.setCity("city");
-            employeebean.setFirstName("firstname");
-            employeebean.setLastName("lastname");
-            employeebean.setPassword("password");
-            employeebean.setState("state");
-            employeebean.setUsername("username");
-            employeebean.setZip("zip");
-            employeeDAO.create(employeebean);
+            if (employeeDAO.getCount()==0) {
+	            EmployeeBean employeebean = new EmployeeBean();
+	            employeebean.setAddrLine1("address1");
+	            employeebean.setAddrLine2("address2");
+	            employeebean.setCity("city");
+	            employeebean.setFirstName("firstname");
+	            employeebean.setLastName("lastname");
+	            employeebean.setPassword("password");
+	            employeebean.setState("state");
+	            employeebean.setUsername("username");
+	            employeebean.setZip("zip");
+	            employeeDAO.create(employeebean);
+            }
             
             
         } catch (DAOException e) {
