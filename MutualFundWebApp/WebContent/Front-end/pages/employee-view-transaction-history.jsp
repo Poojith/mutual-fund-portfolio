@@ -12,7 +12,7 @@
 	<!-- /.row -->
 	<!-- /.row -->
 	<div class="panel-body">
-		<form action="resetpassword.do" method="POST">
+		<form action="transactionhistory.do" method="POST">
 			<div class="row">
 
 				<!-- /.panel -->
@@ -71,14 +71,13 @@
 								<tbody>
 								<c:forEach var="transaction" items=${transactions}>
 								<tr>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									
+									<th>${transaction.executeDate}</th>
+									<th>${transaction.transactionType}</th>
+									<th>${transaction.status}</th>
+									<th>${transaction.fundId}</th>
+									<th>${transaction.shares}</th>
+									<th>${transaction.sharePrice}</th>
+									<th>${transaction.amount}</th>
 								</tr>
 								</c:forEach>
 									
