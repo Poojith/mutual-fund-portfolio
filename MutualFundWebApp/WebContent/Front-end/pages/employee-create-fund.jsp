@@ -8,7 +8,12 @@
 		</div>
 	</div>
 	<div class="panel-body">
-	<form action="reset-customer-password.do" method="POST">
+	<div class="row">
+	  <c:forEach var="error" items="${errors}">
+			<h3 style="color: red">${error}</h3>
+		</c:forEach>
+	</div>
+	<form action="create-fund.do" method="POST">
 	
 
 		<div class="row">
