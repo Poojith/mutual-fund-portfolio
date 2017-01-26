@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
@@ -47,9 +48,9 @@ public class CreateAccountAction extends Action {
 
 			String userType = form.getUserType();
 			if (userType.equals("Employee")) {
-				EmployeeBean bean = employeeDAO.read(form.getUserName());
-				if (bean != null) {
-					errors.add("Sorry, the user name is already registered. Please try another user name.");
+				EmployeeBean[] bean = employeeDAO.match(MatchArg.equals("username", form.getUserName()));
+				if (bean.length > 0) {
+					errors.add ("Sorry the user name is already registered");
 					return "employee-create-account.jsp";
 				}
 
@@ -71,9 +72,9 @@ public class CreateAccountAction extends Action {
 				session.setAttribute("userType", "Employee");
 
 			} else if (userType.equals("Customer")) {
-				CustomerBean bean = customerDAO.getCustomerByUserName(form.getUserName());
-				if (bean != null) {
-					errors.add("Sorry, the user name is already registered. Please try another user name.");
+				CustomerBean[] bean = customerDAO.match(MatchArg.equals("username", form.getUserName()));
+				if (bean.length > 0) {
+					errors.add ("Sorry the user name is already registered");
 					return "employee-create-account.jsp";
 				}
 
@@ -92,11 +93,10 @@ public class CreateAccountAction extends Action {
 				customerDAO.create(customer);
 
 				HttpSession session = request.getSession();
-				session.setAttribute("user", customer);
-				session.setAttribute("userType", "Customer");
+				session.setAttribute("userType", "Employee");
 			}
 
-			return "employee-home.do";
+			return "employee-home.jsp";
 
 		} catch (RollbackException r) {
 			errors.add(r.getMessage());

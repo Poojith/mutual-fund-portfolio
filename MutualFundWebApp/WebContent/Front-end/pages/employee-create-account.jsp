@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="employee-template-top.jsp" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="page-wrapper">
 	<div class="row">
@@ -14,6 +15,9 @@
 	<div class="panel-body">
 		<form action="create-account.do" method="POST">
 			<div class="row">
+				<c:forEach var="error" items="${errors}">
+					<h3 style="color:red"> ${error} </h3>
+				</c:forEach>
 				<div class="col-lg-6">
 					<label>User Name</label> <input type="text" class="form-control"
 						name="userName" value="${form.userName}" />
@@ -146,7 +150,7 @@
 			<br> <input type="submit" name="action"
 				value="Create customer account" class="btn btn-outline btn-primary" />
 			<input type="submit" name="action" 
-			value="Create Employee Account" class="btn btn-outline btn-primary" /> <br>
+			value="Create employee account" class="btn btn-outline btn-primary" /> <br>
 		</form>
 
 	</div>

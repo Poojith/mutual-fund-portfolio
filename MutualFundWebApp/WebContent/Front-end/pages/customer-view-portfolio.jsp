@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="customer-template-top.jsp" />
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div id="page-wrapper">
 
 
@@ -40,8 +41,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer" align="center">${customer.firstName}
-								&nbsp; ${customer.lastName}</div>
+							<div class="panel-footer" align="center">${user.firstName}
+								&nbsp; ${user.lastName}</div>
 
 						</div>
 					</div>
@@ -55,7 +56,7 @@
 								</div>
 							</div>
 							<div class="panel-footer" align="center">
-								${customer.addrLine1} &nbsp; ${customer.addrLine2}</div>
+								${user.addrLine1} &nbsp; ${user.addrLine2}</div>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
@@ -68,7 +69,7 @@
 								</div>
 							</div>
 
-							<div class="panel-footer" align="center">${customer.cash}</div>
+							<div class="panel-footer" align="center">${user.cash}</div>
 
 						</div>
 
@@ -82,7 +83,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer" align="center">${lastTransactionDate}</div>
+							<div class="panel-footer" align="center">${lasttransactiondate}</div>
 						</div>
 					</div>
 				</div>
@@ -119,12 +120,12 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="position" items="${position}">
+													<c:forEach var="p" items="${position}">
 														<tr>
 
-															<td>${position.fundId}</td>
-															<td>${position.shares}</td>
-															<td>${position.totalValue}</td>
+															<td>${p.fundId}</td>
+															<td>${p.shares}</td>
+															<td>${p.totalValue}</td>
 
 														</tr>
 													</c:forEach>

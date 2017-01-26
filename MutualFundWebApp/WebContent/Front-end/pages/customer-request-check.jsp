@@ -48,7 +48,7 @@
 		</div>
 	</div>
 
-	<input type="submit" name="action" value="Request check"
+	<input type="submit" name="requestCheck" value="Request check"
 		class="btn btn-outline btn-primary" />
 		
 		</form>
