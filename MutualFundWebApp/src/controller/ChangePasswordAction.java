@@ -34,11 +34,11 @@ public class ChangePasswordAction extends Action {
 	      try {
 	    	  PwdchangeForm form = formBeanFactory.create(request);
 	    	  if (!form.isPresent()) {
-					return "change-password.jsp";
+					return "customer-change-password.jsp";
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "change-password.jsp";
+	                return "customer-change-password.jsp";
 	            }
 	            HttpSession session = request.getSession();
 	            CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
@@ -51,7 +51,7 @@ public class ChangePasswordAction extends Action {
 	        	return "error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "customer-buy-fund.jsp";
+	            return "customer-change-password.jsp";
 	}
 		
 
