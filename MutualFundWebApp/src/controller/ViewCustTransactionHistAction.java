@@ -86,8 +86,6 @@ public class ViewCustTransactionHistAction extends Action {
 			}
 
 			request.setAttribute("histbeans", histbeans); // all the details or each history
-			
-			// need to add status of transaction
 
 			return "employee-view-transaction-history.jsp";
 
@@ -96,11 +94,11 @@ public class ViewCustTransactionHistAction extends Action {
 			errors.add("RollbackException");
 			return "error.jsp";
 		} 
-		/*catch (Exception e) {
+		catch (Exception e) {
 			errors.add(e.getMessage());
 			errors.add("Normal Exception");
 			return "error.jsp";
 		
-		}*/
+		}
 	}
 }
