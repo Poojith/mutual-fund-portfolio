@@ -82,10 +82,10 @@ public class ViewCustomerAccountAction extends Action {
 
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		}
 	}
 }

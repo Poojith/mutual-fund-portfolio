@@ -91,13 +91,11 @@ public class ViewCustTransactionHistAction extends Action {
 
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
-			errors.add("RollbackException");
 			return "error.jsp";
 		} 
 		catch (Exception e) {
 			errors.add(e.getMessage());
-			errors.add("Normal Exception");
-			return "error.jsp";
+			return "employee-error.jsp";
 		
 		}
 	}

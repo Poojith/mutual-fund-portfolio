@@ -87,10 +87,10 @@ public class LoginAction extends Action {
 			
 		} catch (RollbackException r) {
 			errors.add(r.getMessage());
-			return "employee-error.jsp";
+			return "error.jsp";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
-			return "employee-error.jsp";
+			return "error.jsp";
 		}
 	}
 }
