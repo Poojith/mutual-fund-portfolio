@@ -59,13 +59,13 @@ public class DepositCheckAction extends Action {
 
 			request.setAttribute("message", "Your request of depositing the check for " + customer.getFirstName() + " "
 					+ customer.getLastName() + " is under processing.");
-			return "success.jsp";
+			return "employee-success.jsp";
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		}
 	}
 }

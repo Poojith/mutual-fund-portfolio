@@ -50,7 +50,7 @@ public class CreateAccountAction extends Action {
 			if (userType.equals("Employee")) {
 				EmployeeBean[] bean = employeeDAO.match(MatchArg.equals("username", form.getUserName()));
 				if (bean.length > 0) {
-					errors.add ("Sorry the user name is already registered");
+					errors.add ("Sorry, the user name is already registered.");
 					return "employee-create-account.jsp";
 				}
 
@@ -74,7 +74,7 @@ public class CreateAccountAction extends Action {
 			} else if (userType.equals("Customer")) {
 				CustomerBean[] bean = customerDAO.match(MatchArg.equals("username", form.getUserName()));
 				if (bean.length > 0) {
-					errors.add ("Sorry the user name is already registered");
+					errors.add ("Sorry, the user name is already registered.");
 					return "employee-create-account.jsp";
 				}
 
@@ -95,15 +95,17 @@ public class CreateAccountAction extends Action {
 				HttpSession session = request.getSession();
 				session.setAttribute("userType", "Employee");
 			}
-
-			return "employee-home.jsp";
+			
+			request.setAttribute("message", "You have successfully created the account for " 
+			+ form.getFirstName() + " " + form.getLastName() + ".");
+			return "employee-success.jsp";
 
 		} catch (RollbackException r) {
 			errors.add(r.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		}
 	}
 }
