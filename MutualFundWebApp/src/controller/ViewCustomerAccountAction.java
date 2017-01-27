@@ -78,7 +78,7 @@ public class ViewCustomerAccountAction extends Action {
 			request.setAttribute("funds", funds);
 			request.setAttribute("lastTransactionDate", date);
 
-			return "view-customer-portfolio.jsp";
+			return "employee-view-result-customer-account.jsp";
 
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
