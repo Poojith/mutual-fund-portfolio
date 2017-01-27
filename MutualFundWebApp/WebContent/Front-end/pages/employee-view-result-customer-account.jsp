@@ -14,7 +14,7 @@
 		<c:forEach var="error" items="${errors}">
 			<h3 style="color: red">${error}</h3>
 		</c:forEach>
-		<form action="viewaccount.do" method="GET">
+		<form action="view-customer-account.do" method="GET">
 			<div class="row">
 				<div class="col-lg-12"></div>
 				<!-- /.col-lg-12 -->

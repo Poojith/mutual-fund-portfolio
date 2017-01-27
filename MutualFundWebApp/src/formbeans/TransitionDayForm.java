@@ -30,6 +30,7 @@ public class TransitionDayForm {
 		
 		HttpSession session = request.getSession();
 		FundBean[] fundBeans = (FundBean[]) session.getAttribute("fundArray");
+		System.out.println("reached the form");
 
 		for (FundBean fb : fundBeans) {
 			String parameter = "fund" + fb.getFundId();
@@ -67,7 +68,7 @@ public class TransitionDayForm {
 	}
 
 	public boolean isPresent() {
-		return transitionDayButton != null;
+		return (transitionDayButton != null || transitionDayButton.length()==0);
 	}
 
 	public boolean checkDateFormat(String date) {

@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,10 +57,16 @@ public class TransitionDayAction extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
 		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("userType") != "Employee") {
+			errors.add("you are not authorised to perform this action");
+			return "error.jsp";
+		}
+		
 		EmployeeBean employee = (EmployeeBean)session.getAttribute("user");
 		
 		if (employee == null) {
-			errors.add("You are not authrised to perform transition day");
+			errors.add("You are not authorised to perform transition day");
 			return "employee-transition-day.jsp";
 		}
 		
@@ -70,6 +77,7 @@ public class TransitionDayAction extends Action {
 			
 			TransitionDayForm form = new TransitionDayForm(request);
 			if (!form.isPresent()) {
+				System.out.println(":Funddd nameee:" + fundArray[0].getName());
 				session.setAttribute("fundArray", fundArray);
 				return "employee-transition-day.jsp";
 			}
@@ -80,9 +88,14 @@ public class TransitionDayAction extends Action {
 			String prevdate = transactionDAO.findGlobalLastTransactionDate();
 			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			dateFormat.setLenient(false);
-			if (dateFormat.parse(date).compareTo
-				(dateFormat.parse(prevdate))<=0) {
-				errors.add("date has to be greater than last transistion day date: " + prevdate);
+			try {
+				if (dateFormat.parse(date).compareTo
+					(dateFormat.parse(prevdate))<=0) {
+					errors.add("date has to be greater than last transition day date: " + prevdate);
+				}
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			errors.addAll(form.getValidationErrors());
@@ -126,10 +139,10 @@ public class TransitionDayAction extends Action {
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
 			return "error.jsp";
-		} catch (Exception e) {
+		}/* catch (Exception e) {
 			errors.add(e.getMessage());
 			return "error.jsp";
-		}
+		}*/
 	}
 	
 	public void buyFundAction(TransactionBean transactionBean) throws RollbackException {

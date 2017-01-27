@@ -8,7 +8,11 @@
                 <!-- /.col-lg-12 -->
             </div>
             
-            
+            <div class="row">
+	  		<c:forEach var="error" items="${errors}">
+				<h3 style="color: red">${error}</h3>
+			</c:forEach>
+			</div>
             <div class="panel-body">
             <form action="changepassword.do" method="POST">
             <!-- /.row -->
