@@ -4,16 +4,19 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">View Customer Account</h1>
+			<h1 class="page-header">View customer portfolio</h1>
 		</div>
+		<!-- /.col-lg-12 -->
 	</div>
-	<!-- /.row -->
 
 
-	<div class="panel-body">
+	<div class="row">
 		<c:forEach var="error" items="${errors}">
 			<h3 style="color: red">${error}</h3>
 		</c:forEach>
+	</div>
+
+	<div class="panel-body">
 		<form action="viewaccount.do" method="GET">
 			<div class="row">
 				<div class="col-lg-12"></div>
@@ -33,8 +36,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer" align="center">${user.firstName}
-								&nbsp; ${user.lastName}</div>
+							<div class="panel-footer" align="center">${customer.firstName}
+								&nbsp; ${customer.lastName}</div>
 
 						</div>
 					</div>
@@ -47,8 +50,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer" align="center">${user.addrLine1}
-								&nbsp; ${user.addrLine2}</div>
+							<div class="panel-footer" align="center">
+								${customer.addrLine1} &nbsp; ${customer.addrLine2}</div>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6">
@@ -61,7 +64,7 @@
 								</div>
 							</div>
 
-							<div class="panel-footer" align="center">${user.cash}</div>
+							<div class="panel-footer" align="center">${customer.cash}</div>
 
 						</div>
 
@@ -75,23 +78,81 @@
 									</div>
 								</div>
 							</div>
-							<div class="panel-footer" align="center">${lasttransactiondate}</div>
+							<div class="panel-footer" align="center">${lastTransactionDate}</div>
 						</div>
 					</div>
 				</div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- /.panel -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								Funds Information
+								<div class="pull-right">
+									<div class="btn-group">
+										<ul class="dropdown-menu pull-right" role="menu">
+											<li><a href="#">Action</a></li>
+											<li><a href="#">Another action</a></li>
+											<li><a href="#">Something else here</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Separated link</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="row">
+									<div>
+										<div class="table-responsive">
+											<table class="table table-bordered table-hover table-striped">
+												<thead>
+													<tr>
+														<th>Fund Name</th>
+														<th>Number of Shares</th>
+														<th>Total Value</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="p" items="${positions}" varStatus="row">
+														<tr>
 
+															<td>${funds.get(row.index).name}</td>
+															<td>${p.shares}</td>
+															<td>${p.totalValue}</td>
+
+														</tr>
+													</c:forEach>
+
+
+												</tbody>
+											</table>
+										</div>
+										<!-- /.table-responsive -->
+									</div>
+									<!-- /.col-lg-4 (nested) -->
+									<div class="col-lg-8">
+										<div id="morris-bar-chart"></div>
+									</div>
+									<!-- /.col-lg-8 (nested) -->
+								</div>
+								<!-- /.row -->
+							</div>
+
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+					<!-- /.panel -->
+				</div>
 				<!-- /.col-lg-8 -->
 				<!-- /.col-lg-4 -->
 			</div>
 			<!-- /.row -->
 		</form>
 	</div>
-
-
-
-
-	<input type="submit" value="View account" name="action"
-		class="btn btn-outline btn-primary" /> </a>
+	<!-- /#page-wrapper -->
 
 </div>
 

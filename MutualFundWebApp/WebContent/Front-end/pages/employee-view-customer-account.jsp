@@ -9,7 +9,18 @@
             </div>
             <!-- /.row -->
 
+			<form action="view-customer-account.do" method="POST">
               <div class="row">
+                <div class="col-lg-4">
+                    <label>Username of the customer</label>
+                    <input type="text" class="form-control"
+					name="userName">
+                  <p class="help-block"></p>
+                </div>
+                </div>
+                
+                
+              <%-- <div class="row">
                 <div class="col-lg-4">
                     <label>Customer</label>
                     <select class="form-control" name="userName">
@@ -20,11 +31,11 @@
                     </select>
                   <p class="help-block"></p>
                 </div>
-              </div>
+              </div> --%>
 
 
-              <a href="view-customer-account.do"> 
-              <input type="submit" value="View account" name="action" class="btn btn-outline btn-primary"/> </a>
+             <input type="submit" name="action" value="View account" class="btn btn-outline btn-primary"/>
+              </form>
 
         </div>
 
