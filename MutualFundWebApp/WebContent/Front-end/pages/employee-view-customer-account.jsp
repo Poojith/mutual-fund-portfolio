@@ -8,6 +8,9 @@
                 </div>
             </div>
             <!-- /.row -->
+            <c:forEach var="error" items="${errors}">
+				<h3 style="color: red">${error}</h3>
+			</c:forEach>
 
 			<form action="view-customer-account.do" method="POST">
               <div class="row">
