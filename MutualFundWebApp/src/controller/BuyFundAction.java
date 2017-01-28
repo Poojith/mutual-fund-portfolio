@@ -42,21 +42,27 @@ public class BuyFundAction extends Action {
 	    	  if (!form.isPresent()) {
 					return "customer-buy-fund.jsp";
 				}
-
+	    	  
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
 	                return "customer-error.jsp";
 	            }
-		    	  
+		    	
+    	  if (user.getCash() >= form.getAmountDouble()) {
+    		     TransactionBean transaction = new TransactionBean();
+ 	            transaction.setCustomerId(user.getCustomerId());
+ 	            transaction.setFundId(fundDAO.read(form.getFundName()).getFundId());
+ 	            transaction.setTransactionType(1);
+ 	            transaction.setAmount(form.getAmountDouble());
+ 	            transactionDAO.create(transaction);
+ 	            request.setAttribute("message", "Buy Fund was successful");
+ 	    	  return "customer-success.jsp"; 
+	    	  } else {
+	    		   	errors.add("Not enough Cash");
+		        	return "customer-error.jsp";
+	    	  }
 
-	            TransactionBean transaction = new TransactionBean();
-	            transaction.setCustomerId(user.getCustomerId());
-	            transaction.setFundId(fundDAO.read(form.getFundName()).getFundId());
-	            transaction.setTransactionType(1);
-	            transaction.setAmount(form.getAmountDouble());
-	            transactionDAO.create(transaction);
-	            request.setAttribute("message", "Buy Fund was successful");
-	    	  return "customer-success.jsp";
+	       
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
 	        	return "customer-error.jsp";

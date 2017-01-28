@@ -66,6 +66,7 @@ public class Model {
 	            customerbean.setState("state");
 	            customerbean.setUsername("username");
 	            customerbean.setZip("zip");
+	            customerbean.setCash(1000.52);
 	            customerDAO.create(customerbean);
             }
             
