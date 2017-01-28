@@ -67,7 +67,7 @@ public class SellFundAction extends Action {
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "error.jsp";
+	                return "customer-error.jsp";
 	            }
 	            int fundid = fundDAO.read(form.getFund()).getFundId();
 	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
@@ -86,13 +86,13 @@ public class SellFundAction extends Action {
 		        	return "error.jsp";
 		         }
 	          request.setAttribute("message", "Sell Fund was successful");
-	    	  return "success.jsp";
+	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "error.jsp";
+	            return "customer-error.jsp";
 	}
 		
 

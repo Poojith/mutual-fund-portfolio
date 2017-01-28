@@ -45,7 +45,7 @@ public class BuyFundAction extends Action {
 
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "error.jsp";
+	                return "customer-error.jsp";
 	            }
 		    	  
 
@@ -56,13 +56,13 @@ public class BuyFundAction extends Action {
 	            transaction.setAmount(form.getAmountDouble());
 	            transactionDAO.create(transaction);
 	            request.setAttribute("message", "Buy Fund was successful");
-	    	  return "success.jsp";
+	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "error.jsp";
+	            return "customer-error.jsp";
 	}
 		
 

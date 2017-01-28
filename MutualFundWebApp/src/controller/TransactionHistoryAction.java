@@ -37,7 +37,7 @@ public class TransactionHistoryAction extends Action {
 		    	  return "customer-transaction-history.jsp";
 		      } catch (RollbackException e) {
 		        	errors.add(e.getMessage());
-		        	return "error.jsp";
+		        	return "customer-error.jsp";
 		        }
 	        }
 	        return null;

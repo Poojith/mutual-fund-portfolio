@@ -45,13 +45,13 @@ public class ChangePasswordAction extends Action {
 	            CustomerBean updateduser = customerDAO.setNewPassword(user.getUsername(), form.getNewPassword());
 	            session.setAttribute("user", updateduser);
 				request.setAttribute("message", "Password changed for " + user.getUsername());
-	    	  return "success.jsp";
+	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "customer-change-password.jsp";
+	            return "customer-error.jsp";
 	}
 		
 

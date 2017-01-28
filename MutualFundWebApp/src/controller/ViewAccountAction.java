@@ -51,7 +51,7 @@ public class ViewAccountAction extends Action {
 	    	  return "customer-view-portfolio.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } 
 		
 
