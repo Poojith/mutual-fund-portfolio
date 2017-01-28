@@ -2,15 +2,15 @@ package viewbeans;
 
 public class PortfolioBean {
 	private String fundName;
-	private double shares;
-	private double totalValue;
+	private String shares;
+	private String totalValue;
 
 	
-	public double getTotalValue() {
+	public String getTotalValue() {
 		return totalValue;
 	}
 
-	public double getShares() {
+	public String getShares() {
 		return shares;
 	}
 
@@ -22,11 +22,11 @@ public class PortfolioBean {
 		this.fundName = fundName;
 	}
 
-	public void setShares(double d) {
-		shares = d;
+	public void setShares(String string) {
+		shares = string;
 	}
 	
-	public void setTotalValue (double d) {
-		totalValue = d;
+	public void setTotalValue (String string) {
+		totalValue = string;
 	}
 }

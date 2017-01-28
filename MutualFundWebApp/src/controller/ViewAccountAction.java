@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,8 +49,10 @@ public class ViewAccountAction extends Action {
 	    		  fundbean.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  Double price = fundpricehistoryDAO.fundLatestPrice(fundbean);
 	    		  p.setFundName(fundDAO.read(fundbean.getFundId()).getName());
-	    		  p.setShares(position[i].getShares());
-	    		  p.setTotalValue(price * position[i].getShares());
+	    		  DecimalFormat df1 = new DecimalFormat("0.000");
+	    		  p.setShares(df1.format(position[i].getShares()));
+	    		  DecimalFormat df2 = new DecimalFormat("0.00");
+	    		  p.setTotalValue(df2.format(price * position[i].getShares()));
 	    		  portfolio.add(p);
 	    	  }
 	    	  request.setAttribute("portfolio", portfolio.toArray(new PortfolioBean[portfolio.size()]));

@@ -7,7 +7,7 @@ public class TransactionhistoryBean {
 	private String sharePrice;
 	private String status;
 	private String transactionType;
-	private double amount;
+	private String amount;
 	public String getFundName() {
 		return fundName;
 	}
@@ -44,11 +44,11 @@ public class TransactionhistoryBean {
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
 	}
-	public double getAmount() {
+	public String getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setAmount(String string) {
+		this.amount = string;
 	}
 	
 }

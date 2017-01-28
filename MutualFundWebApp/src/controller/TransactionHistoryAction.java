@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +50,13 @@ public class TransactionHistoryAction extends Action {
 		    		  if (transactions[i].getStatus() == null) {
 		    			  t.setStatus("Pending");
 		    		  }
+		    		  DecimalFormat df1 = new DecimalFormat("0.000");
+		    		  DecimalFormat df2 = new DecimalFormat("0.00");
 		    		  if (transactions[i].getTransactionType() == 1 || transactions[i].getTransactionType() == 2) {
-		    		  t.setShares(Double.toString(transactions[i].getShares()));
-		    		  t.setSharePrice(Double.toString(transactions[i].getSharePrice()));
+		    		  t.setShares(df1.format(transactions[i].getShares()));
+		    		  t.setSharePrice(df2.format((transactions[i].getSharePrice())));
 		    		  }
-		    		  t.setAmount(transactions[i].getAmount());
+		    		  t.setAmount(df2.format(transactions[i].getAmount()));
 		    		  switch(transactions[i].getTransactionType()) {
 		    		  case 1:
 		    			  t.setTransactionType("Buy Fund");
