@@ -53,9 +53,6 @@ public class RequestCheckAction extends Action {
 	        	 transaction.setAmount(form.getAmountDouble());
 	        	 transaction.setCustomerId(user.getCustomerId());
 	        	 transaction.setTransactionType(4);
-	        	 Date date = new Date();
-	        	 DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-	        	 transaction.setExecuteDate(df.format(date));
 	        	 transactionDAO.create(transaction);
 	        	 
 	        	 //update customer cash
@@ -75,13 +72,13 @@ public class RequestCheckAction extends Action {
 	         }
 	         else {
 	        	errors.add("Not enough cash");
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	         }
 	         request.setAttribute("message", "Request check was successful");
-	    	  return "success.jsp";
+	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
 	            return "customer-request-check.jsp";
