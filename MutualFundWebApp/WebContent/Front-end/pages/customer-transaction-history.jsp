@@ -53,7 +53,7 @@
 									<td align="center">${transaction.executeDate }</td>
 									<td>${transaction.transactionType }</td>
 									<td>${transaction.status }</td>
-									<td>${transaction.fundId }</td>
+									<td>${transaction.fundName }</td>
 									<td>${transaction.shares }</td>
 									<td>${transaction.sharePrice }</td>
 									<td>${transaction.amount }</td>
