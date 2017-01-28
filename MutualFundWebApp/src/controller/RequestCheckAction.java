@@ -70,6 +70,7 @@ public class RequestCheckAction extends Action {
 	        	 updateuser.setState(user.getState());
 	        	 updateuser.setUsername(user.getUsername());
 	        	 updateuser.setZip(user.getZip());
+	        	 updateuser.setPassword(user.getPassword());
 	        	 customerDAO.update(updateuser);
 	         }
 	         else {
