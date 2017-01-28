@@ -19,6 +19,7 @@ import model.FundPriceHistoryDAO;
 import model.Model;
 import model.PositionDAO;
 import model.TransactionDAO;
+import viewbeans.PortfolioBean;
 
 public class SellFundAction extends Action {
 	
@@ -47,17 +48,22 @@ public class SellFundAction extends Action {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
+	    	  List<PortfolioBean> portfolio = new ArrayList<PortfolioBean>();
 	    	  // get position total value for display the table, get sellfundlist for dropdown list
 	    	  for (int i=0; i<position.length; i++) {
 		    	  FundBean fundbean = new FundBean();
+		    	  PortfolioBean p = new PortfolioBean();
 	    		  fundbean.setFundId(position[i].getFundId());
 	    		  fundbean.setName(fundDAO.read(fundbean.getFundId()).getName());
 	    		  fundbean.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  Double price = fundpricehistoryDAO.fundLatestPrice(fundbean);
-	    		  position[i].setTotalValue(price * position[i].getShares());
+	    		  p.setFundName(fundDAO.read(fundbean.getFundId()).getName());
+	    		  p.setShares(position[i].getShares());
+	    		  p.setTotalValue(price * position[i].getShares());
+	    		  portfolio.add(p);
 	    		  sellfundlist.add(fundbean);  
 	    	  }
-	    	  request.setAttribute("position", position);
+	    	  request.setAttribute("portfolio", portfolio.toArray(new PortfolioBean[portfolio.size()]));
 	    	  FundBean[] newfundlist = sellfundlist.toArray(new FundBean[sellfundlist.size()]);
 	    	  request.setAttribute("sellfundlist", newfundlist);
 	    	  
