@@ -55,13 +55,14 @@ public class BuyFundAction extends Action {
 	            transaction.setTransactionType(1);
 	            transaction.setAmount(form.getAmountDouble());
 	            transactionDAO.create(transaction);
-	    	  return "customer-buy-fund.jsp";
+	            request.setAttribute("message", "Buy Fund was successful");
+	    	  return "success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
 	        	return "error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "customer-buy-fund.jsp";
+	            return "error.jsp";
 	}
 		
 
