@@ -45,7 +45,7 @@ public class RequestCheckAction extends Action {
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "customer-request-check.jsp";
+	                return "customer-error.jsp";
 	            }
 	         if (form.getAmountDouble() <= user.getCash()) {
 	        	 // update transaction
