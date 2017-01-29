@@ -30,7 +30,10 @@ public class TransitionDayForm {
 		
 		HttpSession session = request.getSession();
 		FundBean[] fundBeans = (FundBean[]) session.getAttribute("fundArray");
-
+		if (fundBeans == null) {
+			return;
+		}
+		
 		for (FundBean fb : fundBeans) {
 			String parameter = "fund" + fb.getFundId();
 			String price = request.getParameter(parameter);
@@ -44,6 +47,7 @@ public class TransitionDayForm {
 		}
 
 		boolean checkDateFormat = checkDateFormat(transitionDate);
+		
 		if (checkDateFormat) {
 			transitionDate = dateInput;
 		}
@@ -67,11 +71,19 @@ public class TransitionDayForm {
 	}
 
 	public boolean isPresent() {
-		return transitionDayButton != null;
+		if (transitionDayButton == null || !transitionDayButton.equals("Update prices")) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public boolean checkDateFormat(String date) {
+		if (date == null) {
+			return false;
+		}
 		try {
+			System.out.println("date: " + date);
 			dateFormat.parse(dateFormat.format(date));
 		} catch (ParseException parseEx) {
 			return false;

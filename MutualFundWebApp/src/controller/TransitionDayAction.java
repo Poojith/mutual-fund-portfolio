@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,11 +54,11 @@ public class TransitionDayAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request) {
+		System.out.println("reached here");
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
 		HttpSession session = request.getSession();
 		EmployeeBean employee = (EmployeeBean)session.getAttribute("user");
-		
 		if (employee == null) {
 			errors.add("You are not authrised to perform transition day");
 			return "employee-transition-day.jsp";
@@ -67,13 +68,14 @@ public class TransitionDayAction extends Action {
 		
 		try {
 			FundBean[] fundArray = fundDAO.match();
-			
 			TransitionDayForm form = new TransitionDayForm(request);
 			if (!form.isPresent()) {
+				System.out.println("transition form is not present");
 				session.setAttribute("fundArray", fundArray);
 				return "employee-transition-day.jsp";
 			}
 			if (date == null) {
+				System.out.println("date is null");
 				errors.add("Date needs to be specified");
 				return "employee-transition-day.jsp";
 			}
@@ -125,8 +127,15 @@ public class TransitionDayAction extends Action {
 			return "success.jsp";
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
+			System.out.println("failing because of rollback exception");
 			return "error.jsp";
-		} catch (Exception e) {
+		}/* catch (Exception e) {
+			errors.add(e.getMessage());
+			System.out.println("failing because of exception");
+			return "error.jsp";
+		}*/ catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			errors.add(e.getMessage());
 			return "error.jsp";
 		}
