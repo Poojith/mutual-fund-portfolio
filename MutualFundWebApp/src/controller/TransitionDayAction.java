@@ -118,13 +118,19 @@ public class TransitionDayAction extends Action {
 				switch(transactionBeans[i].getTransactionType()) {
 					case 1: {
 						buyFundAction(transactionBeans[i]);
+						break;
 					}
 					case 2: {
 						sellFundAction(transactionBeans[i]);
+						break;
 					} case 3: {
+						System.out.println("reached deposit check in switch case");
 						depositCheckAction(transactionBeans[i]);
+						break;
 					} case 4: {
+						System.out.println("reached request check in switch case");
 						requestCheckAction(transactionBeans[i]);
+						break;
 					}
 				}
 				transactionBeans[i].setExecuteDate(date);
@@ -171,11 +177,19 @@ public class TransitionDayAction extends Action {
 			//not enough balance
 			return;
 		}
-		PositionBean positionbean = positionDAO.read(customerId);
+		PositionBean positionbean = positionDAO.read(customerId, fundId);
+		if (positionbean == null) {
+			positionbean = new PositionBean();
+			positionbean.setCustomerId(customerId);
+			positionbean.setFundId(fundId);
+			positionbean.setShares(shares);
+			positionDAO.create(positionbean);
+		} else {
+			positionbean.setShares(positionbean.getShares()+shares);
+			positionDAO.update(positionbean);
+		}
 		transactionBean.setShares(shares);
 		customerbean.setCash(customerbean.getCash()-amount);
-		positionbean.setShares(positionbean.getShares()+shares);
-		positionDAO.update(positionbean);
 		customerDAO.update(customerbean);
 		return;
 	}
@@ -187,11 +201,14 @@ public class TransitionDayAction extends Action {
 		double fundprice = fundHistoryBean.getPrice();
 		double amount = fundprice*shares;
 		CustomerBean customerbean = customerDAO.read(customerId);
-		PositionBean positionbean = positionDAO.read(customerId);
-		if (positionbean.getShares()<shares) {
-			
-			//not enough shares
+		PositionBean positionbean = positionDAO.read(customerId, fundId);
+		if (positionbean == null) {
 			return;
+		} else {
+			if (positionbean.getShares()<shares) {	
+				//not enough shares
+				return;
+			}
 		}
 		transactionBean.setAmount(amount);
 		customerbean.setCash(customerbean.getCash()+amount);

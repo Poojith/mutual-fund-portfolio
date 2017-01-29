@@ -9,6 +9,7 @@ import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
+import org.genericdao.Transaction;
 
 import databean.TransactionBean;
 import databean.PositionBean;
@@ -41,6 +42,7 @@ public class Model {
             transactionDAO = new TransactionDAO(pool, "transaction");
             
             //pre-populatnig with employee
+            Transaction.begin();
             if (employeeDAO.getCount()==0) {
 	            EmployeeBean employeebean = new EmployeeBean();
 	            employeebean.setAddrLine1("address1");
@@ -54,8 +56,9 @@ public class Model {
 	            employeebean.setZip("zip");
 	            employeeDAO.create(employeebean);
             }
-            
+            System.out.print("reaches outside pre-poulate customer in model class");
             if (customerDAO.getCount()==0) {
+            	System.out.print("reaches inside pre-poulate customer in model class");
 	            CustomerBean customerbean = new CustomerBean();
 	            customerbean.setAddrLine1("address1");
 	            customerbean.setAddrLine2("address2");
@@ -69,12 +72,16 @@ public class Model {
 	            customerbean.setCash(1000.52);
 	            customerDAO.create(customerbean);
             }
-            
+            Transaction.commit();
             
         } catch (DAOException e) {
             throw new ServletException(e);
         } catch (RollbackException f) {
         	throw new ServletException(f);
+        } finally {
+        	if (Transaction.isActive()) {
+        		Transaction.rollback();
+        	}
         }
     }
 
