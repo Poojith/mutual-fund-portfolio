@@ -44,6 +44,9 @@ public class BuyFundForm extends FormBean {
 		if(buyAmount == null || buyAmount.length() == 0) {
 			errors.add("Please specify the amount in order to buy the fund");
 		}
+		if(this.getAmountDouble() == 0) {
+			errors.add("Amount Cannot be 0");
+		}
 		if(buyFund == null) {
 			errors.add("Buy Fund button is required");
 		}

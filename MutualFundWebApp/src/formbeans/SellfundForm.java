@@ -41,6 +41,9 @@ public class SellfundForm extends FormBean {
 		if(numShares == null || numShares.length() == 0) {
 			errors.add("Please specify the number of shares in order to sell the fund");
 		}
+		if(this.getSharesDouble() == 0) {
+			errors.add("Number of Shares Cannot be 0");
+		}
 		if(sellFund == null) {
 			errors.add("Sell Fund button is required");
 		}

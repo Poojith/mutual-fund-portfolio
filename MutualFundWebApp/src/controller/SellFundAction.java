@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import model.FundPriceHistoryDAO;
 import model.Model;
 import model.PositionDAO;
 import model.TransactionDAO;
+import viewbeans.PortfolioBean;
 
 public class SellFundAction extends Action {
 	
@@ -47,17 +49,24 @@ public class SellFundAction extends Action {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
+	    	  List<PortfolioBean> portfolio = new ArrayList<PortfolioBean>();
 	    	  // get position total value for display the table, get sellfundlist for dropdown list
 	    	  for (int i=0; i<position.length; i++) {
 		    	  FundBean fundbean = new FundBean();
+		    	  PortfolioBean p = new PortfolioBean();
 	    		  fundbean.setFundId(position[i].getFundId());
 	    		  fundbean.setName(fundDAO.read(fundbean.getFundId()).getName());
 	    		  fundbean.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  Double price = fundpricehistoryDAO.fundLatestPrice(fundbean);
-	    		  position[i].setTotalValue(price * position[i].getShares());
+	    		  p.setFundName(fundDAO.read(fundbean.getFundId()).getName());
+	    		  DecimalFormat df1 = new DecimalFormat("0.000");
+	    		  p.setShares(df1.format(position[i].getShares()));
+	    		  DecimalFormat df2 = new DecimalFormat("0.00");
+	    		  p.setTotalValue(df2.format(price * position[i].getShares()));
+	    		  portfolio.add(p);
 	    		  sellfundlist.add(fundbean);  
 	    	  }
-	    	  request.setAttribute("position", position);
+	    	  request.setAttribute("portfolio", portfolio.toArray(new PortfolioBean[portfolio.size()]));
 	    	  FundBean[] newfundlist = sellfundlist.toArray(new FundBean[sellfundlist.size()]);
 	    	  request.setAttribute("sellfundlist", newfundlist);
 	    	  
@@ -67,7 +76,7 @@ public class SellFundAction extends Action {
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "error.jsp";
+	                return "customer-error.jsp";
 	            }
 	            int fundid = fundDAO.read(form.getFund()).getFundId();
 	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
@@ -83,16 +92,16 @@ public class SellFundAction extends Action {
 	   	            }
 	            else {
 		        	errors.add("Not enough shares");
-		        	return "error.jsp";
+		        	return "customer-error.jsp";
 		         }
 	          request.setAttribute("message", "Sell Fund was successful");
-	    	  return "success.jsp";
+	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "error.jsp";
+	            return "customer-error.jsp";
 	}
 		
 

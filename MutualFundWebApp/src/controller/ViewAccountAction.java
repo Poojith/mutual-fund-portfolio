@@ -1,5 +1,6 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import model.FundPriceHistoryDAO;
 import model.Model;
 import model.PositionDAO;
 import model.TransactionDAO;
+import viewbeans.PortfolioBean;
 
 public class ViewAccountAction extends Action {
 	
@@ -39,19 +41,26 @@ public class ViewAccountAction extends Action {
 	      try {
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
+	    	  List<PortfolioBean> portfolio = new ArrayList<PortfolioBean>();
               for (int i=0; i<position.length; i++) {
 		    	  FundBean fundbean = new FundBean();
+		    	  PortfolioBean p = new PortfolioBean();
 	    		  fundbean.setFundId(position[i].getFundId());
 	    		  fundbean.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  Double price = fundpricehistoryDAO.fundLatestPrice(fundbean);
-	    		  position[i].setTotalValue(price * position[i].getShares()); 
+	    		  p.setFundName(fundDAO.read(fundbean.getFundId()).getName());
+	    		  DecimalFormat df1 = new DecimalFormat("0.000");
+	    		  p.setShares(df1.format(position[i].getShares()));
+	    		  DecimalFormat df2 = new DecimalFormat("0.00");
+	    		  p.setTotalValue(df2.format(price * position[i].getShares()));
+	    		  portfolio.add(p);
 	    	  }
-	    	  request.setAttribute("position", position);
+	    	  request.setAttribute("portfolio", portfolio.toArray(new PortfolioBean[portfolio.size()]));
 	    	  request.setAttribute("lasttransactiondate", transactionDAO.findLastTransactionDate(user.getCustomerId()));
 	    	  return "customer-view-portfolio.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        } 
 		
 

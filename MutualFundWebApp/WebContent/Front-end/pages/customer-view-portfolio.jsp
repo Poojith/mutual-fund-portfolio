@@ -120,10 +120,10 @@
 													</tr>
 												</thead>
 												<tbody>
-													<c:forEach var="p" items="${position}">
+													<c:forEach var="p" items="${portfolio}">
 														<tr>
 
-															<td>${p.fundId}</td>
+															<td>${p.fundName}</td>
 															<td>${p.shares}</td>
 															<td>${p.totalValue}</td>
 

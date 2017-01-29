@@ -41,6 +41,9 @@ public class RequestcheckForm extends FormBean {
 		if (amtConfirm == null || amtConfirm.length() == 0) {
 			errors.add("Withdraw Amount Confirmation is required");
 		}
+		if(this.getAmountDouble() == 0) {
+			errors.add("Amount Cannot be 0");
+		}
 		if(requestCheck == null) {
 			errors.add("Request Check button is required");
 		}
