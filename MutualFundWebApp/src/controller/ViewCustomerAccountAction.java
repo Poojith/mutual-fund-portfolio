@@ -64,11 +64,12 @@ public class ViewCustomerAccountAction extends Action {
 
 			PositionBean[] positions = positionDAO.getPositionsByCustomerId(customer.getCustomerId());
 			List<FundBean> funds = new ArrayList<FundBean>();
-
-			for (PositionBean pb : positions) {
-				funds.add(fundDAO.read(pb.getFundId()));
-				pb.setTotalValue(
-						(double) pb.getShares() * fundPriceHistoryDAO.fundLatestPrice(fundDAO.read(pb.getFundId())));
+			if(positions != null) {
+				for (PositionBean pb : positions) {
+					funds.add(fundDAO.read(pb.getFundId()));
+					pb.setTotalValue(
+							(double) pb.getShares() * fundPriceHistoryDAO.fundLatestPrice(fundDAO.read(pb.getFundId())));
+				}
 			}
 
 			String date = transactionDAO.findLastTransactionDate(customer.getCustomerId());

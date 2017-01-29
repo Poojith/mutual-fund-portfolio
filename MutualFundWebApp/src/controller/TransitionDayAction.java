@@ -206,7 +206,9 @@ public class TransitionDayAction extends Action {
 		double amount = transactionBean.getAmount();
 		CustomerBean customerbean = customerDAO.read(customerId);
 		customerbean.setCash(customerbean.getCash()+amount);
+		System.out.println("reached deposit check action: " + customerbean.getCash());
 		customerDAO.update(customerbean);
+		System.out.println("completed deposit check action");
 		return;
 	}
 	public void requestCheckAction(TransactionBean transactionBean) throws RollbackException {
