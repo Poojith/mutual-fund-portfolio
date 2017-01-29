@@ -5,18 +5,18 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Sell Fund</h1>
+			<h1 class="page-header"><font size="5" color="#7E9DBB">&nbsp;Sell Fund</font></h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
 	<div class="row">
 		<c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
 	
 	<div class="panel panel-default">
-		<div class="panel-heading">Funds Information</div>
+		<div class="panel-heading"><b>Funds Information</b></div>
 		<!-- /.panel-heading -->
 		<div class="panel-body">
 			<form action="sellfund.do" method="POST">
@@ -26,7 +26,7 @@
 							<table class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
-										<th>Fund Name</th>
+										<th>&nbsp;&nbsp;Fund Name</font></th>
 										<th>Number of Shares</th>
 										<th>Total Value</th>
 									</tr>
@@ -79,7 +79,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Cash Balance: ${user.cash}</label>
+					<label>Your Cash Balance: ${user.cash}</label>
 					<p class="help-block"></p>
 				</div>
 			</div>

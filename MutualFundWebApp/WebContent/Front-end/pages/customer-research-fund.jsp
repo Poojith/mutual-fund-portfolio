@@ -5,12 +5,12 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Research Fund</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;Research Fund</font></h1>
 		</div>
 	</div>
 	<div class="row">
 	  <c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
 	
@@ -23,7 +23,7 @@
 			
 			
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<label>Select Fund</label> <select class="form-control" name="fundId">
 
 						<c:forEach var="fund" items="${fundlist}">
@@ -31,15 +31,21 @@
 						</c:forEach>
 
 					</select>
+					</div>
+					<div class="col-lg-3" style="margin-top:25px;">
 					
+					
+					<input type="submit" name="researchfund" value="Select fund"class="btn btn-outline btn-primary" />
+					
+					</div>
 					<p class="help-block"></p>
 					
-				</div>
-				<div class="col-lg-4">
-				<input type="submit" name="researchfund" value="Select fund"class="btn btn-outline btn-primary" />
 				
-				</div>
+				
 			</div>
+			
+		
+			
 			<br>
 			
 			
@@ -50,7 +56,7 @@
 							<table class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
-										<th>Fund Id</th>
+										<th>&nbsp;&nbsp;&nbsp;Fund Id</th>
 										<th>Date of Price</th>
 										<th>Price</th>
 									</tr>

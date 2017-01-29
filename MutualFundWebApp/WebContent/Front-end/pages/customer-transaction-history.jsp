@@ -5,20 +5,20 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Transaction History</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;Transaction History</font></h1>
 		</div>
 	</div>
 	
 	<div class="row">
 		<c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
 
 	<!-- /.panel -->
 	<div class="panel panel-default">
 	<div class="panel-body">
-	<form action="sellfund.do" method="GET">
+	<form action="sellfund.do" method="POST">
 		<div class="btn-group">
 			<ul class="dropdown-menu pull-right" role="menu">
 				<li><a href="#">Action</a></li>

@@ -52,18 +52,17 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<img src="Front-end/images/CFS-cover.png"> <!-- /.navbar-header -->
-
+		<a href="Front-end/pages/customer-home.jsp"><img src="Front-end/images/CFS-cover.png"></a>
 		<!-- /.navbar-top-links -->
 
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 					<li><a href="viewaccount.do"><i
-							class="fa fa-dashboard fa-fw"></i> View Portfolio</a></li>
+							class="fa fa-dashboard fa-fw"></i> View portfolio</a></li>
 					<li><a data-toggle="collapse" data-parent="#accordion"
 						href="#collapseOne"><span class="fa fa-dashboard fa-fw">
-						</span>Manage Your Fund</a>
+						</span>Manage your fund</a>
 						<div id="collapseOne" class="panel-collapse collapse in">
 							<div class="panel-body">
 
@@ -71,24 +70,24 @@
 
 									<tr>
 										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href=buyfund.do>Buy Fund</a></td>
+											<a href=buyfund.do>Buy fund</a></td>
 									</tr>
 									<tr>
 										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href="sellfund.do">Sell Fund</a></td>
+											<a href="sellfund.do">Sell fund</a></td>
 									</tr>
 									<tr>
 										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href="researchfund.do">Research Fund</a></td>
+											<a href="researchfund.do">Research fund</a></td>
 									</tr>
 
 								</table>
 							</div>
 						</div></li>
 					<li><a href="requestcheck.do"><i class="fa fa-dashboard fa-fw"></i>
-							Request Check</a></li>
+							Request check</a></li>
 					<li><a href="transactionhistory.do"><i class="fa fa-dashboard fa-fw"></i>
-							Transaction History</a></li>
+							Transaction history</a></li>
 
 					<li><a href="logout.do"><i class="fa fa-dashboard fa-fw"></i>
 							Logout</a></li>

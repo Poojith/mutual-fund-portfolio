@@ -4,21 +4,24 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Buy Fund</h1>
+			<h3 class="page-header"> <font size="5" face="verdana" color="#7E9DBB">&nbsp;Buy Fund </font> </h3>
 		</div>
 	</div>
 	
 	<div class="row">
 		<c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
-
+	
+	
+	<div class="panel panel-default">
+		<div class="panel-heading"></div>
 	<div class="panel-body">
 		<form action="buyfund.do" method="POST">
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Cash Balance: ${user.cash}</label>
+					<label>Your Cash Balance: ${user.cash}</label>
 					<p class="help-block"></p>
 
 				</div>
@@ -26,7 +29,7 @@
 
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Select Fund</label> <select class="form-control" name="fundName">
+					<label>Select Fund</label><select class="form-control" name="fundName">
 					<c:forEach var="fund" items="${buyfundlist}">
                     <option value="${fund.symbol}">${fund.name}</option>
          			</c:forEach>
@@ -46,8 +49,13 @@
 			</div>
 			<input type="submit" name="buyFund" value="Buy fund"
 				class="btn btn-outline btn-primary" />
+				
 		</form>
+		
 	</div>
+	
+	</div>
+	
 	<!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
