@@ -7,14 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
+import org.genericdao.Transaction;
 
 import databean.FundBean;
+import databean.FundPriceHistoryBean;
 import formbeans.CreateFundForm;
 import model.FundDAO;
+import model.FundPriceHistoryDAO;
 import model.Model;
 
 public class CreateFundAction extends Action {
 	private FundDAO fundDAO;
+	private FundPriceHistoryDAO fundPriceHistoryDAO;
 
 	public CreateFundAction(Model model) {
 		fundDAO = model.getFundDAO();
@@ -50,9 +54,9 @@ public class CreateFundAction extends Action {
 			FundBean fund = new FundBean();
 			fund.setName(form.getFundName());
 			fund.setSymbol(form.getTicker());
-
-			fundDAO.create(fund);
-			request.setAttribute("message", fund.getName() + " has been successfully created.");
+			FundPriceHistoryBean fundhist = new FundPriceHistoryBean();
+    		fundDAO.create(fund);
+    		request.setAttribute("message", fund.getName() + " has been successfully created.");
 			return "employee-success.jsp";
 
 		} catch (RollbackException e) {
@@ -61,6 +65,10 @@ public class CreateFundAction extends Action {
 		} catch (Exception e) {
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
+		} finally {
+			if (Transaction.isActive()){
+				Transaction.rollback();
+			}
 		}
 	}
 }

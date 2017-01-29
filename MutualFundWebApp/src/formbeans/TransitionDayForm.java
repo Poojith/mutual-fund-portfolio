@@ -17,40 +17,47 @@ public class TransitionDayForm {
 	private String transitionDate;
 	private String transitionDayButton;
 
-	private boolean checkPrice;
-	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private boolean checkPrice = true;
+	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	private Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 	public TransitionDayForm(HttpServletRequest request) {
-		String dateInput = request.getParameter("date");
+		transitionDate = request.getParameter("date");
+		transitionDayButton = request.getParameter("action");
+		
+		/*
 		if (dateInput != null) {
 			transitionDate = dateInput.trim();
 		}
 		transitionDayButton = request.getParameter("action");
-		
+		*/
 		HttpSession session = request.getSession();
 		FundBean[] fundBeans = (FundBean[]) session.getAttribute("fundArray");
 		if (fundBeans == null) {
 			return;
 		}
-		
+		System.out.println("fundarrays size is: " + fundBeans.length);
 		for (FundBean fb : fundBeans) {
 			String parameter = "fund" + fb.getFundId();
 			String price = request.getParameter(parameter);
+			System.out.println("The price here is: " + price);
 			boolean isDouble = checkPriceValue(price);
 			if (isDouble) {
+				System.out.println("adding the fund id and price to fund price map");
 				map.put(fb.getFundId(), getPriceAsDouble(price));
 			} else {
 				checkPrice = false;
 				break;
 			}
 		}
-
+		
+		/*
 		boolean checkDateFormat = checkDateFormat(transitionDate);
 		
 		if (checkDateFormat) {
 			transitionDate = dateInput;
 		}
+		*/
 	}
 
 	public String getTransitionDate() {
@@ -62,6 +69,7 @@ public class TransitionDayForm {
 	}
 
 	public Map<Integer, Double> getFundPriceMap() {
+		System.out.println("size of getfundpricemap is:" + map.size());
 		return map;
 	}
 
@@ -83,8 +91,8 @@ public class TransitionDayForm {
 			return false;
 		}
 		try {
-			System.out.println("date: " + date);
-			dateFormat.parse(dateFormat.format(date));
+			
+			dateFormat.parse((date));
 		} catch (ParseException parseEx) {
 			return false;
 		}
@@ -95,11 +103,11 @@ public class TransitionDayForm {
 		if (price == null || price.length() == 0) {
 			return false;
 		}
-		try {
+		/*try {*/
 			Double.parseDouble(price);
-		} catch (NumberFormatException e) {
+		/*} catch (NumberFormatException e) {
 			return false;
-		}
+		}*/
 		return true;
 	}
 
@@ -119,7 +127,7 @@ public class TransitionDayForm {
 		}
 
 		if (transitionDayButton == null || !transitionDayButton.equals("Update prices")) {
-			errors.add("Invalid button");
+			errors.add("Invalid submit button");
 		}
 
 		if (errors.size() > 0) {

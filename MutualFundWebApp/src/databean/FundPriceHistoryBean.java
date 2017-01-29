@@ -4,7 +4,7 @@ package databean;
 //import org.genericdao.MaxSize;
 import org.genericdao.PrimaryKey;
 
-@PrimaryKey("fundId,priceDate")
+@PrimaryKey("fundId")
 public class FundPriceHistoryBean {
 	private int fundId;
 	private String priceDate;

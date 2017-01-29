@@ -77,7 +77,7 @@ public class ViewCustTransactionHistAction extends Action {
 				histbean.setNumShares(tb.getShares());
 				histbean.setOperation(tb.getTransactionType());
 				histbean.setTransactionDate(tb.getExecuteDate());
-				if (tb.getStatus() == "completed") {
+				if (tb.getStatus().equals("completed")) {
 					histbean.setStatus(tb.getStatus());
 				} else {
 					histbean.setStatus("pending");

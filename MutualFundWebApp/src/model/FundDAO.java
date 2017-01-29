@@ -8,11 +8,13 @@ import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 
 import databean.FundBean;
+import databean.FundPriceHistoryBean;
 
 public class FundDAO extends GenericDAO<FundBean>{
 	public FundDAO(ConnectionPool cp, String tableName) throws DAOException {
         super(FundBean.class, tableName, cp);
     }
+	
 	
 	public void create (FundBean bean)throws RollbackException {
     	try {
@@ -33,6 +35,8 @@ public class FundDAO extends GenericDAO<FundBean>{
     		}
     	}
     }
+	
+	
 	//read by symbol
 	public FundBean read (String symbol) throws RollbackException{
     	FundBean funds[] = match(MatchArg.equals("symbol", symbol));

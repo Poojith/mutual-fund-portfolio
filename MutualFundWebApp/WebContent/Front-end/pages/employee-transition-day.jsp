@@ -36,12 +36,9 @@
 				</div>
 			</div>
 		</c:forEach>
-	</form>
-	
-
-
-	<input type="submit" name="action" value="Update prices"
+		<input type="submit" name="action" value="Update prices"
 		class="btn btn-outline btn-primary" />
+	</form>
 
 </div>
 

@@ -53,7 +53,7 @@ public class TransitionDayAction extends Action {
 	}
 
 	@Override
-	public String perform(HttpServletRequest request) {
+	public String perform(HttpServletRequest request){
 		System.out.println("reached here");
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
@@ -80,30 +80,40 @@ public class TransitionDayAction extends Action {
 				return "employee-transition-day.jsp";
 			}
 			String prevdate = transactionDAO.findGlobalLastTransactionDate();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-			dateFormat.setLenient(false);
-			if (dateFormat.parse(date).compareTo
-				(dateFormat.parse(prevdate))<=0) {
-				errors.add("date has to be greater than last transistion day date: " + prevdate);
-			}
-			
 			errors.addAll(form.getValidationErrors());
 			if (errors.size() > 0) {
 				return "employee-transition-day.jsp";
 			}
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+			dateFormat.setLenient(false);
+			if (prevdate != null && dateFormat.parse(date).compareTo
+				(dateFormat.parse(prevdate))<=0) {
+				errors.add("date has to be greater than last transistion day date: " + prevdate);
+				return "employee-transition-day.jsp";
+			}
+			
 			Map<Integer, Double> fundpricemap = new HashMap<Integer, Double>();
 			fundpricemap = form.getFundPriceMap();
 			Transaction.begin();
 			for (Map.Entry<Integer, Double> 
 				entry : fundpricemap.entrySet()) {
-				FundPriceHistoryBean fundHistoryBean = fundPriceHistoryDAO.read(entry.getKey());
-				fundHistoryBean.setPrice(entry.getValue());
-				fundHistoryBean.setPriceDate(date);
-				fundPriceHistoryDAO.update(fundHistoryBean);
+				FundPriceHistoryBean[] fundHistoryBean = fundPriceHistoryDAO.match(MatchArg.equals("fundId", entry.getKey()));
+				if (fundHistoryBean == null || fundHistoryBean.length==0) {
+					FundPriceHistoryBean bean = new FundPriceHistoryBean();
+					bean.setFundId(entry.getKey());
+					bean.setPrice(entry.getValue());
+					bean.setPriceDate(date);
+					fundPriceHistoryDAO.create(bean);
+				} else {
+					
+					fundHistoryBean[0].setPrice(entry.getValue());
+					fundHistoryBean[0].setPriceDate(date);
+					System.out.println(fundHistoryBean[0].getFundId());
+					fundPriceHistoryDAO.update(fundHistoryBean[0]);
+				}
 			}
-			Transaction.commit();
-			Transaction.begin();
-			TransactionBean[] transactionBeans = transactionDAO.match(MatchArg.equals("status", ""));
+			TransactionBean[] transactionBeans = transactionDAO.match(MatchArg.equals("status", null));
+			System.out.println("size of transactiobeans is: " + transactionBeans.length);
 			for (int i=0; i<transactionBeans.length; i++) {
 				switch(transactionBeans[i].getTransactionType()) {
 					case 1: {
@@ -119,17 +129,20 @@ public class TransitionDayAction extends Action {
 				}
 				transactionBeans[i].setExecuteDate(date);
 				transactionBeans[i].setStatus("completed");
+				System.out.println("updating transaction bean" + transactionBeans[i].getTransactionId());
 				transactionDAO.update(transactionBeans[i]);
 			}
-			
+			Transaction.commit();
 			request.setAttribute("message", "You have successfully "
 					+ "completed transition day");
 			return "success.jsp";
 		} catch (RollbackException e) {
+			e.printStackTrace();
 			errors.add(e.getMessage());
 			System.out.println("failing because of rollback exception");
 			return "error.jsp";
-		}/* catch (Exception e) {
+			
+		} /* catch (Exception e) {
 			errors.add(e.getMessage());
 			System.out.println("failing because of exception");
 			return "error.jsp";
@@ -138,6 +151,10 @@ public class TransitionDayAction extends Action {
 			e.printStackTrace();
 			errors.add(e.getMessage());
 			return "error.jsp";
+		} finally {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
+			}
 		}
 	}
 	
