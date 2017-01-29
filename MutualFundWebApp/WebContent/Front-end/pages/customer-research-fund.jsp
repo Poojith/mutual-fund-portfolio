@@ -10,7 +10,7 @@
 	</div>
 	<div class="row">
 	  <c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
 	
