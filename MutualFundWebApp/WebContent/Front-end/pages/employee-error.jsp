@@ -5,7 +5,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Error Page</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;Error Page</h1>
 		</div>
 	</div>
 
@@ -14,7 +14,7 @@
 	<div class="panel-body">
 		<div class="row">
 			<c:forEach var="error" items="${errors}">
-				<h5 style="color: red">${error}</h5>
+				<font color="color: #d83b27">&nbsp;&nbsp;${error}</font>
 			</c:forEach>
 		</div>
 	</div>

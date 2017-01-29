@@ -9,7 +9,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">View Portfolio</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;View Portfolio</font></h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -92,8 +92,9 @@
 					<div class="col-lg-12">
 						<!-- /.panel -->
 						<div class="panel panel-default">
-							<div class="panel-heading">
+							<div class="panel-heading"><b>
 								Funds Information
+								</b>
 								<div class="pull-right">
 									<div class="btn-group">
 										<ul class="dropdown-menu pull-right" role="menu">
@@ -114,7 +115,7 @@
 											<table class="table table-bordered table-hover table-striped">
 												<thead>
 													<tr>
-														<th>Fund Name</th>
+														<th>&nbsp;&nbsp;Fund Name</th>
 														<th>Number of Shares</th>
 														<th>Total Value</th>
 													</tr>

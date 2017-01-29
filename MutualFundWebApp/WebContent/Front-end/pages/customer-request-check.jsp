@@ -5,7 +5,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Request Check</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;Request Check</font></h1>
 		</div>
 	</div>
 
@@ -28,7 +28,7 @@
 	<div class="row">
 
 		<div class="col-lg-4">
-			<label>Cash Balance: ${user.cash}</label>
+			<label>Your Cash Balance: ${user.cash}</label>
 
 			<p class="help-block"></p>
 		</div>
