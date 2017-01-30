@@ -84,7 +84,7 @@ public class LoginAction extends Action {
 				session.setAttribute("userType", "Customer");
 			}
 
-			return "customer-home.jsp";
+			return "customer-home.do";
 			
 		} catch (RollbackException r) {
 			errors.add(r.getMessage());

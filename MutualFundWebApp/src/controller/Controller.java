@@ -45,8 +45,8 @@ public class Controller extends HttpServlet {
 			 Action.add(new ViewCustomerAccountAction(model));
 			 Action.add(new ViewCustTransactionHistAction(model));
 			 Action.add(new EmployeeHomeAction(model));
+			 Action.add(new CustomerHomeAction(model));
 		} catch (RollbackException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

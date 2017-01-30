@@ -52,7 +52,7 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<a href="Front-end/pages/customer-home.jsp"><img src="Front-end/images/CFS-cover.png"></a>
+		<a href="customer-home.do"><img src="Front-end/images/CFS-cover.png"></a>
 		<!-- /.navbar-top-links -->
 
 		<div class="navbar-default sidebar" role="navigation">
