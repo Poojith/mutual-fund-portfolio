@@ -67,8 +67,7 @@
 								<fieldset>
 									<div class="form-group">
 										<input class="form-control" placeholder="Username"
-											name="userName" size="20" type="text" autofocus
-											value="${user.userName}">
+											name="userName" size="20" type="text" autofocus>
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="Password"
