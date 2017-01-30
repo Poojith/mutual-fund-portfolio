@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="employee-template-top.jsp" />
 <div id="page-wrapper">
@@ -78,9 +79,9 @@
 									<th>${histbean.operation}</th>
 									<th>${histbean.status}</th>
 									<th>${histbean.fundName}</th>
-									<th>${histbean.numShares}</th>
-									<th>${histbean.sharePrice}</th>
-									<th>${histbean.amount}</th>
+									<th><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${histbean.numShares}"></fmt:formatNumber></th>			
+									<th><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${histbean.sharePrice}"></fmt:formatNumber></th>
+									<th><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${histbean.amount}"></fmt:formatNumber></th>
 								</tr>
 								</c:forEach>
 									
