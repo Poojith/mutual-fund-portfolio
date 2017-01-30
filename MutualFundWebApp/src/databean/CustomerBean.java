@@ -21,7 +21,7 @@ public class CustomerBean {
 	public int getCustomerId() {
 		return customerId;
 	}
-
+	
 	public String getUsername() {
 		return username;
 	}

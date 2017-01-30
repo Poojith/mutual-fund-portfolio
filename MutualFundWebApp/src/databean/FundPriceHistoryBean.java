@@ -1,6 +1,7 @@
 
 package databean;
 
+import org.genericdao.MaxSize;
 //import org.genericdao.MaxSize;
 import org.genericdao.PrimaryKey;
 
@@ -25,7 +26,8 @@ public class FundPriceHistoryBean {
 	public void setFundId(int i) {
 		fundId = i;
 	}
-
+	
+	@MaxSize(20)
 	public void setPriceDate(String s) {
 		priceDate = s;
 	}

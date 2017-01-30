@@ -58,9 +58,14 @@ public class TransitionDayAction extends Action {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
 		HttpSession session = request.getSession();
+		String userType = (String)session.getAttribute("userType");
+		if (userType == null || userType != "Employee") {
+			errors.add("You are not logged in as an employee");
+			return "employee-error.jsp";
+		}
 		EmployeeBean employee = (EmployeeBean)session.getAttribute("user");
 		if (employee == null) {
-			errors.add("You are not authrised to perform transition day");
+			errors.add("You are not authorised to perform transition day");
 			return "employee-transition-day.jsp";
 		}
 		
@@ -141,7 +146,7 @@ public class TransitionDayAction extends Action {
 			Transaction.commit();
 			request.setAttribute("message", "You have successfully "
 					+ "completed transition day");
-			return "success.jsp";
+			return "employee-success.jsp";
 		} catch (RollbackException e) {
 			e.printStackTrace();
 			errors.add(e.getMessage());

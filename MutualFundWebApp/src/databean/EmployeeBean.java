@@ -82,7 +82,8 @@ public class EmployeeBean {
 	public String getState() {
 		return state;
 	}
-
+	
+	@MaxSize(50)
 	public void setState(String state) {
 		this.state = state;
 	}

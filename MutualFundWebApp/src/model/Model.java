@@ -42,7 +42,7 @@ public class Model {
             transactionDAO = new TransactionDAO(pool, "transaction");
             
             //pre-populatnig with employee
-            Transaction.begin();
+            
             if (employeeDAO.getCount()==0) {
 	            EmployeeBean employeebean = new EmployeeBean();
 	            employeebean.setAddrLine1("address1");
@@ -72,7 +72,6 @@ public class Model {
 	            customerbean.setCash(1000.52);
 	            customerDAO.create(customerbean);
             }
-            Transaction.commit();
             
         } catch (DAOException e) {
             throw new ServletException(e);

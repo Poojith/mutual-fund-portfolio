@@ -1,5 +1,7 @@
 package databean;
 
+import org.genericdao.MaxSize;
+
 public class HistoryBean {
 	private String transactionDate;
 	private String operation;
@@ -12,6 +14,8 @@ public class HistoryBean {
 	public String getTransactionDate() {
 		return transactionDate;
 	}
+	
+	@MaxSize(20)
 	public void setTransactionDate(String transactionDate) {
 		this.transactionDate = transactionDate;
 	}
@@ -32,12 +36,16 @@ public class HistoryBean {
 	public String getStatus() {
 		return status;
 	}
+	
+	@MaxSize(20)
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	public String getFundName() {
 		return fundName;
 	}
+	
+	@MaxSize(50)
 	public void setFundName(String fundName) {
 		this.fundName = fundName;
 	}
