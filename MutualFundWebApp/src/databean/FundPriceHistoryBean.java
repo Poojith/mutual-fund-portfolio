@@ -5,7 +5,7 @@ import org.genericdao.MaxSize;
 //import org.genericdao.MaxSize;
 import org.genericdao.PrimaryKey;
 
-@PrimaryKey("fundId")
+@PrimaryKey("fundId,priceDate")
 public class FundPriceHistoryBean {
 	private int fundId;
 	private String priceDate;
