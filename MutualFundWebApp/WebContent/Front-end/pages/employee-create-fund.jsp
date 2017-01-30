@@ -4,13 +4,13 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Create Fund</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;Create Fund</font></h1>
 		</div>
 	</div>
 	<div class="panel-body">
 	<div class="row">
 	  <c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
 	<form action="create-fund.do" method="POST">

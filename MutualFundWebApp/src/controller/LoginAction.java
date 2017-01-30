@@ -69,7 +69,8 @@ public class LoginAction extends Action {
 			} else if (userType.equals("Customer")) {
 				CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
 				if (customer == null) {
-					errors.add("Sorry, there's no such user. Please check your credentials.");
+					errors.add("Sorry, there's no such user. "
+							+ "Please check your credentials.");
 					return "login.jsp";
 				}
 

@@ -5,7 +5,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">View Customer Transaction</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;View Customer Transaction</font></h1>
 		</div>
 	</div>
 
@@ -15,7 +15,7 @@
 		<form action="employee-view-transaction-history.do" method="POST">
 			<div class="row">
 				<c:forEach var="error" items="${errors}">
-					<h3 style="color: red">${error}</h3>
+					<h5 style="color: red">${error}</h5>
 				</c:forEach>
 				<!-- /.panel -->
 				<div class="panel panel-default">
@@ -43,17 +43,18 @@
 
 
 							</div>
-
-						</div>
-
-						<div class="row">
-							<div class="col-lg-4">
+							<div class="col-lg-3" style="margin-top:25px;">
 								<input type="submit" name="action" value="Search"
 									class="btn btn-outline btn-primary" />
 								
 								<p class="help-block"></p>
 							</div>
+
 						</div>
+
+						
+							
+						
 
 
 						<br>

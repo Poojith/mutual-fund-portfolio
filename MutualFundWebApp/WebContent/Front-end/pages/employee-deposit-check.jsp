@@ -5,14 +5,14 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Deposit Check</h1>
+			<h1 class="page-header"><font size="5" face="verdana" color="#7E9DBB">&nbsp;Deposit Check</font></h1>
 		</div>
 	</div>
 	<!-- /.row -->
 	
 	<div class="row">
 	  <c:forEach var="error" items="${errors}">
-			<h3 style="color: red">${error}</h3>
+			<h5 style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${error}</h5>
 		</c:forEach>
 	</div>
 	
