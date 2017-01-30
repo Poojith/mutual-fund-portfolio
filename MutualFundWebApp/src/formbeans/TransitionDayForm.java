@@ -18,7 +18,7 @@ public class TransitionDayForm {
 	private String transitionDayButton;
 
 	private boolean checkPrice = true;
-	private DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	private DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 	private Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 	public TransitionDayForm(HttpServletRequest request) {
