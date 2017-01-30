@@ -1,7 +1,9 @@
 package formbeans;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.mybeans.form.FormBean;
 
 public class BuyFundForm extends FormBean {
@@ -25,6 +27,7 @@ public class BuyFundForm extends FormBean {
 	}
 
 	public double getAmountDouble() {
+		double amount = Double.parseDouble(buyAmount);
 		return Double.parseDouble(buyAmount);
 	}
 	
