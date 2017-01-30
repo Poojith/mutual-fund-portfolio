@@ -16,7 +16,7 @@
 		<div class="row">
 	        <div class='col-sm-6'>
 	            <label>Date of Trading Day: </label> <br> 
-	            <input type="date" name="date" />
+	            <input type="text" name="date" />
 	        </div>
 	    </div>
 		<br>
