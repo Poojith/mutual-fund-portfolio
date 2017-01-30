@@ -49,7 +49,7 @@ public class ResearchFundAction extends Action {
 	    	   	return "customer-research-fund.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
-	        	return "error.jsp";
+	        	return "customer-error.jsp";
 	        }  catch (FormBeanException e) {
 	            errors.add(e.getMessage());
 	            return "customer-research-fund.jsp";
