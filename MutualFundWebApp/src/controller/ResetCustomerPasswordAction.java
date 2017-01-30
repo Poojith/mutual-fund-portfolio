@@ -50,13 +50,13 @@ public class ResetCustomerPasswordAction extends Action {
 			customerDAO.updateCustomer(customer);
 			request.setAttribute("message", "You have successfully changed the password for " + customer.getFirstName()
 					+ " " + customer.getLastName() + ".");
-			return "success.jsp";
+			return "employee-success.jsp";
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		} catch (Exception e) {
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		}
 	}
 }

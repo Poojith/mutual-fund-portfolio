@@ -5,7 +5,7 @@
 	<div id="page-wrapper">
 		<!-- /.navbar-top-links -->
 
-		<p style="font-size: medium">${message}</p>
+		<font size="4" face="verdana" color="#7E9DBB">${message}</font>
 
 </div>
 		<jsp:include page="template-bottom.jsp" />
