@@ -114,7 +114,7 @@ public class TransitionDayAction extends Action {
 					fundHistoryBean[0].setPrice(entry.getValue());
 					fundHistoryBean[0].setPriceDate(date);
 					System.out.println(fundHistoryBean[0].getFundId());
-					fundPriceHistoryDAO.update(fundHistoryBean[0]);
+					fundPriceHistoryDAO.create(fundHistoryBean[0]);
 				}
 			}
 			TransactionBean[] transactionBeans = transactionDAO.match(MatchArg.equals("status", null));
@@ -122,11 +122,11 @@ public class TransitionDayAction extends Action {
 			for (int i=0; i<transactionBeans.length; i++) {
 				switch(transactionBeans[i].getTransactionType()) {
 					case 1: {
-						buyFundAction(transactionBeans[i]);
+						buyFundAction(transactionBeans[i], fundpricemap);
 						break;
 					}
 					case 2: {
-						sellFundAction(transactionBeans[i]);
+						sellFundAction(transactionBeans[i], fundpricemap);
 						break;
 					} case 3: {
 						System.out.println("reached deposit check in switch case");
@@ -151,7 +151,7 @@ public class TransitionDayAction extends Action {
 			e.printStackTrace();
 			errors.add(e.getMessage());
 			System.out.println("failing because of rollback exception");
-			return "error.jsp";
+			return "employee-error.jsp";
 			
 		} /* catch (Exception e) {
 			errors.add(e.getMessage());
@@ -161,7 +161,7 @@ public class TransitionDayAction extends Action {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			errors.add(e.getMessage());
-			return "error.jsp";
+			return "employee-error.jsp";
 		} finally {
 			if (Transaction.isActive()) {
 				Transaction.rollback();
@@ -169,12 +169,11 @@ public class TransitionDayAction extends Action {
 		}
 	}
 	
-	public void buyFundAction(TransactionBean transactionBean) throws RollbackException {
+	public void buyFundAction(TransactionBean transactionBean, Map<Integer, Double> fundpricemap) throws RollbackException {
 		int customerId = transactionBean.getCustomerId();
 		double amount = transactionBean.getAmount();
 		int fundId = transactionBean.getFundId();
-		FundPriceHistoryBean fundHistoryBean = fundPriceHistoryDAO.read(fundId);
-		double fundprice = fundHistoryBean.getPrice();
+		double fundprice = fundpricemap.get(fundId);
 		double shares = amount/fundprice;
 		CustomerBean customerbean = customerDAO.read(customerId);
 		if (customerbean.getCash()<amount) {
@@ -198,12 +197,11 @@ public class TransitionDayAction extends Action {
 		customerDAO.update(customerbean);
 		return;
 	}
-	public void sellFundAction(TransactionBean transactionBean) throws RollbackException {
+	public void sellFundAction(TransactionBean transactionBean, Map<Integer, Double> fundpricemap) throws RollbackException {
 		int customerId = transactionBean.getCustomerId();
 		double shares = transactionBean.getShares();
 		int fundId = transactionBean.getFundId();
-		FundPriceHistoryBean fundHistoryBean = fundPriceHistoryDAO.read(fundId);
-		double fundprice = fundHistoryBean.getPrice();
+		double fundprice = fundpricemap.get(fundId);
 		double amount = fundprice*shares;
 		CustomerBean customerbean = customerDAO.read(customerId);
 		PositionBean positionbean = positionDAO.read(customerId, fundId);
