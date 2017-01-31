@@ -37,7 +37,6 @@
     <!-- Morris Charts JavaScript -->
     <script src="Front-end/vendor/raphael/raphael.min.js"></script>
     <script src="Front-end/vendor/morrisjs/morris.min.js"></script>
-    <script src="Front-end/data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="Front-end/dist/js/sb-admin-2.js"></script>
