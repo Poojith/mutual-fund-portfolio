@@ -1,10 +1,12 @@
 package controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
@@ -47,9 +49,18 @@ public class BuyFundAction extends Action {
 	
 	                return "customer-error.jsp";
 	            }
-		    	
-    	  if (user.getCash() >= form.getAmountDouble()) {
-    		     TransactionBean transaction = new TransactionBean();
+		    
+	 	          TransactionBean[] buyfund = transactionDAO.match(MatchArg.and(MatchArg.equals("customerId", user.getCustomerId()),MatchArg.equals("executeDate", null),MatchArg.equals("transactionType", 1)));
+	 	          TransactionBean[] check = transactionDAO.match(MatchArg.and(MatchArg.equals("customerId", user.getCustomerId()),MatchArg.equals("executeDate", null),MatchArg.equals("transactionType", 4)));
+	 	          Double total = 0.0;
+	 	         for(int i=0; i< buyfund.length; i++) {
+	 	        	  total = total + buyfund[i].getAmount();
+	 	          }
+	 	         for(int i=0; i< check.length; i++) {
+	 	        	  total = total + check[i].getAmount();
+	 	          }
+    	  if ((user.getCash() - total) >= form.getAmountDouble()) {
+    		    TransactionBean transaction = new TransactionBean();
  	            transaction.setCustomerId(user.getCustomerId());
  	            transaction.setFundId(fundDAO.read(form.getFundName()).getFundId());
  	            transaction.setTransactionType(1);
@@ -58,7 +69,9 @@ public class BuyFundAction extends Action {
  	            request.setAttribute("message", "Buy Fund was successful");
  	    	  return "customer-success.jsp"; 
 	    	  } else {
-	    		   	errors.add("Not enough Cash");
+		        	 Double balance = user.getCash() - total;
+		        	 DecimalFormat df = new DecimalFormat("0.00");
+		    		 errors.add("Not enough cash, your current cash balance is $" + df.format(balance) + " ,which may due to some pending transactions");
 		        	return "customer-error.jsp";
 	    	  }
 
