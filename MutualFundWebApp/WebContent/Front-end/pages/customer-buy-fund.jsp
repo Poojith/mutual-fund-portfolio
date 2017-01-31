@@ -42,8 +42,8 @@
 			<br>
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Amount to be Buy</label> <input type="text"
-						class="form-control" name="buyAmount">
+					<label>Amount to be Buy</label> <input type="text" 
+						class="form-control" required="true" name="buyAmount">
 					<p class="help-block"></p>
 				</div>
 			</div>

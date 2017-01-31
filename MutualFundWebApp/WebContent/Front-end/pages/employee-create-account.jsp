@@ -51,7 +51,7 @@
 			<div class="row">
 
 				<div class="col-lg-6">
-					<label>Address Line 2</label> <input type="text" required="true"
+					<label>Address Line 2</label> <input type="text" 
 						class="form-control" name="address2" value="${form.address2}" />
 					<p class="help-block"></p>
 				</div>

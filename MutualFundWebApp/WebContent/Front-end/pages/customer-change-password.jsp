@@ -12,7 +12,7 @@
               <div class="col-lg-4">
                   <label>New password</label>
                   <input type="password" name="newPassword" 
-                  value="${form.newPassword} class="form-control" >
+                  value="${form.newPassword} class="form-control" required="true" >
                   <p class="help-block"></p>
               </div>
             </div>
@@ -22,7 +22,7 @@
                   <label>Confirm password</label>
                   <input type="password" name="confirmPassword" 
                   value="${form.confirmPassword}
-                  class="form-control">
+                  class="form-control" required="true">
                   <p class="help-block"></p>
               </div>
             </div>

@@ -16,7 +16,7 @@
 		<div class="row">
 	        <div class='col-sm-6'>
 	            <label>Date of Trading Day: </label> <br> 
-	            <input type="text" name="date" />
+	            <input type="text" name="date" placeholder="yyyy-mm-dd" required="true">
 	        </div>
 	    </div>
 		<br>
@@ -31,7 +31,7 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<label><i>Fund ${fund.name}</i></label> 
-					<input type="text" class="form-control" name="fund${fund.fundId}">
+					<input type="text" class="form-control" required="true" name="fund${fund.fundId}">
 					<p class="help-block"></p>
 				</div>
 			</div>

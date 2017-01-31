@@ -19,7 +19,7 @@
               <div class="row">
                 <div class="col-lg-4">
                     <label>Username of the customer</label>
-                    <input type="text" class="form-control"
+                    <input type="text" class="form-control" required="true"
 					name="userName">
                   <p class="help-block"></p>
                 </div>
@@ -29,7 +29,7 @@
               <div class="row">
                 <div class="col-lg-4">
                     <label>New password</label>
-                    <input type="password" name="newPassword" class="form-control">
+                    <input type="password" name="newPassword" class="form-control" required="true">
                     <p class="help-block"></p>
                 </div>
               </div>
@@ -37,7 +37,7 @@
               <div class="row">
                 <div class="col-lg-4">
                     <label>Confirm password</label>
-                    <input type="password" name="confirmPassword" class="form-control">
+                    <input type="password" name="confirmPassword" class="form-control" required="true">
                     <p class="help-block"></p>
                 </div>
               </div>

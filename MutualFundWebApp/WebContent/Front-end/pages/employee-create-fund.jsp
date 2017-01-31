@@ -18,15 +18,15 @@
 
 		<div class="row">
 			<div class="col-lg-4">
-				<label>Fund Name</label> <input type="text" class="form-control"
-					name="fundName">
+				<label>Fund Name</label> <input type="text" class="form-control" 
+				required="true"	name="fundName">
 				<p class="help-block"></p>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-lg-4">
-				<label>Ticker</label> <input type="text" class="form-control"
+				<label>Ticker</label> <input type="text" class="form-control" required="true"
 					name="ticker">
 				<p class="help-block"></p>
 			</div>
