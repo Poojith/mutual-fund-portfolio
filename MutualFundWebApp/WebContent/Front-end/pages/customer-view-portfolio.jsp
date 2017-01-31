@@ -3,6 +3,7 @@
 <jsp:include page="customer-template-top.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div id="page-wrapper">
 
 
@@ -69,7 +70,7 @@
 								</div>
 							</div>
 
-							<div class="panel-footer" align="center">${user.cash}</div>
+							<div class="panel-footer" align="center"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${user.cash}" /></div>
 
 						</div>
 
