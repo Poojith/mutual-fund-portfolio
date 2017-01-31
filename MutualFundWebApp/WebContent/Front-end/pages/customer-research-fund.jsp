@@ -25,11 +25,24 @@
 			
 			<div class="row">
 				<div class="col-lg-3">
-					<label>Select Fund</label> <select class="form-control" name="fundId">
-
-						<c:forEach var="fund" items="${fundlist}">
-							<option value="${fund.fundId}">${fund.symbol}</option>
-						</c:forEach>
+					<label>Select Fund </label> <select class="form-control" name="fundId">
+						<c:if test="${empty fundpricehistory[0].fundId }">
+							<c:forEach var="fund" items="${fundlist}">
+								<option value="${fund.fundId}">${fund.symbol}</option>
+							</c:forEach>
+						</c:if>
+						
+						<c:if test="${not empty fundpricehistory[0].fundId }">
+							<c:forEach var="fund" items="${fundlist}">
+								<c:if test="${fundpricehistory[0].fundId == fund.fundId }">
+									<option value="${fund.fundId }" selected="selected">${fund.symbol}</option>
+								</c:if>
+								<c:if test="${fundpricehistory[0].fundId != fund.fundId }">
+									<option value="${fund.fundId}">${fund.symbol}</option>
+								</c:if>
+							</c:forEach>
+						</c:if>
+						
 
 					</select>
 					</div>
