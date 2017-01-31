@@ -16,7 +16,7 @@
 		<div class="row">
 	        <div class='col-sm-6'>
 	            <label>Date of Trading Day: </label> <br> 
-	            <input type="text" name="date" placeholder="yyyy-mm-dd" required="true">
+	            <input type="date" name="date" placeholder="yyyy-mm-dd" required="true">
 	        </div>
 	    </div>
 		<br>
