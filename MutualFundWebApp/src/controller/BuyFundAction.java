@@ -66,7 +66,7 @@ public class BuyFundAction extends Action {
  	            transaction.setTransactionType(1);
  	            transaction.setAmount(form.getAmountDouble());
  	            transactionDAO.create(transaction);
- 	            request.setAttribute("message", "Buy Fund was successful");
+ 	            request.setAttribute("message", "Your request for buying the fund is under processing");
  	    	  return "customer-success.jsp"; 
 	    	  } else {
 		        	 Double balance = user.getCash() - total;

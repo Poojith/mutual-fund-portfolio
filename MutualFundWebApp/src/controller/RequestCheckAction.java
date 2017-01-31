@@ -69,7 +69,7 @@ public class RequestCheckAction extends Action {
 	    		 errors.add("Not enough cash, your current cash balance is $" + df.format(balance) + " ,which may due to some pending transactions");
 	        	return "customer-error.jsp";
 	         }
-	         request.setAttribute("message", "Request check was successful");
+	         request.setAttribute("message", "Your request for withdraw the fund is under processing");
 	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());

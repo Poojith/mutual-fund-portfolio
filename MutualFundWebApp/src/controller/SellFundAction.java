@@ -102,7 +102,7 @@ public class SellFundAction extends Action {
 		        	errors.add("Not enough shares, your current available shares for " + fundDAO.read(form.getFund()).getName() + " is " + df.format(balance));
 		        	return "customer-error.jsp";
 		         }
-	          request.setAttribute("message", "Sell Fund was successful");
+	          request.setAttribute("message", "Your request for selling the fund is under processing");
 	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
