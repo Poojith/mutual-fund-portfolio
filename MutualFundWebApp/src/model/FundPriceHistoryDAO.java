@@ -25,6 +25,12 @@ public class FundPriceHistoryDAO extends GenericDAO<FundPriceHistoryBean>{
     		String year = funds[i].getPriceDate().substring(6,10);
 			funds[i].setPriceDate(year+"-"+month+"-"+day);
 		}
+    	for (int i = 0; i < funds.length/2; i++)
+    	  {
+    	     FundPriceHistoryBean temp = funds[i];
+    	     funds[i] = funds[funds.length-1 - i];
+    	     funds[funds.length-1 - i] = temp;
+    	  }
     	return funds;
 	}
 	//An implementation for find the latest fund price.
