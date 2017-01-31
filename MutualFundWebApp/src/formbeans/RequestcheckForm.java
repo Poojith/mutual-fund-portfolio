@@ -35,11 +35,11 @@ public class RequestcheckForm extends FormBean {
 		List<String> errors = new ArrayList<String>();
 
 		if (amtWithdrawn == null || amtWithdrawn.length() == 0) {
-			errors.add("Withdraw Amount is required");
+			errors.add("Withdrawn Amount is required");
 		}
 		
 		if (amtConfirm == null || amtConfirm.length() == 0) {
-			errors.add("Withdraw Amount Confirmation is required");
+			errors.add("Withdrawn Amount Confirmation is required");
 		}
 		if(requestCheck == null) {
 			errors.add("Request Check button is required");
@@ -49,7 +49,7 @@ public class RequestcheckForm extends FormBean {
 		}
 		
 		if (!amtWithdrawn.equals(amtConfirm)) {
-			errors.add("Withdran Amount do not match");
+			errors.add("Withdrawn Amount do not match");
 		}
 		try {
 			Double.parseDouble(amtWithdrawn);
