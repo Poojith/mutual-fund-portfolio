@@ -1,6 +1,5 @@
 package formbeans;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,6 @@ public class BuyFundForm extends FormBean {
 	}
 
 	public double getAmountDouble() {
-		double amount = Double.parseDouble(buyAmount);
 		return Double.parseDouble(buyAmount);
 	}
 	
@@ -39,20 +37,16 @@ public class BuyFundForm extends FormBean {
 	}
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
-		
 		if(fundName == null || fundName.length() == 0) {
 			errors.add("Fund name is required.");
 		}
-		
 		if(buyAmount == null || buyAmount.length() == 0) {
 			errors.add("Please specify the amount in order to buy the fund");
-		}
-		if(this.getAmountDouble() == 0) {
-			errors.add("Amount Cannot be 0");
 		}
 		if(buyFund == null) {
 			errors.add("Buy Fund button is required");
 		}
+
 		if(errors.size() > 0) {
 			return errors;
 		}
