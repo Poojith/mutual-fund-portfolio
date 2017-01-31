@@ -46,7 +46,11 @@ public class SellFundAction extends Action {
 		   List<String> errors = new ArrayList<String>();
 	        request.setAttribute("errors", errors);
 	      try {
-	    	  
+	    	  String type = (String) request.getSession(false).getAttribute("userType");
+	       	  if (!type.equals("Customer")) {
+	    		  errors.add("Please use Employee pages only");
+	    		  return "employee-error.jsp";
+	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
