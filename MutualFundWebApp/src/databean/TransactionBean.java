@@ -102,7 +102,7 @@ public class TransactionBean implements Comparable<TransactionBean> {
 	}
 	
 	public int compareTo(TransactionBean transaction) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         dateFormat.setLenient(false);
         if (this.getExecuteDate()== null && transaction.getExecuteDate()==null) {
         	return 0;
