@@ -81,7 +81,7 @@ public class RequestCheckAction extends Action {
 	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "customer-request-check.jsp";
+	            return "customer-error.jsp";
 	}
 		
 
