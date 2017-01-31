@@ -53,6 +53,9 @@ public class RequestcheckForm extends FormBean {
 		}
 		try {
 			Double.parseDouble(amtWithdrawn);
+			if (getAmountDouble() <= 0 || getAmountDouble() >= 10000000) {
+				errors.add("Please specify a amount range between $0 and $10,000,000");
+			}
 		}
 		catch(NumberFormatException e) {
 			errors.add("Error in conversion of Withdrawn Amount. Please specify the amount in the right format.");
