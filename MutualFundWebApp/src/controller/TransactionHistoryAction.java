@@ -49,6 +49,8 @@ public class TransactionHistoryAction extends Action {
 		    		  }
 		    		  if (transactions[i].getStatus() == null) {
 		    			  t.setStatus("Pending");
+		    		  } else {
+		    			  t.setStatus(transactions[i].getStatus());
 		    		  }
 		    		  DecimalFormat df1 = new DecimalFormat("0.000");
 		    		  DecimalFormat df2 = new DecimalFormat("0.00");
