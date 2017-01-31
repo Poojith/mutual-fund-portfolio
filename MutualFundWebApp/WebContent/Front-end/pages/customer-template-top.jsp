@@ -59,7 +59,7 @@
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 					<li><a href="viewaccount.do"><i
-							class="fa fa-dashboard fa-fw"></i> View portfolio</a></li>
+							class="fa fa-dashboard fa-fw"></i> Your account</a></li>
 					<li><a data-toggle="collapse" data-parent="#accordion"
 						href="#collapseOne"><span class="fa fa-dashboard fa-fw">
 						</span>Manage your fund</a>
@@ -88,6 +88,10 @@
 							Request check</a></li>
 					<li><a href="transactionhistory.do"><i class="fa fa-dashboard fa-fw"></i>
 							Transaction history</a></li>
+				   <li><a href="changepassword.do"><i class="fa fa-dashboard fa-fw"></i>
+							Change password</a></li>
+							
+							
 
 					<li><a href="logout.do"><i class="fa fa-dashboard fa-fw"></i>
 							Logout</a></li>
