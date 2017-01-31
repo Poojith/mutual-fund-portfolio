@@ -36,6 +36,19 @@ public class CreateAccountAction extends Action {
 		request.setAttribute("errors", errors);
 
 		try {
+			String checkUser = (String) request.getSession(false).getAttribute("userType");
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
+
+			if (user == null) {
+				errors.add("Please login to access the requested page");
+				return "login.jsp";
+			}
+
+			if (!checkUser.equals("Employee")) {
+				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "login.jsp";
+			}
+
 			CreateAccountForm form = new CreateAccountForm(request);
 			if (!form.isPresent()) {
 				return "employee-create-account.jsp";
@@ -50,7 +63,7 @@ public class CreateAccountAction extends Action {
 			if (userType.equals("Employee")) {
 				EmployeeBean[] bean = employeeDAO.match(MatchArg.equals("username", form.getUserName()));
 				if (bean.length > 0) {
-					errors.add ("Sorry, the user name is already registered.");
+					errors.add("Sorry, the user name is already registered.");
 					return "employee-create-account.jsp";
 				}
 
@@ -74,7 +87,7 @@ public class CreateAccountAction extends Action {
 			} else if (userType.equals("Customer")) {
 				CustomerBean[] bean = customerDAO.match(MatchArg.equals("username", form.getUserName()));
 				if (bean.length > 0) {
-					errors.add ("Sorry, the user name is already registered.");
+					errors.add("Sorry, the user name is already registered.");
 					return "employee-create-account.jsp";
 				}
 
@@ -95,9 +108,9 @@ public class CreateAccountAction extends Action {
 				HttpSession session = request.getSession();
 				session.setAttribute("userType", "Employee");
 			}
-			
-			request.setAttribute("message", "You have successfully created the account for " 
-			+ form.getFirstName() + " " + form.getLastName() + ".");
+
+			request.setAttribute("message", "You have successfully created the account for " + form.getFirstName() + " "
+					+ form.getLastName() + ".");
 			return "employee-success.jsp";
 
 		} catch (RollbackException r) {

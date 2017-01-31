@@ -42,9 +42,9 @@ public class BuyFundAction extends Action {
 	    	  if (!form.isPresent()) {
 					return "customer-buy-fund.jsp";
 				}
-	    	  
-	            errors.addAll(form.getValidationErrors());
-	            if (errors.size() > 0) {
+		            errors.addAll(form.getValidationErrors());
+	 	            if (errors.size() > 0) {
+	
 	                return "customer-error.jsp";
 	            }
 		    	

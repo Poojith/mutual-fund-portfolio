@@ -9,6 +9,7 @@ import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 
+import databean.EmployeeBean;
 import databean.FundBean;
 import databean.FundPriceHistoryBean;
 import formbeans.CreateFundForm;
@@ -35,6 +36,19 @@ public class CreateFundAction extends Action {
 		request.setAttribute("errors", errors);
 
 		try {
+			String checkUser = (String) request.getSession(false).getAttribute("userType");
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
+
+			if (user == null) {
+				errors.add("Please login to access the requested page");
+				return "login.jsp";
+			}
+
+			if (!checkUser.equals("Employee")) {
+				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "login.jsp";
+			}
+			
 			CreateFundForm form = new CreateFundForm(request);
 			if (!form.isPresent()) {
 				return "employee-create-fund.jsp";

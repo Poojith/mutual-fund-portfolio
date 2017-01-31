@@ -37,7 +37,7 @@
 	<div class="row">
 		<div class="col-lg-4">
 			<label>Amount to be withdrawn:</label> <input type="text"
-				class="form-control" name="amtWithdrawn">
+				class="form-control" required="true" name="amtWithdrawn" >
 			<p class="help-block"></p>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="col-lg-4">
 			<label>Confirm Amount:</label> <input type="text"
-				class="form-control" name="amtConfirm">
+				class="form-control" required="true" name="amtConfirm" required="true">
 			<p class="help-block"></p>
 		</div>
 	</div>

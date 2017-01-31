@@ -23,14 +23,14 @@
 	<div class="row">
 		<div class="col-lg-4">
 			<label>Username of the customer</label> <input type="text"
-				class="form-control" name="userName"> <br>
+				class="form-control" name="userName" required="true"> <br>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-4">
 			<label>Enter the amount to be deposited</label> <input type="text"
-				name="buyAmount" class="form-control">
+				name="buyAmount" class="form-control" required="true">
 			<p class="help-block"></p>
 		</div>
 	</div>

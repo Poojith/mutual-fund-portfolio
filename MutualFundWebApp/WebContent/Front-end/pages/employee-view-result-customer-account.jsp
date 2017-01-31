@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="employee-template-top.jsp" />
 <div id="page-wrapper">
 	<div class="row">
@@ -36,7 +37,7 @@
 								</div>
 							</div>
 							<div class="panel-footer" align="center">${customer.firstName}
-								&nbsp; ${customer.lastName}</div>
+								&nbsp;${customer.lastName}</div>
 
 						</div>
 					</div>
@@ -63,7 +64,7 @@
 								</div>
 							</div>
 
-							<div class="panel-footer" align="center">${customer.cash}</div>
+			<div class="panel-footer" align="center"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${customer.cash}" /></div>
 
 						</div>
 
@@ -118,8 +119,8 @@
 														<tr>
 
 															<td>${funds.get(row.index).name}</td>
-															<td>${p.shares}</td>
-															<td>${p.totalValue}</td>
+															<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${p.shares}"></fmt:formatNumber></td>
+															<td><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.totalValue}"></fmt:formatNumber></td>
 
 														</tr>
 													</c:forEach>

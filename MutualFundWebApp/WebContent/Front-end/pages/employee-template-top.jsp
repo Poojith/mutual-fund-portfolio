@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-                    <img src="Front-end/images/CFS-cover.png">
+             <a href="employee-home.do"><img src="Front-end/images/CFS-cover.png"></a>
             <!-- /.navbar-header -->
 
             

@@ -64,7 +64,7 @@ public class LoginAction extends Action {
 				session.setAttribute("user", employee);
 				session.setAttribute("userType", "Employee");
 
-				return "employee-home.jsp";
+				return "employee-home.do";
 				
 			} else if (userType.equals("Customer")) {
 				CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
@@ -84,7 +84,7 @@ public class LoginAction extends Action {
 				session.setAttribute("userType", "Customer");
 			}
 
-			return "customer-home.jsp";
+			return "customer-home.do";
 			
 		} catch (RollbackException r) {
 			errors.add(r.getMessage());

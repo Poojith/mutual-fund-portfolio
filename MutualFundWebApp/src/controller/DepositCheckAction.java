@@ -1,5 +1,7 @@
 package controller;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
+import databean.EmployeeBean;
 import databean.TransactionBean;
 import formbeans.DepositCheckForm;
 import model.CustomerDAO;
@@ -34,6 +37,20 @@ public class DepositCheckAction extends Action {
 		request.setAttribute("errors", errors);
 
 		try {
+
+			String checkUser = (String) request.getSession(false).getAttribute("userType");
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
+
+			if (user == null) {
+				errors.add("Please login to access the requested page");
+				return "login.jsp";
+			}
+
+			if (!checkUser.equals("Employee")) {
+				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "login.jsp";
+			}
+
 			DepositCheckForm form = new DepositCheckForm(request);
 			if (!form.isPresent()) {
 				return "employee-deposit-check.jsp";
@@ -59,7 +76,9 @@ public class DepositCheckAction extends Action {
 
 			request.setAttribute("message", "Your request of depositing the check for " + customer.getFirstName() + " "
 					+ customer.getLastName() + " is under processing.");
+
 			return "employee-success.jsp";
+
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
