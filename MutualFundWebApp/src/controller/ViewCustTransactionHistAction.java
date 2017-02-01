@@ -82,15 +82,17 @@ public class ViewCustTransactionHistAction extends Action {
 				FundBean fund = fundDAO.read(tb.getFundId());
 				if (fund != null) {
 					histbean.setFundName(fund.getName());
-					histbean.setSharePrice(tb.getSharePrice());
+					histbean.setSharePrice(tb.getSharePrice()==0?null:Double.toString(tb.getSharePrice()));
 				} else {
 					// do nothing. leave at null.
 				}
-				histbean.setAmount(tb.getAmount());
-				histbean.setNumShares(tb.getShares());
+				histbean.setAmount(tb.getAmount()==0?null:Double.toString(tb.getAmount()));
+				histbean.setNumShares(tb.getShares()==0?null:Double.toString(tb.getShares()));
 				histbean.setOperation(tb.getTransactionType());
 				histbean.setTransactionDate(tb.getExecuteDate());
-				if (tb.getStatus().equals("completed")) {
+				if (tb.getStatus() == null) {
+					histbean.setStatus("pending");		
+				} else if (tb.getStatus().equals("completed")) {
 					histbean.setStatus(tb.getStatus());
 				} else {
 					histbean.setStatus("pending");
@@ -106,10 +108,10 @@ public class ViewCustTransactionHistAction extends Action {
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
 		} 
-		catch (Exception e) {
+		/*catch (Exception e) {
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
 		
-		}
+		}*/
 	}
 }
