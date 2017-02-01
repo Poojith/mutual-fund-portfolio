@@ -23,15 +23,15 @@ public class TransitionDayForm {
 	private Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 	public TransitionDayForm(HttpServletRequest request) {
-		transitionDate = request.getParameter("date");
+		String dateInput = request.getParameter("date");
 		transitionDayButton = request.getParameter("action");
 		
-		/*
+		
 		if (dateInput != null) {
 			transitionDate = dateInput.trim();
 		}
-		transitionDayButton = request.getParameter("action");
-		*/
+//		transitionDayButton = request.getParameter("action");
+//		*/
 		HttpSession session = request.getSession();
 		FundBean[] fundBeans = (FundBean[]) session.getAttribute("fundArray");
 		if (fundBeans == null) {

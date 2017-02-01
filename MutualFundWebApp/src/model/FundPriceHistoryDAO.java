@@ -20,9 +20,10 @@ public class FundPriceHistoryDAO extends GenericDAO<FundPriceHistoryBean>{
     		throw new RollbackException ("No fund history for this symbol");
     	} 
     	for (int i = 0; i < funds.length; i++) {
-    		String month = funds[i].getPriceDate().substring(0,2);
-    		String day = funds[i].getPriceDate().substring(3,5);
-    		String year = funds[i].getPriceDate().substring(6,10);
+    		String temp = funds[i].getPriceDate().trim();
+    		String month = temp.substring(0,2);
+    		String day = temp.substring(3,5);
+    		String year = temp.substring(6,10);
 			funds[i].setPriceDate(year+"-"+month+"-"+day);
 		}
     	for (int i = 0; i < funds.length/2; i++)
