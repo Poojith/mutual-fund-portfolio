@@ -58,6 +58,12 @@ public class CreateFundAction extends Action {
 			if (errors.size() > 0) {
 				return "employee-create-fund.jsp";
 			}
+			
+			FundBean[] fundNames = fundDAO.match(MatchArg.equals("name", form.getFundName()));
+			if (fundNames.length > 0) {
+				errors.add("The fund name you entered already exists.");
+				return "employee-create-fund.jsp";
+			}
 
 			FundBean[] beans = fundDAO.match(MatchArg.equals("symbol", form.getTicker()));
 			if (beans.length > 0) {
