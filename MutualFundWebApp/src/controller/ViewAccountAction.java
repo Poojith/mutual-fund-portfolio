@@ -64,6 +64,7 @@ public class ViewAccountAction extends Action {
 	    		  p.setShares(df1.format(position[i].getShares()));
 	    		  DecimalFormat df2 = new DecimalFormat("0.00");
 	    		  p.setTotalValue(df2.format(price * position[i].getShares()));
+	    		  p.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  portfolio.add(p);
 	    	  }
 	    	  request.setAttribute("portfolio", portfolio.toArray(new PortfolioBean[portfolio.size()]));

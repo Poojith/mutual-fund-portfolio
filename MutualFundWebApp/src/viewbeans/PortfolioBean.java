@@ -4,8 +4,17 @@ public class PortfolioBean {
 	private String fundName;
 	private String shares;
 	private String totalValue;
+	private String symbol;
 
-	
+		
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
 	public String getTotalValue() {
 		return totalValue;
 	}

@@ -73,6 +73,7 @@ public class SellFundAction extends Action {
 	    		  p.setShares(df1.format(position[i].getShares()));
 	    		  DecimalFormat df2 = new DecimalFormat("0.00");
 	    		  p.setTotalValue(df2.format(price * position[i].getShares()));
+	    		  p.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  portfolio.add(p);
 	    		  sellfundlist.add(fundbean);  
 	    	  }
