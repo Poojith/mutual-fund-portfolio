@@ -1,11 +1,13 @@
 package controller;
 
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
@@ -33,6 +35,11 @@ public class RequestCheckAction extends Action {
 		   List<String> errors = new ArrayList<String>();
 	        request.setAttribute("errors", errors);
 	      try {
+	    	  String type = (String) request.getSession(false).getAttribute("userType");
+	       	  if (!type.equals("Customer")) {
+	    		  errors.add("Please use Employee pages only");
+	    		  return "employee-error.jsp";
+	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  RequestcheckForm form = formBeanFactory.create(request);
 	    	  if (!form.isPresent()) {
@@ -42,7 +49,18 @@ public class RequestCheckAction extends Action {
 	            if (errors.size() > 0) {
 	                return "customer-error.jsp";
 	            }
-	         if (form.getAmountDouble() <= user.getCash()) {
+	            
+	            TransactionBean[] buyfund = transactionDAO.match(MatchArg.and(MatchArg.equals("customerId", user.getCustomerId()),MatchArg.equals("executeDate", null),MatchArg.equals("transactionType", 1)));
+	 	          TransactionBean[] check = transactionDAO.match(MatchArg.and(MatchArg.equals("customerId", user.getCustomerId()),MatchArg.equals("executeDate", null),MatchArg.equals("transactionType", 4)));
+	 	          Double total = 0.0;
+	 	         for(int i=0; i< buyfund.length; i++) {
+	 	        	  total = total + buyfund[i].getAmount();
+	 	          }
+	 	         for(int i=0; i< check.length; i++) {
+	 	        	  total = total + check[i].getAmount();
+	 	          }
+	 	         
+	         if (form.getAmountDouble() <= (user.getCash() - total)) {
 	        	 // update transaction
 	        	 TransactionBean transaction = new TransactionBean();
 	        	 transaction.setAmount(form.getAmountDouble());
@@ -51,17 +69,19 @@ public class RequestCheckAction extends Action {
 	        	 transactionDAO.create(transaction);
 	         }
 	         else {
-	        	errors.add("Not enough cash");
+	        	 Double balance = user.getCash() - total;
+	        	 DecimalFormat df = new DecimalFormat("0.00");
+	    		 errors.add("Not enough cash, your current cash balance is $" + df.format(balance) + " ,which may due to some pending transactions");
 	        	return "customer-error.jsp";
 	         }
-	         request.setAttribute("message", "Request check was successful");
+	         request.setAttribute("message", "Your request for withdraw the fund is under processing");
 	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
 	        	return "customer-error.jsp";
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
-	            return "customer-request-check.jsp";
+	            return "customer-error.jsp";
 	}
 		
 

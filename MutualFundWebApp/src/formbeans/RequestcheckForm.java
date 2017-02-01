@@ -35,11 +35,11 @@ public class RequestcheckForm extends FormBean {
 		List<String> errors = new ArrayList<String>();
 
 		if (amtWithdrawn == null || amtWithdrawn.length() == 0) {
-			errors.add("Withdraw Amount is required");
+			errors.add("Withdrawn Amount is required");
 		}
 		
 		if (amtConfirm == null || amtConfirm.length() == 0) {
-			errors.add("Withdraw Amount Confirmation is required");
+			errors.add("Withdrawn Amount Confirmation is required");
 		}
 		if(requestCheck == null) {
 			errors.add("Request Check button is required");
@@ -49,10 +49,13 @@ public class RequestcheckForm extends FormBean {
 		}
 		
 		if (!amtWithdrawn.equals(amtConfirm)) {
-			errors.add("Withdran Amount do not match");
+			errors.add("Withdrawn Amount do not match");
 		}
 		try {
 			Double.parseDouble(amtWithdrawn);
+			if (getAmountDouble() <= 0 || getAmountDouble() >= 10000000) {
+				errors.add("Please specify a amount range between $0 and $10,000,000");
+			}
 		}
 		catch(NumberFormatException e) {
 			errors.add("Error in conversion of Withdrawn Amount. Please specify the amount in the right format.");

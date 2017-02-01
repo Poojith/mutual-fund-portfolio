@@ -37,15 +37,14 @@ public class CreateAccountAction extends Action {
 
 		try {
 			String checkUser = (String) request.getSession(false).getAttribute("userType");
-			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
-
-			if (user == null) {
-				errors.add("Please login to access the requested page");
-				return "login.jsp";
-			}
-
 			if (!checkUser.equals("Employee")) {
 				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "customer-error.jsp";
+			}
+			
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");			
+			if (user == null) {
+				errors.add("Please login to access the requested page");
 				return "login.jsp";
 			}
 

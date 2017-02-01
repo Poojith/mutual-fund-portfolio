@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
+import databean.EmployeeBean;
 import databean.FundBean;
 import databean.HistoryBean;
 import databean.TransactionBean;
@@ -42,6 +43,18 @@ public class ViewCustTransactionHistAction extends Action {
 		request.setAttribute("errors", errors);
 
 		try {
+			String checkUser = (String) request.getSession(true).getAttribute("userType");
+			if (!checkUser.equals("Employee")) {
+				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "customer-error.jsp";
+			}
+			
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");	
+			if (user == null) {
+				errors.add("Please login to access the requested page");
+				return "login.jsp";
+			}
+			
 			ViewCustomerTransactionForm form = new ViewCustomerTransactionForm(request);
 			if (!form.isPresent()) {
 				return "employee-view-transaction-history.jsp";

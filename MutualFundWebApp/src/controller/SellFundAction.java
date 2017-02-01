@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
@@ -45,7 +46,11 @@ public class SellFundAction extends Action {
 		   List<String> errors = new ArrayList<String>();
 	        request.setAttribute("errors", errors);
 	      try {
-	    	  
+	    	  String type = (String) request.getSession(false).getAttribute("userType");
+	       	  if (!type.equals("Customer")) {
+	    		  errors.add("Please use Employee pages only");
+	    		  return "employee-error.jsp";
+	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
@@ -80,8 +85,13 @@ public class SellFundAction extends Action {
 	            }
 	            int fundid = fundDAO.read(form.getFund()).getFundId();
 	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
-
-	            if (form.getSharesDouble() <= shares) {      
+	 	         TransactionBean[] sellfund = transactionDAO.match(MatchArg.and(MatchArg.equals("customerId", user.getCustomerId()),MatchArg.equals("executeDate", null),MatchArg.equals("transactionType", 2),MatchArg.equals("fundId", fundid)));
+	 	         Double totalshares = 0.0;
+	 	         for(int i=0; i< sellfund.length; i++) {
+	 	        	totalshares = totalshares + sellfund[i].getShares();
+	 	          }
+	            
+	            if (form.getSharesDouble() <= (shares - totalshares)) {      
 	            // update transaction
 	            TransactionBean transaction = new TransactionBean();
 	            transaction.setCustomerId(user.getCustomerId());
@@ -91,10 +101,12 @@ public class SellFundAction extends Action {
 	            transactionDAO.create(transaction);
 	   	            }
 	            else {
-		        	errors.add("Not enough shares");
+	            	 Double balance = shares - totalshares;
+		        	 DecimalFormat df = new DecimalFormat("0.000");
+		        	errors.add("Not enough shares, your current available shares for " + fundDAO.read(form.getFund()).getName() + " is " + df.format(balance));
 		        	return "customer-error.jsp";
 		         }
-	          request.setAttribute("message", "Sell Fund was successful");
+	          request.setAttribute("message", "Your request for selling the fund is under processing");
 	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());

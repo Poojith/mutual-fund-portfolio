@@ -71,7 +71,7 @@ public class TransactionDAO extends GenericDAO<TransactionBean>{
     
     public String findLastTransactionDate(int customerId) throws RollbackException {
     	TransactionBean[] beans = match(MatchArg.equals("customerId", customerId));
-    	if (beans == null || beans.length == 0) {
+      	if (beans == null || beans.length == 0) {
     		return null;
     	}
     	Arrays.sort(beans);

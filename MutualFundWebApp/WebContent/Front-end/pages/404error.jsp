@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page import="databean.FundBean" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,14 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>CFS</title>
-
 <!-- Bootstrap Core CSS -->
-<link href="Front-end/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="Front-end/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="Front-end/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+<link href="Front-end/vendor/metisMenu/metisMenu.min.css"
+	rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="Front-end/dist/css/sb-admin-2.css" rel="stylesheet">
@@ -52,51 +51,50 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
-		<a href="customer-home.do"><img src="Front-end/images/CFS-cover.png"></a>
-		<!-- /.navbar-top-links -->
+		<img src="Front-end/images/CFS-cover.png"> <!-- /.navbar-header -->
+		<!-- jQuery -->
 
-		<div class="navbar-default sidebar" role="navigation">
-			<div class="sidebar-nav navbar-collapse">
-				<ul class="nav" id="side-menu">
-					<li><a href="viewaccount.do"><i
-							class="fa fa-dashboard fa-fw"></i> Your account</a></li>
-					<li><a data-toggle="collapse" data-parent="#accordion"
-						href="#collapseOne"><span class="fa fa-dashboard fa-fw">
-						</span>Manage your fund</a>
-						<div id="collapseOne" class="panel-collapse collapse in">
-							<div class="panel-body">
-
-								<table class="table">
-
-									<tr>
-										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href=buyfund.do>Buy fund</a></td>
-									</tr>
-									<tr>
-										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href="sellfund.do">Sell fund</a></td>
-									</tr>
-									<tr>
-										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href="researchfund.do">Research fund</a></td>
-									</tr>
-
-								</table>
-							</div>
-						</div></li>
-					<li><a href="requestcheck.do"><i class="fa fa-dashboard fa-fw"></i>
-							Request check</a></li>
-					<li><a href="transactionhistory.do"><i class="fa fa-dashboard fa-fw"></i>
-							Transaction history</a></li>
-				   <li><a href="changepassword.do"><i class="fa fa-dashboard fa-fw"></i>
-							Change password</a></li>
-							
-							
-
-					<li><a href="logout.do"><i class="fa fa-dashboard fa-fw"></i>
-							Logout</a></li>
-				</ul>
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						<font size="5" face="verdana" color="#7E9DBB">&nbsp;Research
+							Fund</font>
+					</h1>
+				</div>
 			</div>
-			<!-- /.sidebar-collapse -->
+
+
+			<div class="row">
+			<img src="Front-end/images/error-404.png"></div>
 		</div>
-		<!-- /.navbar-static-side --> </nav>
+
+
+
+
+
+
+
+		</nav>
+	</div>
+
+	<script src="../vendor/jquery/jquery.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+	<!-- Morris Charts JavaScript -->
+	<script src="../vendor/raphael/raphael.min.js"></script>
+	<script src="../vendor/morrisjs/morris.min.js"></script>
+	<script src="../data/morris-data.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="../dist/js/sb-admin-2.js"></script>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<jsp:include page="template-bottom.jsp" />
