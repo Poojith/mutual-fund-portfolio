@@ -29,7 +29,7 @@
 	<div class="row">
 
 		<div class="col-lg-4">
-			<label>Your Cash Balance: <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${user.cash}" /></label>
+			<label>Your Cash Balance: $<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cash.cash}" /></label>
 
 			<p class="help-block"></p>
 		</div>

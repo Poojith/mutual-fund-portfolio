@@ -22,7 +22,7 @@
 		<form action="buyfund.do" method="POST">
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Your Cash Balance: <fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${user.cash}" /></label>
+					<label>Your Cash Balance: $<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cash.cash}" /></label>
 					<p class="help-block"></p>
 
 				</div>
@@ -43,7 +43,7 @@
 			<br>
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Amount to be Buy</label> <input type="text" 
+					<label>Amount to Purchase</label> <input type="text" 
 						class="form-control" required="true" name="buyAmount">
 					<p class="help-block"></p>
 				</div>

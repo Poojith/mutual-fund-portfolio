@@ -11,6 +11,7 @@ import org.genericdao.RollbackException;
 import databean.CustomerBean;
 import databean.FundBean;
 import databean.PositionBean;
+import model.CustomerDAO;
 import model.FundDAO;
 import model.FundPriceHistoryDAO;
 import model.Model;
@@ -21,11 +22,13 @@ import viewbeans.PortfolioBean;
 public class ViewAccountAction extends Action {
 	
 	private FundDAO fundDAO;
+	private CustomerDAO customerDAO;
 	private FundPriceHistoryDAO fundpricehistoryDAO;
 	private TransactionDAO transactionDAO;
 	private PositionDAO positionDAO;
 	public ViewAccountAction(Model model) {
 		fundDAO = model.getFundDAO();
+		customerDAO = model.getCustomerDAO();
 		transactionDAO = model.getTransactionDAO();
 		fundpricehistoryDAO = model.getFundPriceHistoryDAO();
 		positionDAO = model.getPositionDAO();
@@ -45,8 +48,11 @@ public class ViewAccountAction extends Action {
 	    		  return "employee-error.jsp";
 	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
+	    	  request.setAttribute("cash", cash);
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<PortfolioBean> portfolio = new ArrayList<PortfolioBean>();
+	    	  
               for (int i=0; i<position.length; i++) {
 		    	  FundBean fundbean = new FundBean();
 		    	  PortfolioBean p = new PortfolioBean();
@@ -58,6 +64,7 @@ public class ViewAccountAction extends Action {
 	    		  p.setShares(df1.format(position[i].getShares()));
 	    		  DecimalFormat df2 = new DecimalFormat("0.00");
 	    		  p.setTotalValue(df2.format(price * position[i].getShares()));
+	    		  p.setSymbol(fundDAO.read(fundbean.getFundId()).getSymbol());
 	    		  portfolio.add(p);
 	    	  }
 	    	  request.setAttribute("portfolio", portfolio.toArray(new PortfolioBean[portfolio.size()]));

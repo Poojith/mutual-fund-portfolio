@@ -15,6 +15,7 @@ import org.mybeans.form.FormBeanFactory;
 import databean.CustomerBean;
 import databean.TransactionBean;
 import formbeans.RequestcheckForm;
+import model.CustomerDAO;
 import model.Model;
 import model.TransactionDAO;
 
@@ -23,8 +24,10 @@ public class RequestCheckAction extends Action {
 	private FormBeanFactory<RequestcheckForm> formBeanFactory = FormBeanFactory
             .getInstance(RequestcheckForm.class);
 	private TransactionDAO transactionDAO;
+	private CustomerDAO customerDAO;
 	public RequestCheckAction(Model model) {
 		transactionDAO = model.getTransactionDAO();
+		customerDAO = model.getCustomerDAO();
 	}
 	
 	public String getName() {
@@ -41,6 +44,8 @@ public class RequestCheckAction extends Action {
 	    		  return "employee-error.jsp";
 	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
+	          request.setAttribute("cash", cash);
 	    	  RequestcheckForm form = formBeanFactory.create(request);
 	    	  if (!form.isPresent()) {
 					return "customer-request-check.jsp";
@@ -75,6 +80,7 @@ public class RequestCheckAction extends Action {
 	        	return "customer-error.jsp";
 	         }
 	         request.setAttribute("message", "Your request for withdraw the fund is under processing");
+	  
 	    	  return "customer-success.jsp";
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
