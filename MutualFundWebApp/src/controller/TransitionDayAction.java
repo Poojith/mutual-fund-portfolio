@@ -54,25 +54,31 @@ public class TransitionDayAction extends Action {
 
 	@Override
 	public String perform(HttpServletRequest request){
-		System.out.println("reached here");
+		
+		
+
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
-		HttpSession session = request.getSession();
-		String userType = (String)session.getAttribute("userType");
-		if (userType == null || userType != "Employee") {
-			errors.add("You are not logged in as an employee");
-			return "employee-error.jsp";
-		}
-		EmployeeBean employee = (EmployeeBean)session.getAttribute("user");
-		if (employee == null) {
-			errors.add("You are not authorised to perform transition day");
-			return "employee-transition-day.jsp";
-		}
-		
+		HttpSession session = request.getSession();	
 		String date = request.getParameter("date");
 		
 		try {
+			
+			String checkUser = (String) request.getSession(false).getAttribute("userType");
+			if (!checkUser.equals("Employee")) {
+				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "customer-error.jsp";
+			}
+			
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
+
+			if (user == null) {
+				errors.add("Please login to access the requested page");
+				return "login.jsp";
+			}
+			
 			FundBean[] fundArray = fundDAO.match();
+			
 			TransitionDayForm form = new TransitionDayForm(request);
 			if (!form.isPresent()) {
 				System.out.println("transition form is not present");

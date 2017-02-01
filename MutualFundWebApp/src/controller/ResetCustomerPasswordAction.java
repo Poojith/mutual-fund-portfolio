@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
+import databean.EmployeeBean;
 import formbeans.ResetPasswordForm;
 import model.CustomerDAO;
 import model.Model;
@@ -30,6 +31,19 @@ public class ResetCustomerPasswordAction extends Action {
 		request.setAttribute("errors", errors);
 
 		try {
+
+			String userType = (String) request.getSession().getAttribute("userType");
+			if (!userType.equals("Employee")) {
+				errors.add("You do not have the required authorization to access the requested page.");
+				return "customer-error.jsp";
+			}
+
+			EmployeeBean user = (EmployeeBean) request.getSession(false).getAttribute("user");
+			if (user == null) {
+				errors.add("You cannot access the requested page without logging in. Please sign in.");
+				return "login.jsp";
+			}
+
 			ResetPasswordForm form = new ResetPasswordForm(request);
 			if (!form.isPresent()) {
 				return "employee-reset-customer-password.jsp";

@@ -1,14 +1,9 @@
 package controller;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.genericdao.RollbackException;
-
 import databean.CustomerBean;
 import databean.EmployeeBean;
 import databean.TransactionBean;
@@ -39,15 +34,14 @@ public class DepositCheckAction extends Action {
 		try {
 
 			String checkUser = (String) request.getSession(false).getAttribute("userType");
-			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
-
-			if (user == null) {
-				errors.add("Please login to access the requested page");
-				return "login.jsp";
-			}
-
 			if (!checkUser.equals("Employee")) {
 				errors.add("Sorry, you do not have the required authorization to access this page.");
+				return "customer-error.jsp";
+			}
+			
+			EmployeeBean user = (EmployeeBean) request.getSession().getAttribute("user");
+			if (user == null) {
+				errors.add("Please login to access the requested page");
 				return "login.jsp";
 			}
 

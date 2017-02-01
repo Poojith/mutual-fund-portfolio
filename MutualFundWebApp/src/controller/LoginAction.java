@@ -33,8 +33,7 @@ public class LoginAction extends Action {
 	public String perform(HttpServletRequest request) {
 		List<String> errors = new ArrayList<String>();
 		request.setAttribute("errors", errors);
-		
-		// If user is already logged in, redirect to todolist.do
+
 		HttpSession session = request.getSession();
 		if (session.getAttribute("userType") == null) {
 			try {
@@ -49,7 +48,7 @@ public class LoginAction extends Action {
 				if (errors.size() > 0) {
 					return "login.jsp";
 				}
-				
+
 				String userType = form.getUserType();
 				if (userType.equals("Employee")) {
 					EmployeeBean employee = employeeDAO.read(form.getUserName());
@@ -67,12 +66,11 @@ public class LoginAction extends Action {
 					session.setAttribute("userType", "Employee");
 
 					return "employee-home.do";
-					
+
 				} else if (userType.equals("Customer")) {
 					CustomerBean customer = customerDAO.getCustomerByUserName(form.getUserName());
 					if (customer == null) {
-						errors.add("Sorry, there's no such user. "
-								+ "Please check your credentials.");
+						errors.add("Sorry, there's no such user. " + "Please check your credentials.");
 						return "login.jsp";
 					}
 
@@ -86,7 +84,7 @@ public class LoginAction extends Action {
 				}
 
 				return "customer-home.do";
-				
+
 			} catch (RollbackException r) {
 				errors.add(r.getMessage());
 				return "error.jsp";
@@ -95,13 +93,11 @@ public class LoginAction extends Action {
 				return "error.jsp";
 			}
 		} else if (session.getAttribute("userType").toString().equals("Employee")) {
-        	return "employee-home.do";
-        } else if (session.getAttribute("userType").toString().equals("Customer")) {
-        	return "customer-home.do";
-        } else {
-        	return "login.jsp";
-        }
-		
-		
+			return "employee-home.do";
+		} else if (session.getAttribute("userType").toString().equals("Customer")) {
+			return "customer-home.do";
+		} else {
+			return "login.jsp";
+		}
 	}
 }

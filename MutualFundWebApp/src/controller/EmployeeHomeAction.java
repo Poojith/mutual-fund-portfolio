@@ -21,15 +21,15 @@ public class EmployeeHomeAction extends Action {
 		request.setAttribute("errors", errors);
 
 		try {
-			EmployeeBean user = (EmployeeBean) request.getSession(false).getAttribute("user");
-			if (user == null) {
-				errors.add("You cannot access the requested page without logging in. Please sign in.");
-				return "login.jsp";
-			}
-
 			String userType = (String) request.getSession().getAttribute("userType");
 			if (!userType.equals("Employee")) {
 				errors.add("You do not have the required authorization to access the requested page.");
+				return "customer-error.jsp";
+			}
+			
+			EmployeeBean user = (EmployeeBean) request.getSession(false).getAttribute("user");
+			if (user == null) {
+				errors.add("You cannot access the requested page without logging in. Please sign in.");
 				return "login.jsp";
 			}
 
