@@ -20,13 +20,13 @@
 					<h5 style="color:red"> ${error} </h5>
 				</c:forEach>
 				<div class="col-lg-6">
-					<label>User Name</label> <input type="text" class="form-control" required="true"
+					<label>User Name</label> <input type="text" class="form-control" required="true" maxlength="50"
 						name="userName" value="${form.userName}" />
 					<p class="help-block"></p>
 				</div>
 
 				<div class="col-lg-6">
-					<label>First Name</label> <input type="text" class="form-control" required="true"
+					<label>First Name</label> <input type="text" class="form-control" required="true" maxlength="50"
 						name="firstName" value="${form.firstName}" />
 					<p class="help-block"></p>
 				</div>
@@ -35,13 +35,13 @@
 
 			<div class="row">
 				<div class="col-lg-6">
-					<label>Last Name</label> <input type="text" class="form-control" required="true"
+					<label>Last Name</label> <input type="text" class="form-control" required="true" maxlength="50"
 						name="lastName" value="${form.lastName}" />
 					<p class="help-block"></p>
 				</div>
 
 				<div class="col-lg-6">
-					<label>Address Line 1</label> <input type="text" required="true"
+					<label>Address Line 1</label> <input type="text" required="true" maxlength="50"
 						class="form-control" name="address1" value="${form.address1}" />
 					<p class="help-block"></p>
 				</div>
@@ -51,14 +51,14 @@
 			<div class="row">
 
 				<div class="col-lg-6">
-					<label>Address Line 2</label> <input type="text" 
+					<label>Address Line 2</label> <input type="text" maxlength="50" maxlength="50"
 						class="form-control" name="address2" value="${form.address2}" />
 					<p class="help-block"></p>
 				</div>
 
 
 				<div class="col-lg-6">
-					<label>City</label> <input type="text" class="form-control" required="true"
+					<label>City</label> <input type="text" class="form-control" required="true" maxlength="50"
 						name="city" value="${form.city}" />
 					<p class="help-block"></p>
 				</div>
@@ -127,7 +127,7 @@
 
 
 				<div class="col-lg-6">
-					<label>Zip Code</label> <input type="text" class="form-control" required="true"
+					<label>Zip Code</label> <input type="text" class="form-control" required="true" maxlength="50"
 						name="zipcode" value="${form.zipcode}" />
 					<p class="help-block"></p>
 				</div>
