@@ -69,7 +69,7 @@ public class ViewCustTransactionHistAction extends Action {
 				FundBean fund = fundDAO.read(tb.getFundId());
 				if (fund != null) {
 					histbean.setFundName(fund.getName());
-					histbean.setSharePrice(fundPriceHistoryDAO.fundLatestPrice(fund));
+					histbean.setSharePrice(tb.getSharePrice());
 				} else {
 					// do nothing. leave at null.
 				}

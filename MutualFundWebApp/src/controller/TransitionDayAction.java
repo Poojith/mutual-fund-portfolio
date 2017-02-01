@@ -193,6 +193,7 @@ public class TransitionDayAction extends Action {
 			positionDAO.update(positionbean);
 		}
 		transactionBean.setShares(shares);
+		transactionBean.setSharePrice(fundpricemap.get(fundId));
 		customerbean.setCash(customerbean.getCash()-amount);
 		customerDAO.update(customerbean);
 		return;
@@ -214,6 +215,7 @@ public class TransitionDayAction extends Action {
 			}
 		}
 		transactionBean.setAmount(amount);
+		transactionBean.setSharePrice(fundpricemap.get(fundId));
 		customerbean.setCash(customerbean.getCash()+amount);
 		positionbean.setShares(positionbean.getShares()-shares);
 		positionDAO.update(positionbean);
