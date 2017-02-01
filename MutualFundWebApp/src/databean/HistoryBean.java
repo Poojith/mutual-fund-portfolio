@@ -7,9 +7,9 @@ public class HistoryBean {
 	private String operation;
 	private String status;
 	private String fundName;
-	private double numShares;
-	private double amount;
-	private double sharePrice;
+	private String numShares;
+	private String amount;
+	private String sharePrice;
 	
 	public String getTransactionDate() {
 		return transactionDate;
@@ -49,22 +49,22 @@ public class HistoryBean {
 	public void setFundName(String fundName) {
 		this.fundName = fundName;
 	}
-	public double getNumShares() {
+	public String getNumShares() {
 		return numShares;
 	}
-	public void setNumShares(double numShares) {
+	public void setNumShares(String numShares) {
 		this.numShares = numShares;
 	}
-	public double getAmount() {
+	public String getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
-	public double getSharePrice() {
+	public String getSharePrice() {
 		return sharePrice;
 	}
-	public void setSharePrice(double d) {
+	public void setSharePrice(String d) {
 		sharePrice = d;
 	}
 }
