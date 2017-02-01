@@ -18,6 +18,7 @@ public class CreateFundForm {
 
 		if (fundInput != null) {
 			fundName = sanitize(fundInput).trim();
+			fundName = fundName.substring(0, 1).toUpperCase() + fundName.substring(1);
 		}
 
 		if (tickerInput != null) {
