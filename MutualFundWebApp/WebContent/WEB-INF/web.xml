@@ -8,7 +8,6 @@
     <description>
       Mutual Fund Web App
     </description>
-
     <servlet>
         <servlet-name>  controller-servlet       </servlet-name>
         <servlet-class>
@@ -32,5 +31,9 @@
     <welcome-file-list>
         <welcome-file>   login.do   </welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/Front-end/pages/404error.jsp</location>
+    </error-page>
 
 </web-app>
