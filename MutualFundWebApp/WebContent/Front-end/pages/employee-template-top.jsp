@@ -57,28 +57,34 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="create-account.do"><i class="fa fa-dashboard fa-fw"></i>Create account</a>
+                            <a href="create-account.do"><i class="fa fa-plus fa-fw"></i>Create account</a>
                         </li>
                         <li>
-                            <a href="reset-customer-password.do"><i class="fa fa-dashboard fa-fw"></i> Reset customer password</a>
-                        </li>
-                        <li>
-                            <a href="view-customer-account.do"><i class="fa fa-dashboard fa-fw"></i> View customer account</a>
-                        </li>
-                        <li>
-                            <a href="employee-view-transaction-history.do"><i class="fa fa-dashboard fa-fw"></i> Customer transaction history</a>
-                        </li>
-                        <li>
-                            <a href="employee-deposit-check.do"><i class="fa fa-dashboard fa-fw"></i> Deposit check</a>
-                        </li>
-                        <li>
-                            <a href="create-fund.do"><i class="fa fa-dashboard fa-fw"></i> Create fund</a>
-                        </li>
-                        <li>
-                            <a href="employee-transition-day.do"><i class="fa fa-dashboard fa-fw"></i> Transition day</a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Manage Customer<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="reset-customer-password.do"><i class="fa fa-repeat fa-fw"></i>Reset Customer Password</a>
+                                </li>
+                                <li>
+                                    <a href="view-customer-account.do"><i class="fa fa-eye fa-fw"></i>View Customer Account</a>
+                                </li>
+                                <li>
+                                    <a href="employee-view-transaction-history.do"><i class="fa fa-history fa-fw"></i>Customer Transaction History</a>
+                                </li>
+                            </ul>
                         </li>
                         
-                        <li><a href="logout.do"><i class="fa fa-dashboard fa-fw"></i>
+                        <li>
+                            <a href="employee-deposit-check.do"><i class="fa fa-credit-card fa-fw"></i> Deposit check</a>
+                        </li>
+                        <li>
+                            <a href="create-fund.do"><i class="fa fa-money fa-fw"></i> Create fund</a>
+                        </li>
+                        <li>
+                            <a href="employee-transition-day.do"><i class="fa fa-line-chart fa-fw"></i> Transition day</a>
+                        </li>
+                        
+                        <li><a href="logout.do"><i class="fa fa-sign-out fa-fw"></i>
 							Logout</a></li>
 
                     </ul>
