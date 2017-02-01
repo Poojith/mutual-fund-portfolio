@@ -18,7 +18,8 @@ public class TransitionDayForm {
 	private String transitionDayButton;
 
 	private boolean checkPrice = true;
-	private DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+	private boolean checkPriceRange = true;
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
 	private Map<Integer, Double> map = new HashMap<Integer, Double>();
 
 	public TransitionDayForm(HttpServletRequest request) {
@@ -36,14 +37,15 @@ public class TransitionDayForm {
 		if (fundBeans == null) {
 			return;
 		}
-		System.out.println("fundarrays size is: " + fundBeans.length);
 		for (FundBean fb : fundBeans) {
 			String parameter = "fund" + fb.getFundId();
 			String price = request.getParameter(parameter);
 			System.out.println("The price here is: " + price);
 			boolean isDouble = checkPriceValue(price);
 			if (isDouble) {
-				System.out.println("adding the fund id and price to fund price map");
+				if (getPriceAsDouble(price) <= 0 || getPriceAsDouble(price) >= 10000000) {
+					checkPriceRange = false;
+				}
 				map.put(fb.getFundId(), getPriceAsDouble(price));
 			} else {
 				checkPrice = false;
@@ -94,6 +96,7 @@ public class TransitionDayForm {
 			
 			dateFormat.parse((date));
 		} catch (ParseException parseEx) {
+			System.out.println(parseEx.getMessage());
 			return false;
 		}
 		return true;
@@ -103,11 +106,11 @@ public class TransitionDayForm {
 		if (price == null || price.length() == 0) {
 			return false;
 		}
-		/*try {*/
+		try {
 			Double.parseDouble(price);
-		/*} catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return false;
-		}*/
+		}
 		return true;
 	}
 
@@ -121,6 +124,9 @@ public class TransitionDayForm {
 		if (!checkPrice) {
 			errors.add("Please specify the price in the right format.");
 		}
+		
+		if(!checkPriceRange)
+				errors.add("Please specify a amount range between $0 and $10,000,000"); 
 
 		if (!checkDateFormat(transitionDate)) {
 			errors.add("Error in parsing the date");
