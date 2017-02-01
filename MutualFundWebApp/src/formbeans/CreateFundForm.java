@@ -85,9 +85,15 @@ public class CreateFundForm {
 
 		if (fundName == null || fundName.length() == 0)
 			errors.add("Fund name is required");
+		
+		if (fundName.length() > 50)
+			errors.add("Fund name must be within 50 characters.");
 
 		if (ticker == null || ticker.length() == 0)
 			errors.add("Ticker is required");
+		
+		if (ticker.length() > 50)
+			errors.add("The ticker name must be within 50 characters.");
 
 		if (createFundButton == null)
 			errors.add("Button is required");

@@ -18,7 +18,7 @@
 
 		<div class="row">
 			<div class="col-lg-4">
-				<label>Fund Name</label> <input type="text" class="form-control" 
+				<label>Fund Name</label> <input type="text" class="form-control" maxlength = "50"
 				required="true"	name="fundName">
 				<p class="help-block"></p>
 			</div>
@@ -26,7 +26,7 @@
 
 		<div class="row">
 			<div class="col-lg-4">
-				<label>Ticker</label> <input type="text" class="form-control" required="true"
+				<label>Ticker</label> <input type="text" class="form-control" required="true" maxlength = "50"
 					name="ticker">
 				<p class="help-block"></p>
 			</div>
