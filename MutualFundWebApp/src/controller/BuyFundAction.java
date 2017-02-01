@@ -14,6 +14,7 @@ import org.mybeans.form.FormBeanFactory;
 import databean.CustomerBean;
 import databean.TransactionBean;
 import formbeans.BuyFundForm;
+import model.CustomerDAO;
 import model.FundDAO;
 import model.Model;
 import model.TransactionDAO;
@@ -24,9 +25,11 @@ public class BuyFundAction extends Action {
             .getInstance(BuyFundForm.class);
 	private FundDAO fundDAO;
 	private TransactionDAO transactionDAO;
+	private CustomerDAO customerDAO;
 	public BuyFundAction(Model model) {
 		fundDAO = model.getFundDAO();
 		transactionDAO = model.getTransactionDAO();
+		customerDAO = model.getCustomerDAO();
 	}
 	
 	public String getName() {
@@ -43,7 +46,8 @@ public class BuyFundAction extends Action {
 	    		  return "employee-error.jsp";
 	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
-	    	 
+	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
+	    	  request.setAttribute("cash", cash);
 	 
 	    	  request.setAttribute("buyfundlist", fundDAO.readAll());
 	    	  BuyFundForm form = formBeanFactory.create(request);

@@ -16,6 +16,7 @@ import databean.FundBean;
 import databean.PositionBean;
 import databean.TransactionBean;
 import formbeans.SellfundForm;
+import model.CustomerDAO;
 import model.FundDAO;
 import model.FundPriceHistoryDAO;
 import model.Model;
@@ -28,11 +29,13 @@ public class SellFundAction extends Action {
 	private FormBeanFactory<SellfundForm> formBeanFactory = FormBeanFactory
             .getInstance(SellfundForm.class);
 	private FundDAO fundDAO;
+	private CustomerDAO customerDAO;
 	private FundPriceHistoryDAO fundpricehistoryDAO;
 	private TransactionDAO transactionDAO;
 	private PositionDAO positionDAO;
 	public SellFundAction(Model model) {
 		fundDAO = model.getFundDAO();
+		customerDAO = model.getCustomerDAO();
 		transactionDAO = model.getTransactionDAO();
 		fundpricehistoryDAO = model.getFundPriceHistoryDAO();
 		positionDAO = model.getPositionDAO();
@@ -52,6 +55,8 @@ public class SellFundAction extends Action {
 	    		  return "employee-error.jsp";
 	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
+	    	  request.setAttribute("cash", cash);
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
 	    	  List<FundBean> sellfundlist = new ArrayList<FundBean>();
 	    	  List<PortfolioBean> portfolio = new ArrayList<PortfolioBean>();

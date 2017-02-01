@@ -70,7 +70,7 @@
 								</div>
 							</div>
 
-							<div class="panel-footer" align="center"><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${user.cash}" /></div>
+							<div class="panel-footer" align="center">$<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cash.cash}" /></div>
 
 						</div>
 
