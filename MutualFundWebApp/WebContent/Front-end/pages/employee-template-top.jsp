@@ -57,7 +57,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="create-account.do"><i class="fa fa-plus fa-fw"></i>Create account</a>
+                            <a href="create-account.do"><i class="fa fa-plus fa-fw"></i>Create Account</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Manage Customer<span class="fa arrow"></span></a>
@@ -71,17 +71,16 @@
                                 <li>
                                     <a href="employee-view-transaction-history.do"><i class="fa fa-history fa-fw"></i>Customer Transaction History</a>
                                 </li>
+                                <li>
+		                            <a href="employee-deposit-check.do"><i class="fa fa-credit-card fa-fw"></i> Deposit Check</a>
+		                        </li>
                             </ul>
                         </li>
-                        
                         <li>
-                            <a href="employee-deposit-check.do"><i class="fa fa-credit-card fa-fw"></i> Deposit check</a>
+                            <a href="create-fund.do"><i class="fa fa-money fa-fw"></i> Create Fund</a>
                         </li>
                         <li>
-                            <a href="create-fund.do"><i class="fa fa-money fa-fw"></i> Create fund</a>
-                        </li>
-                        <li>
-                            <a href="employee-transition-day.do"><i class="fa fa-line-chart fa-fw"></i> Transition day</a>
+                            <a href="employee-transition-day.do"><i class="fa fa-line-chart fa-fw"></i> Transition Day</a>
                         </li>
                         
                         <li><a href="logout.do"><i class="fa fa-sign-out fa-fw"></i>
