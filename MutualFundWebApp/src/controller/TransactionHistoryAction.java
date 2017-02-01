@@ -80,13 +80,12 @@ public class TransactionHistoryAction extends Action {
 		      } catch (RollbackException e) {
 		        	errors.add(e.getMessage());
 		        	return "customer-error.jsp";
-		        }
+		        } catch (Exception e) {
+		    		errors.add(e.getMessage());
+		    		return "customer-error.jsp";
+		    	}
 	        }
 	        return null;
-	        /*
-	        else if (usertype == "Employee") {
-	        	EmployeeBean user = (EmployeeBean) (request.getSession(false).getAttribute("user"));
-	        }
-	        */
+	        
 }
 }

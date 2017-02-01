@@ -114,6 +114,9 @@ public class SellFundAction extends Action {
 	        } catch (FormBeanException e) {
 	            errors.add(e.getMessage());
 	            return "customer-error.jsp";
+	} catch (Exception e) {
+		errors.add(e.getMessage());
+		return "customer-error.jsp";
 	}
 		
 
