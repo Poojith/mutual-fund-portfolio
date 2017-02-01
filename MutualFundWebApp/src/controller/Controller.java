@@ -59,6 +59,9 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String nextPage = performAction(request);
+		if (nextPage == null) {
+			nextPage = "404error.jsp";
+		}
 		sendToNextPage(nextPage, request, response);
 	}
 
@@ -83,7 +86,7 @@ public class Controller extends HttpServlet {
 				return Action.perform("login.do", request);
 			}
 		} else {
-			return "error.jsp";
+			return Action.perform("login.do", request);
 		}
 
 		return Action.perform(action, request);
