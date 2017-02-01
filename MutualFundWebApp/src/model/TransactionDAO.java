@@ -11,6 +11,7 @@ import org.genericdao.MatchArg;
 import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 
+import databean.FundPriceHistoryBean;
 import databean.TransactionBean;
 
 public class TransactionDAO extends GenericDAO<TransactionBean>{
@@ -61,6 +62,12 @@ public class TransactionDAO extends GenericDAO<TransactionBean>{
     
     public TransactionBean[] findTransactionsByCustomerId (int customerId) throws RollbackException{
         TransactionBean[] beans = match(MatchArg.equals("customerId", customerId));
+        for (int i = 0; i < beans.length/2; i++)
+  	  {
+        	TransactionBean temp = beans[i];
+        	beans[i] = beans[beans.length-1 - i];
+        	beans[beans.length-1 - i] = temp;
+  	  }
         return beans;
     }
     
