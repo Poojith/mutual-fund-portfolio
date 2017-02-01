@@ -50,8 +50,8 @@ public class SellfundForm extends FormBean {
 		
 		try {
 			Double.parseDouble(numShares);
-			if (getSharesDouble() < 1 || getSharesDouble() >= 10000000) {
-				errors.add("Please specify a amount range between 1 and 10,000,000");
+			if (getSharesDouble() < 1 || getSharesDouble() > 10000000) {
+				errors.add("Please specify an amount that is between $1 and $10,000,000.");
 			}
 		}
 		catch(NumberFormatException e) {

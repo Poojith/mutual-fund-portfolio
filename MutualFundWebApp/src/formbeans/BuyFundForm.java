@@ -53,8 +53,8 @@ public class BuyFundForm extends FormBean {
 		
 		try {
 			Double.parseDouble(buyAmount);
-			if (getAmountDouble() < 1 || getAmountDouble() >= 10000000) {
-				errors.add("Please specify a amount range between $1 and $10,000,000");
+			if (getAmountDouble() < 1 || getAmountDouble() > 10000000) {
+				errors.add("Please specify an amount that is between $1 and $10,000,000.");
 			}
 		}
 		catch(NumberFormatException e) {

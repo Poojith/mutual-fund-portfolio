@@ -59,8 +59,8 @@ public class DepositCheckForm {
 
 		try {
 			Double.parseDouble(depositAmount);
-			if (getDepositAmountAsDouble() <= 0 || getDepositAmountAsDouble() >= 10000000) {
-				errors.add("Please specify a amount range between $0 and $10,000,000");
+			if (getDepositAmountAsDouble() < 1 || getDepositAmountAsDouble() > 10000000) {
+				errors.add("Please specify an amount that is between $1 and $10,000,000.");
 			}
 		} catch (NumberFormatException e) {
 			errors.add("Error in conversion of amount. Please specify the amount in the right format.");

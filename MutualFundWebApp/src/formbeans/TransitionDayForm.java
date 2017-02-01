@@ -43,7 +43,7 @@ public class TransitionDayForm {
 			System.out.println("The price here is: " + price);
 			boolean isDouble = checkPriceValue(price);
 			if (isDouble) {
-				if (getPriceAsDouble(price) <= 0 || getPriceAsDouble(price) >= 10000000) {
+				if (getPriceAsDouble(price) < 1 || getPriceAsDouble(price) > 10000000) {
 					checkPriceRange = false;
 				}
 				map.put(fb.getFundId(), getPriceAsDouble(price));
@@ -126,7 +126,7 @@ public class TransitionDayForm {
 		}
 		
 		if(!checkPriceRange)
-				errors.add("Please specify a amount range between $0 and $10,000,000"); 
+			errors.add("Please specify an amount that is between $1 and $10,000,000.");
 
 		if (!checkDateFormat(transitionDate)) {
 			errors.add("Error in parsing the date");
