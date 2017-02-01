@@ -59,41 +59,32 @@
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 					<li><a href="viewaccount.do"><i
-							class="fa fa-dashboard fa-fw"></i> Your account</a></li>
-					<li><a data-toggle="collapse" data-parent="#accordion"
-						href="#collapseOne"><span class="fa fa-dashboard fa-fw">
-						</span>Manage your fund</a>
-						<div id="collapseOne" class="panel-collapse collapse in">
-							<div class="panel-body">
-
-								<table class="table">
-
-									<tr>
-										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href=buyfund.do>Buy fund</a></td>
-									</tr>
-									<tr>
-										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href="sellfund.do">Sell fund</a></td>
-									</tr>
-									<tr>
-										<td><span class="glyphicon glyphicon-file text-info"></span>
-											<a href="researchfund.do">Research fund</a></td>
-									</tr>
-
-								</table>
-							</div>
-						</div></li>
-					<li><a href="requestcheck.do"><i class="fa fa-dashboard fa-fw"></i>
+							class="fa fa-eye fa-fw"></i> Your account</a></li>
+							
+					<li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Manage Your Fund<span class="fa arrow"></span></a>
+                           <ul class="nav nav-second-level">
+                               <li>
+                                   <a href="buyfund.do"><i class="fa fa-credit-card fa-fw"></i>Buy Fund</a>
+                               </li>
+                               <li>
+                                   <a href="sellfund.do"><i class="fa fa-credit-card-alt fa-fw"></i>Sell Fund</a>
+                               </li>
+                               <li>
+                                   <a href="researchfund.do"><i class="fa fa-line-chart fa-fw"></i>Research Fund</a>
+                               </li>
+                           </ul>
+                     </li>
+					<li><a href="requestcheck.do"><i class="fa fa-money fa-fw"></i>
 							Request check</a></li>
-					<li><a href="transactionhistory.do"><i class="fa fa-dashboard fa-fw"></i>
+					<li><a href="transactionhistory.do"><i class="fa fa-history fa-fw"></i>
 							Transaction history</a></li>
-				   <li><a href="changepassword.do"><i class="fa fa-dashboard fa-fw"></i>
+				   <li><a href="changepassword.do"><i class="fa fa-key fa-fw"></i>
 							Change password</a></li>
 							
 							
 
-					<li><a href="logout.do"><i class="fa fa-dashboard fa-fw"></i>
+					<li><a href="logout.do"><i class="fa fa-sign-out fa-fw"></i>
 							Logout</a></li>
 				</ul>
 			</div>
