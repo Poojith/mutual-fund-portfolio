@@ -47,19 +47,19 @@ public class ResetPasswordForm {
 		if (userName == null || userName.length() == 0)
 			errors.add("User name is required.");
 		
-		if (userName.length() > 50)
+		if (userName!= null && userName.length() > 50)
 			errors.add("The username must be within 50 characters.");
 
 		if (newPassword == null || newPassword.length() == 0)
 			errors.add("Password is required.");
 		
-		if (newPassword.length() > 50)
+		if (newPassword!=null && newPassword.length() > 50)
 			errors.add("The new password must be within 50 characters.");
 
 		if (confirmPassword == null || confirmPassword.length() == 0)
 			errors.add("Please confirm your password.");
 		
-		if (confirmPassword.length() > 50)
+		if (confirmPassword!=null && confirmPassword.length() > 50)
 			errors.add("The confirmed password must be within 50 characters.");
 
 		if (resetPasswordButton == null || !resetPasswordButton.equals("Reset password"))
