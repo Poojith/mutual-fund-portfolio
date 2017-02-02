@@ -51,6 +51,8 @@ public class CreateFundAction extends Action {
 
 			CreateFundForm form = new CreateFundForm(request);
 			if (!form.isPresent()) {
+				FundBean[] fundbeans = fundDAO.match();
+				request.setAttribute("listfunds", fundbeans);
 				return "employee-create-fund.jsp";
 			}
 

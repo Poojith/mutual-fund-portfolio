@@ -13,9 +13,18 @@
 			<h5 style="color: red">${error}</h5>
 		</c:forEach>
 	</div>
+
 	<form action="create-fund.do" method="POST">
 	
-
+		<div class="row">
+			<div class="col-lg-4">
+			<label>Current List of Funds:</label><br>
+	  		<c:forEach var="f" items="${listfunds}">
+				<label>${f.name} (${f.symbol})</label><br>
+			</c:forEach>
+			</div>
+		</div>
+		<br>
 		<div class="row">
 			<div class="col-lg-4">
 				<label>Fund Name</label> <input type="text" class="form-control" maxlength = "50"
