@@ -39,7 +39,7 @@
 										<td>${p.fundName}</td>
 										<td>${p.symbol}</td>
 										<td>${p.shares}</td>
-										<td><div>$</div>${p.totalValue}</td>
+										<td><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${p.totalValue}" /></td>
 										<!--adding total values to the bean -->
 									</tr>
 									
