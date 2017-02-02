@@ -22,6 +22,14 @@
 			</c:forEach>
 		</div>
 		<form action="changepassword.do" method="POST">
+		<div class ="row">
+			<div class="col-lg-4">
+			<label>Old password</label>
+			<input type="password" name="oldPassword" required="true" class="form-control">
+			<p class="help-block"></p>
+			</div>
+		</div>
+		
 
 			<div class="row">
 				<div class="col-lg-4">

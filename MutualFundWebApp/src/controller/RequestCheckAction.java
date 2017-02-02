@@ -44,6 +44,9 @@ public class RequestCheckAction extends Action {
 	    		  return "employee-error.jsp";
 	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  if (user == null) {
+	    		  return "login.do";
+	    	  }
 	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
 	          request.setAttribute("cash", cash);
 	    	  RequestcheckForm form = formBeanFactory.create(request);
