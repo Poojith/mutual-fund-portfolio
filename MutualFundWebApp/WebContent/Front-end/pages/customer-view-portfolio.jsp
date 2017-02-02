@@ -70,7 +70,7 @@
 								</div>
 							</div>
 
-							<div class="panel-footer" align="center">$<fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${cash.cash}" /></div>
+							<div class="panel-footer" align="center"><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${cash.cash}" /></div>
 
 						</div>
 
@@ -129,7 +129,7 @@
 															<td>${p.fundName}</td>
 															<td>${p.symbol}</td>
 															<td>${p.shares}</td>
-															<td>${p.totalValue}</td>
+															<td><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${p.totalValue}" /></td>
 
 														</tr>
 													</c:forEach>
