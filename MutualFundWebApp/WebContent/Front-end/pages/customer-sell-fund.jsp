@@ -27,8 +27,8 @@
 							<table class="table table-bordered table-hover table-striped">
 								<thead>
 									<tr>
-										<th>&nbsp;&nbsp;Fund Name</font></th>
-										<th>Ticker</th>>
+										<th>&nbsp;&nbsp;Fund Name</th>
+										<th>Ticker</th>
 										<th>Number of Shares</th>
 										<th>Total Value</th>
 									</tr>
