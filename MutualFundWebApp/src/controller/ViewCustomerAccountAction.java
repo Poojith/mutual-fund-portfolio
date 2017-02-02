@@ -9,6 +9,7 @@ import org.genericdao.RollbackException;
 
 import databean.CustomerBean;
 import databean.EmployeeBean;
+import databean.EmployeeViewCustBean;
 import databean.FundBean;
 import databean.PositionBean;
 import formbeans.ViewCustomerAccountForm;
@@ -79,18 +80,28 @@ public class ViewCustomerAccountAction extends Action {
 
 			PositionBean[] positions = positionDAO.getPositionsByCustomerId(customer.getCustomerId());
 			List<FundBean> funds = new ArrayList<FundBean>();
+			EmployeeViewCustBean[] viewbeans = null;
 			if(positions != null) {
+				viewbeans = new EmployeeViewCustBean[positions.length];
+				int i = 0;
 				for (PositionBean pb : positions) {
 					funds.add(fundDAO.read(pb.getFundId()));
 					pb.setTotalValue(
 							(double) pb.getShares() * fundPriceHistoryDAO.fundLatestPrice(fundDAO.read(pb.getFundId())));
+					viewbeans[i] = new EmployeeViewCustBean();
+					viewbeans[i].setCustomerId(pb.getCustomerId());
+					viewbeans[i].setFundId(pb.getFundId());
+					viewbeans[i].setFundTicker(fundDAO.read(pb.getFundId()).getSymbol());
+					viewbeans[i].setShares(pb.getShares());
+					viewbeans[i].setTotalValue(pb.getTotalValue());
+					i++;
 				}
 			}
 
 			String date = transactionDAO.findLastTransactionDate(customer.getCustomerId());
 
 			request.setAttribute("customer", customer);
-			request.setAttribute("positions", positions);
+			request.setAttribute("positions", viewbeans);
 			request.setAttribute("funds", funds);
 			request.setAttribute("lastTransactionDate", date);
 
@@ -99,9 +110,9 @@ public class ViewCustomerAccountAction extends Action {
 		} catch (RollbackException e) {
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
-		} catch (Exception e) {
+		}/* catch (Exception e) {
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
-		}
+		}*/
 	}
 }
