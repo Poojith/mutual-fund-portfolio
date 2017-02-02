@@ -97,7 +97,7 @@ public class TransitionDayAction extends Action {
 			dateFormat.setLenient(false);
 			if (prevdate != null && dateFormat.parse(date).compareTo
 				(dateFormat.parse(prevdate))<=0) {
-				errors.add("date has to be greater than last transistion day date: " + prevdate);
+				errors.add("date has to be greater than last transistion day date: ");
 				return "employee-transition-day.jsp";
 			} else if (dateFormat.parse(date).compareTo(dateFormat.parse("01/01/2010")) <= 0) {
 				errors.add("date has to be greater than 01/01/2010" + prevdate);
