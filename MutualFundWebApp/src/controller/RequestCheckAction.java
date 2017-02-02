@@ -52,7 +52,7 @@ public class RequestCheckAction extends Action {
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "customer-error.jsp";
+	                return "customer-request-check.jsp";
 	            }
 	            
 	            TransactionBean[] buyfund = transactionDAO.match(MatchArg.and(MatchArg.equals("customerId", user.getCustomerId()),MatchArg.equals("executeDate", null),MatchArg.equals("transactionType", 1)));
@@ -77,7 +77,7 @@ public class RequestCheckAction extends Action {
 	        	 Double balance = user.getCash() - total;
 	        	 DecimalFormat df = new DecimalFormat("0.00");
 	    		 errors.add("Not enough cash, your current cash balance is $" + df.format(balance) + " ,which may due to some pending transactions");
-	        	return "customer-error.jsp";
+	        	return "customer-request-check.jsp";
 	         }
 	         request.setAttribute("message", "Your request for withdraw the fund is under processing");
 	  

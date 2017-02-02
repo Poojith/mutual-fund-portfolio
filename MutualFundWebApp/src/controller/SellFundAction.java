@@ -87,7 +87,7 @@ public class SellFundAction extends Action {
 				}
 	            errors.addAll(form.getValidationErrors());
 	            if (errors.size() > 0) {
-	                return "customer-error.jsp";
+	                return "customer-sell-fund.jsp";
 	            }
 	            int fundid = fundDAO.read(form.getFund()).getFundId();
 	            double shares = positionDAO.getPosition(user.getCustomerId(), fundid).getShares();
@@ -110,7 +110,7 @@ public class SellFundAction extends Action {
 	            	 Double balance = shares - totalshares;
 		        	 DecimalFormat df = new DecimalFormat("0.000");
 		        	errors.add("Not enough shares, your current available shares for " + fundDAO.read(form.getFund()).getName() + " is " + df.format(balance));
-		        	return "customer-error.jsp";
+		        	return "customer-sell-fund.jsp";
 		         }
 	          request.setAttribute("message", "Your request for selling the fund is under processing");
 	    	  return "customer-success.jsp";
