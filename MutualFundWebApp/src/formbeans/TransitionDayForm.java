@@ -39,8 +39,7 @@ public class TransitionDayForm {
 		}
 		for (FundBean fb : fundBeans) {
 			String parameter = "fund" + fb.getFundId();
-			String price = request.getParameter(parameter);
-			System.out.println("The price here is: " + price);
+			String price = request.getParameter(parameter);			
 			boolean isDouble = checkPriceValue(price);
 			if (isDouble) {
 				if (getPriceAsDouble(price) < 1 || getPriceAsDouble(price) > 1000) {
@@ -71,7 +70,6 @@ public class TransitionDayForm {
 	}
 
 	public Map<Integer, Double> getFundPriceMap() {
-		System.out.println("size of getfundpricemap is:" + map.size());
 		return map;
 	}
 
@@ -92,11 +90,9 @@ public class TransitionDayForm {
 		if (date == null) {
 			return false;
 		}
-		try {
-			
+		try {			
 			dateFormat.parse((date));
 		} catch (ParseException parseEx) {
-			System.out.println(parseEx.getMessage());
 			return false;
 		}
 		return true;
