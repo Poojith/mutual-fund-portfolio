@@ -117,6 +117,7 @@
 												<thead>
 													<tr>
 														<th>&nbsp;&nbsp;Fund Name</th>
+														<th>Ticker</th>
 														<th>Number of Shares</th>
 														<th>Total Value</th>
 													</tr>
@@ -126,6 +127,7 @@
 														<tr>
 
 															<td>${p.fundName}</td>
+															<td>${p.symbol}</td>
 															<td>${p.shares}</td>
 															<td>${p.totalValue}</td>
 
