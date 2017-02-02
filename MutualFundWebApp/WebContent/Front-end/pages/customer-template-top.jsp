@@ -59,7 +59,7 @@
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 					<li><a href="viewaccount.do"><i
-							class="fa fa-eye fa-fw"></i> Your account</a></li>
+							class="fa fa-eye fa-fw"></i> Your Account</a></li>
 							
 					<li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Manage Your Fund<span class="fa arrow"></span></a>
@@ -76,11 +76,11 @@
                            </ul>
                      </li>
 					<li><a href="requestcheck.do"><i class="fa fa-money fa-fw"></i>
-							Request check</a></li>
+							Request Check</a></li>
 					<li><a href="transactionhistory.do"><i class="fa fa-history fa-fw"></i>
-							Transaction history</a></li>
+							Transaction History</a></li>
 				   <li><a href="changepassword.do"><i class="fa fa-key fa-fw"></i>
-							Change password</a></li>
+							Change Password</a></li>
 							
 							
 
