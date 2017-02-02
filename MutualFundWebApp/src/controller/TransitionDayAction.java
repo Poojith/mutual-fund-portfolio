@@ -99,6 +99,9 @@ public class TransitionDayAction extends Action {
 				(dateFormat.parse(prevdate))<=0) {
 				errors.add("date has to be greater than last transistion day date: " + prevdate);
 				return "employee-transition-day.jsp";
+			} else if (dateFormat.parse(date).compareTo(dateFormat.parse("01/01/2010")) <= 0) {
+				errors.add("date has to be greater than 01/01/2010");
+				return "employee-transition-day.jsp";
 			}
 			
 			Map<Integer, Double> fundpricemap = new HashMap<Integer, Double>();

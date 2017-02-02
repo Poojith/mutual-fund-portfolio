@@ -80,8 +80,8 @@
 									<th>${histbean.status}</th>
 									<th>${histbean.fundName}</th>
 									<th><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${histbean.numShares}"></fmt:formatNumber></th>			
-									<th><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${histbean.sharePrice}"></fmt:formatNumber></th>
-									<th><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${histbean.amount}"></fmt:formatNumber></th>
+									<th><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${histbean.sharePrice}"></fmt:formatNumber></th>
+									<th><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${histbean.amount}"></fmt:formatNumber></th>
 								</tr>
 								</c:forEach>
 									

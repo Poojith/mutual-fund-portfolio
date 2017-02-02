@@ -39,7 +39,9 @@
 										<td>${p.fundName}</td>
 										<td>${p.symbol}</td>
 										<td>${p.shares}</td>
+
 										<td>${p.totalValue}</td>
+
 										<!--adding total values to the bean -->
 									</tr>
 									
