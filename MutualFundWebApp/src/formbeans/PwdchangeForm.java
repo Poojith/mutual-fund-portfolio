@@ -8,7 +8,16 @@ import org.mybeans.form.FormBean;
 public class PwdchangeForm extends FormBean {
 	private String confirmPassword;
 	private String newPassword;
+	private String changepwd;
 	
+	
+	
+	public String getChangepwd() {
+		return changepwd;
+	}
+	public void setChangepwd(String changepwd) {
+		this.changepwd = changepwd;
+	}
 	public String getConfirmPassword() { return confirmPassword; }
 	public String getNewPassword()     { return newPassword;     }
 	
@@ -24,6 +33,10 @@ public class PwdchangeForm extends FormBean {
 		
 		if (confirmPassword == null || confirmPassword.length() == 0) {
 			errors.add("Confirm Pwd is required");
+		}
+		
+		if (changepwd == null || changepwd.length() == 0) {
+			errors.add("Change Password Button is required");
 		}
 		
 		if (errors.size() > 0) {

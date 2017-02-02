@@ -39,7 +39,7 @@
 				</div>
 			</div>
 
-			<input type="submit" value="Change password" name="action"
+			<input type="submit" value="Change password" name="changepwd"
 				class="btn btn-outline btn-primary" />
 
 		</form>
