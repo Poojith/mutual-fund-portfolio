@@ -6,12 +6,17 @@ import java.util.List;
 import org.mybeans.form.FormBean;
 
 public class PwdchangeForm extends FormBean {
+	private String oldPassword;
 	private String confirmPassword;
 	private String newPassword;
 	private String changepwd;
 	
-	
-	
+	public String getOldPassword() {
+		return oldPassword;
+	}
+	public void setOldPassword(String oldPassword) {
+		this.oldPassword = oldPassword;
+	}
 	public String getChangepwd() {
 		return changepwd;
 	}
