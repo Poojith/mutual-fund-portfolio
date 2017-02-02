@@ -81,12 +81,10 @@ public class TransitionDayAction extends Action {
 			
 			TransitionDayForm form = new TransitionDayForm(request);
 			if (!form.isPresent()) {
-				System.out.println("transition form is not present");
 				session.setAttribute("fundArray", fundArray);
 				return "employee-transition-day.jsp";
 			}
-			if (date == null) {
-				System.out.println("date is null");
+			if (date == null) {				
 				errors.add("Date needs to be specified");
 				return "employee-transition-day.jsp";
 			}
@@ -119,12 +117,10 @@ public class TransitionDayAction extends Action {
 					
 					fundHistoryBean[0].setPrice(entry.getValue());
 					fundHistoryBean[0].setPriceDate(date);
-					System.out.println(fundHistoryBean[0].getFundId());
 					fundPriceHistoryDAO.create(fundHistoryBean[0]);
 				}
 			}
 			TransactionBean[] transactionBeans = transactionDAO.match(MatchArg.equals("status", null));
-			System.out.println("size of transactiobeans is: " + transactionBeans.length);
 			for (int i=0; i<transactionBeans.length; i++) {
 				switch(transactionBeans[i].getTransactionType()) {
 					case 1: {
@@ -134,19 +130,16 @@ public class TransitionDayAction extends Action {
 					case 2: {
 						sellFundAction(transactionBeans[i], fundpricemap);
 						break;
-					} case 3: {
-						System.out.println("reached deposit check in switch case");
+					} case 3: {			
 						depositCheckAction(transactionBeans[i]);
 						break;
-					} case 4: {
-						System.out.println("reached request check in switch case");
+					} case 4: {					
 						requestCheckAction(transactionBeans[i]);
 						break;
 					}
 				}
 				transactionBeans[i].setExecuteDate(date);
-				transactionBeans[i].setStatus("completed");
-				System.out.println("updating transaction bean" + transactionBeans[i].getTransactionId());
+				transactionBeans[i].setStatus("completed");			
 				transactionDAO.update(transactionBeans[i]);
 			}
 			Transaction.commit();
@@ -156,12 +149,10 @@ public class TransitionDayAction extends Action {
 		} catch (RollbackException e) {
 			e.printStackTrace();
 			errors.add(e.getMessage());
-			System.out.println("failing because of rollback exception");
 			return "employee-error.jsp";
 			
 		} /* catch (Exception e) {
 			errors.add(e.getMessage());
-			System.out.println("failing because of exception");
 			return "error.jsp";
 		}*/ catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -234,9 +225,7 @@ public class TransitionDayAction extends Action {
 		double amount = transactionBean.getAmount();
 		CustomerBean customerbean = customerDAO.read(customerId);
 		customerbean.setCash(customerbean.getCash()+amount);
-		System.out.println("reached deposit check action: " + customerbean.getCash());
 		customerDAO.update(customerbean);
-		System.out.println("completed deposit check action");
 		return;
 	}
 	public void requestCheckAction(TransactionBean transactionBean) throws RollbackException {
