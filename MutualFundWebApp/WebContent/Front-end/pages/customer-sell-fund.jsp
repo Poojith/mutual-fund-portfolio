@@ -28,6 +28,7 @@
 								<thead>
 									<tr>
 										<th>&nbsp;&nbsp;Fund Name</font></th>
+										<th>Ticker</th>>
 										<th>Number of Shares</th>
 										<th>Total Value</th>
 									</tr>
@@ -36,6 +37,7 @@
 								<c:forEach var ="p" items="${portfolio}">			
 									<tr>
 										<td>${p.fundName}</td>
+										<td>${p.symbol}</td>
 										<td>${p.shares}</td>
 										<td>${p.totalValue}</td>
 										<!--adding total values to the bean -->
