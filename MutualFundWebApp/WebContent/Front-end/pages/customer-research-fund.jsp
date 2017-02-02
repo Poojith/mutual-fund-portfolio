@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="customer-template-top.jsp" />
 
@@ -89,7 +90,7 @@
 								<c:forEach var ="p" items="${fundpricehistory}">			
 									<tr>
 										<td>${p.priceDate}</td>
-										<td>${p.price}</td>
+										<td><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.price}" /></td>
 										<!--adding total values to the bean -->
 									</tr>
 									

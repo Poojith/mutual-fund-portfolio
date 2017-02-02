@@ -110,6 +110,7 @@
 												<thead>
 													<tr>
 														<th>Fund Name</th>
+														<th>Ticker</th>
 														<th>Number of Shares</th>
 														<th>Total Value</th>
 													</tr>
@@ -119,6 +120,7 @@
 														<tr>
 
 															<td>${funds.get(row.index).name}</td>
+															<td>${symbol}</td>
 															<td><fmt:formatNumber type="number" minFractionDigits="3" maxFractionDigits="3" value="${p.shares}"></fmt:formatNumber></td>
 															<td><fmt:formatNumber type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.totalValue}"></fmt:formatNumber></td>
 
