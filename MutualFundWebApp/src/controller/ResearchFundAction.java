@@ -9,6 +9,7 @@ import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import databean.CustomerBean;
 import databean.FundBean;
 import formbeans.ResearchfundForm;
 import model.FundDAO;
@@ -37,6 +38,10 @@ public class ResearchFundAction extends Action {
 	       	  if (!type.equals("Customer")) {
 	    		  errors.add("Please use Employee pages only");
 	    		  return "employee-error.jsp";
+	    	  }
+	       	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  if (user == null) {
+	    		  return "login.do";
 	    	  }
 	    	  request.setAttribute("fundlist", fundDAO.readAll());
 	       	  ResearchfundForm form = formBeanFactory.create(request);
