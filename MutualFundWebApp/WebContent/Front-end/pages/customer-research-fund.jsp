@@ -90,7 +90,7 @@
 								<c:forEach var ="p" items="${fundpricehistory}">			
 									<tr>
 										<td>${p.priceDate}</td>
-										<td><fmt:formatNumber currencySymbol="$" type="number" minFractionDigits="2" maxFractionDigits="2" value="${p.price}" /></td>
+										<td><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${p.price}" /></td>
 										<!--adding total values to the bean -->
 									</tr>
 									
@@ -144,6 +144,7 @@ new Morris.Line({
     preUnits: '$',
     labels: ['StockPrice'],
     hideHover: 'auto',
+    xLabels: 'day',
     resize: true
 });
 </script>
