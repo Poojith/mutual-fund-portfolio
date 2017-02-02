@@ -69,7 +69,7 @@
 										<th>Fund Name</th>
 										<th>Number of Shares</th>
 										<th>Share Price</th>
-										<th>Total Amount</th>
+										<th>Total Amount($)</th>
 									</tr>
 								</thead>
 								<tbody>
