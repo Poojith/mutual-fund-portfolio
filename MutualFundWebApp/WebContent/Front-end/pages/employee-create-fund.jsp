@@ -17,14 +17,32 @@
 	<form action="create-fund.do" method="POST">
 	
 		<div class="row">
-			<div class="col-lg-4">
-			<label>Current List of Funds:</label><br>
-	  		<c:forEach var="f" items="${listfunds}">
-				<label>${f.name} (${f.symbol})</label><br>
-			</c:forEach>
+		<div class="panel panel-default">
+			<div class="panel-heading">Current List of Funds</div>
+			<div>
+				<div class="table-responsive">
+				<table class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th>Fund Name</th>
+						<th>Fund Ticker</th>					
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="f" items="${listfunds}" varStatus="row">
+				<tr>
+					<td>${f.name}</td>
+					<td>${f.symbol}</td>
+				</tr>
+				</c:forEach>
+				</tbody>
+				</table>
+				</div>
+								
 			</div>
 		</div>
-		<br>
+		</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-4">
 				<label>Fund Name</label> <input type="text" class="form-control" maxlength = "50"
