@@ -144,7 +144,6 @@ new Morris.Line({
     preUnits: '$',
     labels: ['StockPrice'],
     hideHover: 'auto',
-    xLabels: 'day',
     resize: true
 });
 </script>
