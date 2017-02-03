@@ -153,16 +153,17 @@ public class TransitionDayAction extends Action {
 			e.printStackTrace();
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
-			
-		} /* catch (Exception e) {
-			errors.add(e.getMessage());
-			return "error.jsp";
-		}*/ catch (ParseException e) {
-			// TODO Auto-generated catch block
+		}	
+		 catch (ParseException e) {
 			e.printStackTrace();
 			errors.add(e.getMessage());
 			return "employee-error.jsp";
-		} finally {
+		} catch (Exception e) {
+			errors.add(e.getMessage());
+			return "error.jsp";
+		}
+		 
+		 finally {
 			if (Transaction.isActive()) {
 				Transaction.rollback();
 			}
@@ -210,7 +211,6 @@ public class TransitionDayAction extends Action {
 			return;
 		} else {
 			if (positionbean.getShares()<shares) {	
-				//not enough shares
 				return;
 			}
 		}

@@ -43,7 +43,7 @@
 			<br>
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Amount to Purchase</label> <input type="text" 
+					<label>Amount to purchase</label> <input type="text" 
 						class="form-control" required="true" name="buyAmount">
 					<p class="help-block"></p>
 				</div>

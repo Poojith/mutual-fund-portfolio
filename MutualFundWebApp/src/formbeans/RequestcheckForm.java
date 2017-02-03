@@ -35,7 +35,7 @@ public class RequestcheckForm extends FormBean {
 		List<String> errors = new ArrayList<String>();
 
 		if (amtWithdrawn == null || amtWithdrawn.length() == 0) {
-			errors.add("Plese specify the amount to be withdrawn");
+			errors.add("Please specify the amount to be withdrawn");
 		}
 		
 		if (amtConfirm == null || amtConfirm.length() == 0) {
@@ -58,7 +58,7 @@ public class RequestcheckForm extends FormBean {
 			}
 		}
 		catch(NumberFormatException e) {
-			errors.add("Error in conversion of Withdrawn Amount. Please specify the amount in the right format.");
+			errors.add("Error in conversion of withdrawn amount. Please specify the amount in the right format.");
 		}
 
 		return errors;
