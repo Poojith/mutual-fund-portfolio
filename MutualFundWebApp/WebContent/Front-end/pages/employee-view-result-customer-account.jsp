@@ -74,7 +74,7 @@
 							<div class="panel-heading">
 								<div class="row">
 									<div class="col-xs-12 text-center">
-										<div>Date of Last Transaction</div>
+										<div>Date of Last transaction</div>
 									</div>
 								</div>
 							</div>

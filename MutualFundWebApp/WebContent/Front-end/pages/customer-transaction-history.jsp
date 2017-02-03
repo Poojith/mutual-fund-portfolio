@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="customer-template-top.jsp" />
 
 <div id="page-wrapper">
@@ -56,8 +55,8 @@
 									<td>${transaction.status }</td>
 									<td>${transaction.fundName }</td>
 									<td>${transaction.shares }</td>
-									<td><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${transaction.sharePrice}" /></td>
-									<td><fmt:formatNumber currencySymbol="$" type="currency" minFractionDigits="2" maxFractionDigits="2" value="${transaction.amount}" /></td>
+									<td>${transaction.sharePrice }</td>
+									<td>${transaction.amount }</td>
 								</tr>
 						   </c:forEach>
 								</tbody>

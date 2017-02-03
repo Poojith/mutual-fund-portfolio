@@ -118,7 +118,7 @@
 		<div class="col-lg-12">
 			<h1 class="page-header">
 				<font size="5" face="verdana" color="#7E9DBB">Real-time
-					Market Updates</font>
+					market updates</font>
 			</h1>
 		</div>
 	</div>

@@ -56,7 +56,9 @@ public class Model {
 	            employeebean.setZip("zip");
 	            employeeDAO.create(employeebean);
             }
+            System.out.print("reaches outside pre-poulate customer in model class");
             if (customerDAO.getCount()==0) {
+            	System.out.print("reaches inside pre-poulate customer in model class");
 	            CustomerBean customerbean = new CustomerBean();
 	            customerbean.setAddrLine1("address1");
 	            customerbean.setAddrLine2("address2");

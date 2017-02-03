@@ -39,7 +39,7 @@
 
 
 							<div class="col-lg-4">
-								<label>Search Customer to View Transaction History </label> <input
+								<label>Search customer to view transaction history </label> <input
 									type="text" class="form-control" name="userName"> <br>
 
 

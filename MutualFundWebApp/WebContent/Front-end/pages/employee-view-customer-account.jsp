@@ -15,7 +15,7 @@
 			<form action="view-customer-account.do" method="POST">
               <div class="row">
                 <div class="col-lg-4">
-                    <label>Username of the Customer</label>
+                    <label>Username of the customer</label>
                     <input type="text" class="form-control" required="true"
 					name="userName">
                   <p class="help-block"></p>

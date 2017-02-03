@@ -45,7 +45,7 @@ public class BuyFundAction extends Action {
 	    		  errors.add("Please use Employee pages only");
 	    		  return "employee-error.jsp";
 	    	  }
-	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");	    	
+	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
 	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
 	    	  request.setAttribute("cash", cash);
 	 

@@ -37,7 +37,7 @@
 
 	<div class="row">
 		<div class="col-lg-4">
-			<label>Amount to Withdrawn:</label> <input type="text"
+			<label>Amount to be withdrawn:</label> <input type="text"
 				class="form-control" required="true" name="amtWithdrawn" >
 			<p class="help-block"></p>
 		</div>

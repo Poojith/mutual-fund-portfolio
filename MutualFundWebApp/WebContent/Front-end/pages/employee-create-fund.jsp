@@ -15,24 +15,7 @@
 	</div>
 
 	<form action="create-fund.do" method="POST">
-		<div class="row">
-			<div class="col-lg-4">
-				<label>Fund Name</label> <input type="text" class="form-control" maxlength = "50"
-				required="true"	name="fundName">
-				<p class="help-block"></p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4">
-				<label>Ticker</label> <input type="text" class="form-control" required="true" maxlength = "50"
-					name="ticker">
-				<p class="help-block"></p>
-			</div>
-		</div>
-
-		<input type="submit" name="action" value="Create fund"
-			class="btn btn-outline btn-primary" />
-			<div><br></div>
+	
 		<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">Current List of Funds</div>
@@ -60,6 +43,24 @@
 		</div>
 		</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<label>Fund Name</label> <input type="text" class="form-control" maxlength = "50"
+				required="true"	name="fundName">
+				<p class="help-block"></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4">
+				<label>Ticker</label> <input type="text" class="form-control" required="true" maxlength = "50"
+					name="ticker">
+				<p class="help-block"></p>
+			</div>
+		</div>
+
+		<input type="submit" name="action" value="Create fund"
+			class="btn btn-outline btn-primary" />
 			</form>
 	</div>
 </div>

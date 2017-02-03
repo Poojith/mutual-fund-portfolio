@@ -18,7 +18,7 @@
             <form action="reset-customer-password.do" method="POST">
               <div class="row">
                 <div class="col-lg-4">
-                    <label>Username of the Customer</label>
+                    <label>Username of the customer</label>
                     <input type="text" class="form-control" required="true" maxlength = "50"
 					name="userName">
                   <p class="help-block"></p>
@@ -28,16 +28,16 @@
 
               <div class="row">
                 <div class="col-lg-4">
-                    <label>New Password</label>
-                    <input type="password" name="newPassword" class="form-control" required="true" maxlength = "50">
+                    <label>New password</label>
+                    <input type="password" name="newPassword" class="form-control"  maxlength = "50" required="true">
                     <p class="help-block"></p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-lg-4">
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirmPassword" class="form-control" required="true" maxlength = "50">
+                    <label>Confirm password</label>
+                    <input type="password" name="confirmPassword" class="form-control" maxlength = "50" required="true"> 
                     <p class="help-block"></p>
                 </div>
               </div>
