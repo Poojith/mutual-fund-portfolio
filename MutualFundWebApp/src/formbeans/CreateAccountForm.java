@@ -69,7 +69,6 @@ public class CreateAccountForm {
 
 		if (addressLine2Input != null) {
 			addressLine2 = sanitize(addressLine2Input).trim();
-			addressLine2 = addressLine2.substring(0, 1).toUpperCase() + addressLine2.substring(1);
 		}
 
 		if (cityInput != null) {
@@ -180,35 +179,35 @@ public class CreateAccountForm {
 		if (userName == null || userName.length() == 0)
 			errors.add("User name is required.");
 
-		if (userName.length() > 50) {
+		if (userName != null && userName.length() > 50) {
 			errors.add("User name must be within 50 characters.");
 		}
 
 		if (firstName == null || firstName.length() == 0)
 			errors.add("First name is required.");
 
-		if (firstName.length() > 50) {
+		if (firstName != null && firstName.length() > 50) {
 			errors.add("First name must be within 50 characters.");
 		}
 
 		if (lastName == null || lastName.length() == 0)
 			errors.add("Last name is required.");
 
-		if (lastName.length() > 50) {
+		if (lastName != null &&  lastName.length() > 50) {
 			errors.add("Last name must be within 50 characters.");
 		}
 
 		if (addressLine1 == null || addressLine1.length() == 0)
 			errors.add("Address is required.");
 
-		if (addressLine1.length() > 50) {
+		if (addressLine1 != null && addressLine1.length() > 50) {
 			errors.add("Address line 1 must be within 50 characters.");
 		}
 
 		if (city == null || city.length() == 0)
 			errors.add("City is required.");
 
-		if (city.length() > 50) {
+		if (city != null &&  city.length() > 50) {
 			errors.add("City must be within 50 characters.");
 		}
 
@@ -218,21 +217,21 @@ public class CreateAccountForm {
 		if (zipCode == null || zipCode.length() == 0)
 			errors.add("ZIP code is required.");
 
-		if (zipCode.length() > 50) {
+		if (zipCode != null &&  zipCode.length() > 50) {
 			errors.add("Zip code must be within 50 characters.");
 		}
 
 		if (password == null || password.length() == 0)
 			errors.add("Password is required.");
 
-		if (password.length() > 50) {
+		if (password != null &&  password.length() > 50) {
 			errors.add("Password must be within 50 characters.");
 		}
 
 		if (confirmPassword == null || confirmPassword.length() == 0)
 			errors.add("Please confirm your password.");
 
-		if (confirmPassword.length() > 50) {
+		if (confirmPassword != null &&  confirmPassword.length() > 50) {
 			errors.add("Confirmed password must be within 50 characters.");
 		}
 
