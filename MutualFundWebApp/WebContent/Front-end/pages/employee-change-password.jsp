@@ -3,7 +3,7 @@
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Change password</h1>
+			<h1 class="page-header">Change Password</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -14,7 +14,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-4">
-					<label>New password</label> <input type="password"
+					<label>New Password</label> <input type="password"
 						name="newPassword" class="form-control"
 						value="${form.newPassword}">
 					<p class="help-block"></p>

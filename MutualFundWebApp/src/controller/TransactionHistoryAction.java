@@ -37,6 +37,9 @@ public class TransactionHistoryAction extends Action {
 	        if (usertype == "Customer") {
 		      try {
 		    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+		    	  if (user == null) {
+		    		  return "login.do";
+		    	  }
 		    	  List<TransactionhistoryBean> transactionhistory = new ArrayList<TransactionhistoryBean>();
 		    	  TransactionBean[] transactions = transactionDAO.findTransactionsByCustomerId(user.getCustomerId());
 		    	  for(int i=0; i<transactions.length; i++) {
@@ -49,7 +52,7 @@ public class TransactionHistoryAction extends Action {
 		    		  }
 		    		  if (transactions[i].getStatus() == null) {
 		    			  t.setStatus("Pending");
-		    		  } else {
+		    			} else {
 		    			  t.setStatus(transactions[i].getStatus());
 		    		  }
 		    		  DecimalFormat df1 = new DecimalFormat("0.000");

@@ -8,7 +8,7 @@
 		<div class="col-lg-12">
 			<h1 class="page-header">
 				<font size="5" face="verdana" color="#7E9DBB">&nbsp;Change
-					customer password</font>
+					Customer Password</font>
 			</h1>
 		</div>
 	</div>
@@ -24,7 +24,7 @@
 		<form action="changepassword.do" method="POST">
 		<div class ="row">
 			<div class="col-lg-4">
-			<label>Old password</label>
+			<label>Old Password</label>
 			<input type="password" name="oldPassword" required="true" class="form-control">
 			<p class="help-block"></p>
 			</div>
@@ -33,7 +33,7 @@
 
 			<div class="row">
 				<div class="col-lg-4">
-					<label>New password</label> <input type="password"
+					<label>New Password</label> <input type="password"
 						name="newPassword" required="true" class="form-control">
 					<p class="help-block"></p>
 				</div>
@@ -41,7 +41,7 @@
 
 			<div class="row">
 				<div class="col-lg-4">
-					<label>Confirm password</label> <input type="password"
+					<label>Confirm Password</label> <input type="password"
 						name="confirmPassword" required="true" class="form-control">
 					<p class="help-block"></p>
 				</div>

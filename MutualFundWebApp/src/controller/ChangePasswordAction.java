@@ -47,10 +47,16 @@ public class ChangePasswordAction extends Action {
 	            }
 	            HttpSession session = request.getSession();
 	            CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
-	            CustomerBean updateduser = customerDAO.setNewPassword(user.getUsername(), form.getNewPassword());
-	            session.setAttribute("user", updateduser);
-				request.setAttribute("message", "Password changed for " + user.getUsername());
-	    	  return "customer-success.jsp";
+	            if (form.getOldPassword().equals(customerDAO.getCustomerByUserName(user.getUsername()).getPassword())) {
+	            	CustomerBean updateduser = customerDAO.setNewPassword(user.getUsername(), form.getNewPassword());
+		            session.setAttribute("user", updateduser);
+					request.setAttribute("message", "Password changed for " + user.getUsername());
+		    	  return "customer-success.jsp";
+	            } else {
+	            	errors.add("Old password is incorrect");
+		    		  return "customer-change-password.jsp";
+	            }
+	            
 	      } catch (RollbackException e) {
 	        	errors.add(e.getMessage());
 	        	return "customer-error.jsp";

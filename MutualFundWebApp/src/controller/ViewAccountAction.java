@@ -48,6 +48,9 @@ public class ViewAccountAction extends Action {
 	    		  return "employee-error.jsp";
 	    	  }
 	    	  CustomerBean user = (CustomerBean) request.getSession(false).getAttribute("user");
+	    	  if (user == null) {
+	    		  return "login.do";
+	    	  }
 	    	  CustomerBean cash = customerDAO.getCustomerByUserName(user.getUsername());
 	    	  request.setAttribute("cash", cash);
 	    	  PositionBean[] position = positionDAO.getPositionsByCustomerId(user.getCustomerId());
